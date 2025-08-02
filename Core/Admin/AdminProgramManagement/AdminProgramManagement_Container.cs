@@ -79,5 +79,12 @@ namespace Finals.Core.Admin.AdminProgramManagement
                 throw new Exception("MainPage does not implement IAdminProgramManagement");
             }
         }
+
+        //private Action<ClassSectionModel> ProjectClassDetails()
+        //{
+        //    var uc = new UserControl();
+
+        //    _container.Project(uc);
+        //}
     }
 }

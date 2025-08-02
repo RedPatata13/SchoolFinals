@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Accessibility;
+using Finals.Forms;
 using Finals.Forms.UserControls;
 using Finals.Models;
 using Finals.Services;
@@ -188,8 +189,17 @@ namespace Finals.Core.Admin.AdminProgramManagement
 
                 if (classSection != null)
                 {
-                    // ✅ Do your logic here
-                    MessageBox.Show($"See Details clicked for: {classSection.SectionName}");
+                    var parent = this.Parent;
+                    if (parent != null)
+                    {
+                        var uc = new AdminClassSectionDetails(classSection);
+                        Projector.Project(parent, uc);
+                        uc.BackClick += (_, _) =>
+                        {
+                            Projector.Project(parent, this);
+                            uc.Dispose();
+                        };
+                    }
                 }
             }
         }

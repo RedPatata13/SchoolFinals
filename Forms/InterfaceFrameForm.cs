@@ -32,6 +32,7 @@ namespace Finals.Forms
             var presenter = new InterfaceFramePresenter(this);
 
             AdjustLayout();
+            MainArea.AutoScrollPosition = new Point(0, 0);
         }
 
         public Action NavItemOnClick { get => _navItem_OnClick; set => _navItem_OnClick = value; }
