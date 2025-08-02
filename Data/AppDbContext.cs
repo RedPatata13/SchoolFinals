@@ -26,6 +26,8 @@ namespace Y2S1_INC_Compliance_proj.Data
             modelBuilder.ApplyConfiguration(new ClassSectionConfiguration());
             modelBuilder.ApplyConfiguration(new ClassSectionTransitionModelConfiguration());
             modelBuilder.ApplyConfiguration(new ClassSectionEditConfiguration());
+            modelBuilder.ApplyConfiguration(new ClassBatchModelConfiguration());
+            modelBuilder.ApplyConfiguration(new ClassEntryModelConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 
@@ -46,8 +48,9 @@ namespace Y2S1_INC_Compliance_proj.Data
         public DbSet<ProgramModel_Edits> ProgramEdits { get; set; } = null!;
 
         public DbSet<ClassSectionModel> ClassSections { get; set; } = null!;
+        public DbSet<ClassBatchModel> ClassBatches { get; set; } = null!;
         public DbSet<ClassSectionTransitionModel> ClassSectionsTransition { get; set; } = null!;
         public DbSet<ClassSectionEditLog> ClassSectionsEdits { get; set; } = null!;
-
+        public DbSet<ClassEntryModel> ClassEntries { get; set; } = null!;
     }
 }

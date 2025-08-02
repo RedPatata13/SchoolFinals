@@ -22,8 +22,7 @@ namespace Finals.Data.Configuration
                 .IsRequired()
                 .HasMaxLength(50);
 
-            builder.HasMany(c => c.Students)
-                .WithMany();
+            //builder.Property(c => c.CurrentBatch)
 
             builder.HasMany(c => c.IncomingTransition)
                 .WithOne(t => t.FromSection)
@@ -34,6 +33,13 @@ namespace Finals.Data.Configuration
                 .WithMany(p => p.ClassSections)
                 .HasForeignKey(c => c.ProgramId)
                 .IsRequired();
+
+
+            builder.HasMany(c => c.Batches)
+                .WithOne(b => b.ClassSection)
+                .HasForeignKey(b => b.ClassSectionId)
+                .IsRequired();
+               
 
             builder.ToTable("ClassSections");
         }

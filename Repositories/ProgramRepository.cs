@@ -19,6 +19,7 @@ namespace Finals.Repositories
             return _context.Program
                 .Include(p => p.CreatedBy)
                 .Include(p => p.LastEditedBy)
+                .Include(p => p.ClassSections)
                 .ToList();
         }
     }

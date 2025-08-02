@@ -21,6 +21,8 @@ namespace Finals.Repositories
         private IClassSectionTransitionRepository _classSectionTransitions = null!;
         private IClassSectionEditRepository _classSectionEdits = null!;
         private IClassSectionRepository _classSections = null!;
+        private IClassBatchRepository _classBatches = null!;
+        private IClassEntryRepository _classEntries = null!;
         IUserModelRepository IRepository.Users => _users;
         ISchoolYearModelRepository IRepository.SchoolYears => _schools;
 
@@ -34,6 +36,10 @@ namespace Finals.Repositories
 
         IClassSectionTransitionRepository IRepository.ClassSectionTransitions => _classSectionTransitions;
 
+        IClassBatchRepository IRepository.ClassBatches => _classBatches;
+
+        IClassEntryRepository IRepository.ClassEntries => _classEntries;
+
         public Repository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -44,6 +50,8 @@ namespace Finals.Repositories
             _classSectionEdits = new ClassSectionEditLogRepository(_dbContext);
             _classSectionTransitions = new ClassSectionTransitionRepository(_dbContext);
             _classSections = new ClassSectionRepository(_dbContext);
+            _classBatches = new ClassBatchRepository(_dbContext);
+            _classEntries = new ClassEntryRepository(_dbContext);
         }
 
         void IDisposable.Dispose()

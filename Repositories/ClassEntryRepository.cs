@@ -9,11 +9,10 @@ using Y2S1_INC_Compliance_proj.Data;
 
 namespace Finals.Repositories
 {
-    public class ClassSectionRepository : BaseRepository<ClassSectionModel>, IClassSectionRepository
+    public class ClassEntryRepository : BaseRepository<ClassEntryModel>, IClassEntryRepository
     {
-        public ClassSectionRepository(AppDbContext context) : base(context)
+        public ClassEntryRepository(AppDbContext context) : base(context)
         {
-
         }
     }
 }

@@ -17,7 +17,8 @@ namespace Finals.Repositories.Interfaces
         IClassSectionEditRepository ClassSectionEdits { get; }
         IClassSectionRepository ClassSections { get; }
         IClassSectionTransitionRepository ClassSectionTransitions { get; }
-
+        IClassBatchRepository ClassBatches { get; }
+        IClassEntryRepository ClassEntries { get; }
         void SaveChanges();
     }
 }

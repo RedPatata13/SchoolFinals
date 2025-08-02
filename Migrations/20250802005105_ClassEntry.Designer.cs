@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Y2S1_INC_Compliance_proj.Data;
 
@@ -11,9 +12,11 @@ using Y2S1_INC_Compliance_proj.Data;
 namespace Y2S1_INC_Compliance_proj.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250802005105_ClassEntry")]
+    partial class ClassEntry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,21 @@ namespace Y2S1_INC_Compliance_proj.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
+
+            modelBuilder.Entity("ClassSectionModelUserModel", b =>
+                {
+                    b.Property<string>("ClassSectionModelSectionID")
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("StudentsUserID")
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("ClassSectionModelSectionID", "StudentsUserID");
+
+                    b.HasIndex("StudentsUserID");
+
+                    b.ToTable("ClassSectionModelUserModel");
+                });
 
             modelBuilder.Entity("Finals.Models.ClassBatchModel", b =>
                 {
@@ -32,12 +50,6 @@ namespace Y2S1_INC_Compliance_proj.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
-
-                    b.Property<string>("ClassBatchStatus")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("longtext")
-                        .HasDefaultValue("Default");
 
                     b.Property<string>("ClassSectionId")
                         .IsRequired()
@@ -416,6 +428,21 @@ namespace Y2S1_INC_Compliance_proj.Migrations
                     b.HasKey("UserID");
 
                     b.ToTable("UserModels");
+                });
+
+            modelBuilder.Entity("ClassSectionModelUserModel", b =>
+                {
+                    b.HasOne("Finals.Models.ClassSectionModel", null)
+                        .WithMany()
+                        .HasForeignKey("ClassSectionModelSectionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Y2S1_INC_Compliance_proj.Models.UserModel", null)
+                        .WithMany()
+                        .HasForeignKey("StudentsUserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Finals.Models.ClassBatchModel", b =>

@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Accessibility;
 using Finals.Forms.UserControls;
 using Finals.Models;
+using Finals.Services;
+using Finals.Services.Contracts;
 using Y2S1_INC_Compliance_proj.Models;
 
 namespace Finals.Core.Admin.AdminProgramManagement
@@ -20,6 +22,7 @@ namespace Finals.Core.Admin.AdminProgramManagement
         private UserModel _currentUser = null!;
         private string _programTitle = string.Empty;
         private Action _onAddToSection = null!;
+        private Action _dgv_CellButtonClick = null!;
 
         public event EventHandler AddSectionToProgramClick
         {
@@ -123,6 +126,7 @@ namespace Finals.Core.Admin.AdminProgramManagement
         }
 
         public Action OnAddSectionToProgram { get => _onAddToSection; set => _onAddToSection = value; }
+        public Action DGV_CellButtonClick { get => _dgv_CellButtonClick; set => _dgv_CellButtonClick = value; }
 
         public AdminProgramDetails(ProgramModel model, UserModel user)
         {
@@ -147,7 +151,7 @@ namespace Finals.Core.Admin.AdminProgramManagement
             _model.ClassSections.ToList().ForEach(e =>
             {
                 var row = new DataGridViewRow();
-                row.CreateCells(_dgv, e.SectionName, e.SectionID, Ordinal(e.YearLevel), "13", new Button() { Text = "See Details" });
+                row.CreateCells(_dgv, e.SectionName, e.SectionID, Ordinal(e.YearLevel), "13", "See Details");
                 row.Tag = e;
                 _dgv.Rows.Add(row);
             });
@@ -165,27 +169,29 @@ namespace Finals.Core.Admin.AdminProgramManagement
             }
         }
 
-        private void _addSectionToProgramButton_Click(object sender, EventArgs e)
-        {
-            //var sampleClass = new ClassSectionModel
-            //{
-            //    SectionID = Guid.NewGuid().ToString().Substring(0, 10),
-            //    SectionName = "Sample Section",
-            //    YearLevel = 1,
-            //    ProgramId = _model.ProgramId,
-            //    Program = _model
-            //};
-            //if(_model.ClassSections == null) _model.ClassSections = new List<ClassSectionModel>();
-            //_model.ClassSections.Add(sampleClass);
-            //Model = _model;
-        }
-
         public void AddSectionToDGV(ClassSectionModel model)
         {
             var row = new DataGridViewRow();
             row.CreateCells(_dgv, model.SectionName, model.SectionID, Ordinal(model.YearLevel), "13", "See Details");
             row.Tag = model;
             _dgv.Rows.Add(row);
+        }
+
+        private void _dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex < 0 || e.ColumnIndex < 0) return;
+            int buttonColumnIndex = _dgv.Columns.Count - 1;
+            if (e.ColumnIndex == buttonColumnIndex)
+            {
+                var row = _dgv.Rows[e.RowIndex];
+                var classSection = row.Tag as ClassSectionModel;
+
+                if (classSection != null)
+                {
+                    // ✅ Do your logic here
+                    MessageBox.Show($"See Details clicked for: {classSection.SectionName}");
+                }
+            }
         }
     }
     public interface IAdminProgramDetails
@@ -204,6 +210,7 @@ namespace Finals.Core.Admin.AdminProgramManagement
         event EventHandler EditStatusClick;
         event EventHandler AddSectionToProgramClick;
         Action OnAddSectionToProgram { get; set; }
+        Action DGV_CellButtonClick { get; set; }
         void AddSectionToDGV(ClassSectionModel model);
     }
 
@@ -230,6 +237,11 @@ namespace Finals.Core.Admin.AdminProgramManagement
                         section.SectionID = Guid.NewGuid().ToString().Substring(0, 8);
                         section.ProgramId = _view.Model.ProgramId;
                         section.Program = _view.Model;
+                        using (IProgramManagementService service = new ProgramManagementService())
+                        {
+                            service.AddSectionToProgram(_view.Model.ProgramId, _view.CurrentUser.UserID, section);
+                        }
+
                         _view.Model.ClassSections.Add(section);
                         _view.AddSectionToDGV(section);
                     }   

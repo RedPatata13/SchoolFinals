@@ -80,6 +80,7 @@ namespace Finals.Services
                     {
                         try
                         {
+                            section.Program = null!; // clear the Program reference to avoid circular reference issues
                             repo.ClassSections.Add(section);
 
                             var editLog = CreateClassSectionEditLog //log the creation
@@ -89,6 +90,8 @@ namespace Finals.Services
                                 section.SectionID,
                                 ClassSectionEditType.SectionCreated
                             );
+
+                            
 
                             repo.ClassSectionEdits.Add(editLog);
                         } 
@@ -115,6 +118,7 @@ namespace Finals.Services
             finally
             {
                 repo.Dispose();
+                MessageBox.Show($"Changes successfully saved.\nSections created: {_sectionsCreated.Count}\nSections updated: {_sectionsUpdated.Count}\nSections failed to be created: {_sectionsCRUDError.Count}");
             }
         }
 

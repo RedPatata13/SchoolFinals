@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Forms.UserControls.HoverEffect hoverEffect4 = new Forms.UserControls.HoverEffect();
+            Forms.UserControls.HoverEffect hoverEffect1 = new Forms.UserControls.HoverEffect();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminProgramDetails));
-            Forms.UserControls.HoverEffect hoverEffect5 = new Forms.UserControls.HoverEffect();
-            Forms.UserControls.HoverEffect hoverEffect6 = new Forms.UserControls.HoverEffect();
+            Forms.UserControls.HoverEffect hoverEffect2 = new Forms.UserControls.HoverEffect();
+            Forms.UserControls.HoverEffect hoverEffect3 = new Forms.UserControls.HoverEffect();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             BackButton = new Button();
             panel2 = new Panel();
@@ -66,13 +67,14 @@
             panel7 = new Panel();
             panel8 = new Panel();
             tableLayoutPanel4 = new TableLayoutPanel();
+            label4 = new Label();
+            tableLayoutPanel5 = new TableLayoutPanel();
             _dgv = new DataGridView();
             ClassName = new DataGridViewTextBoxColumn();
             ClassID = new DataGridViewTextBoxColumn();
             ClassYearLevel = new DataGridViewTextBoxColumn();
             ClassCount = new DataGridViewTextBoxColumn();
             ClassDetails = new DataGridViewButtonColumn();
-            label4 = new Label();
             _addSectionToProgramButton = new Button();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
@@ -83,6 +85,7 @@
             tableLayoutPanel3.SuspendLayout();
             panel8.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
+            tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)_dgv).BeginInit();
             SuspendLayout();
             // 
@@ -136,9 +139,9 @@
             // 
             // coursePanel1
             // 
-            hoverEffect4.MouseEnter = SystemColors.ControlLight;
-            hoverEffect4.PrevColor = SystemColors.ActiveBorder;
-            coursePanel1.DefaultHoverEffects = hoverEffect4;
+            hoverEffect1.MouseEnter = SystemColors.ControlLight;
+            hoverEffect1.PrevColor = SystemColors.ActiveBorder;
+            coursePanel1.DefaultHoverEffects = hoverEffect1;
             coursePanel1.IsOngoing = false;
             coursePanel1.Location = new Point(0, 0);
             coursePanel1.Name = "coursePanel1";
@@ -364,9 +367,9 @@
             // 
             // coursePanel2
             // 
-            hoverEffect5.MouseEnter = SystemColors.ControlLight;
-            hoverEffect5.PrevColor = SystemColors.ActiveBorder;
-            coursePanel2.DefaultHoverEffects = hoverEffect5;
+            hoverEffect2.MouseEnter = SystemColors.ControlLight;
+            hoverEffect2.PrevColor = SystemColors.ActiveBorder;
+            coursePanel2.DefaultHoverEffects = hoverEffect2;
             coursePanel2.IsOngoing = false;
             coursePanel2.Location = new Point(0, 0);
             coursePanel2.Name = "coursePanel2";
@@ -462,9 +465,9 @@
             // 
             // coursePanel3
             // 
-            hoverEffect6.MouseEnter = SystemColors.ControlLight;
-            hoverEffect6.PrevColor = SystemColors.ActiveBorder;
-            coursePanel3.DefaultHoverEffects = hoverEffect6;
+            hoverEffect3.MouseEnter = SystemColors.ControlLight;
+            hoverEffect3.PrevColor = SystemColors.ActiveBorder;
+            coursePanel3.DefaultHoverEffects = hoverEffect3;
             coursePanel3.IsOngoing = false;
             coursePanel3.Location = new Point(0, 0);
             coursePanel3.Name = "coursePanel3";
@@ -477,7 +480,7 @@
             panel7.Dock = DockStyle.Top;
             panel7.Location = new Point(0, 648);
             panel7.Name = "panel7";
-            panel7.Size = new Size(1059, 16);
+            panel7.Size = new Size(1059, 8);
             panel7.TabIndex = 38;
             // 
             // panel8
@@ -486,19 +489,17 @@
             panel8.BorderStyle = BorderStyle.FixedSingle;
             panel8.Controls.Add(tableLayoutPanel4);
             panel8.Dock = DockStyle.Fill;
-            panel8.Location = new Point(0, 664);
+            panel8.Location = new Point(0, 656);
             panel8.Name = "panel8";
-            panel8.Size = new Size(1059, 379);
+            panel8.Size = new Size(1059, 387);
             panel8.TabIndex = 39;
             // 
             // tableLayoutPanel4
             // 
-            tableLayoutPanel4.ColumnCount = 2;
+            tableLayoutPanel4.ColumnCount = 1;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 96F));
-            tableLayoutPanel4.Controls.Add(_dgv, 0, 1);
             tableLayoutPanel4.Controls.Add(label4, 0, 0);
-            tableLayoutPanel4.Controls.Add(_addSectionToProgramButton, 1, 1);
+            tableLayoutPanel4.Controls.Add(tableLayoutPanel5, 0, 1);
             tableLayoutPanel4.Dock = DockStyle.Top;
             tableLayoutPanel4.Location = new Point(0, 0);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -508,20 +509,55 @@
             tableLayoutPanel4.Size = new Size(1057, 360);
             tableLayoutPanel4.TabIndex = 40;
             // 
+            // label4
+            // 
+            label4.Dock = DockStyle.Fill;
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(3, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(1051, 30);
+            label4.TabIndex = 38;
+            label4.Text = "Classes";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 2;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 92F));
+            tableLayoutPanel5.Controls.Add(_dgv, 0, 0);
+            tableLayoutPanel5.Controls.Add(_addSectionToProgramButton, 1, 0);
+            tableLayoutPanel5.Dock = DockStyle.Fill;
+            tableLayoutPanel5.Location = new Point(3, 33);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 1;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.Size = new Size(1051, 324);
+            tableLayoutPanel5.TabIndex = 39;
+            // 
             // _dgv
             // 
             _dgv.AllowUserToAddRows = false;
             _dgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            _dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 224, 224);
+            _dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             _dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             _dgv.Columns.AddRange(new DataGridViewColumn[] { ClassName, ClassID, ClassYearLevel, ClassCount, ClassDetails });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.DodgerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            _dgv.DefaultCellStyle = dataGridViewCellStyle2;
             _dgv.Dock = DockStyle.Fill;
-            _dgv.Location = new Point(3, 33);
+            _dgv.Location = new Point(3, 3);
             _dgv.Name = "_dgv";
             _dgv.ReadOnly = true;
-            _dgv.Size = new Size(955, 324);
-            _dgv.TabIndex = 42;
+            _dgv.Size = new Size(953, 318);
+            _dgv.TabIndex = 44;
+            _dgv.CellContentClick += _dgv_CellContentClick;
             // 
             // ClassName
             // 
@@ -556,17 +592,6 @@
             ClassDetails.Name = "ClassDetails";
             ClassDetails.ReadOnly = true;
             // 
-            // label4
-            // 
-            label4.Dock = DockStyle.Fill;
-            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(3, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(955, 30);
-            label4.TabIndex = 38;
-            label4.Text = "Classes";
-            label4.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // _addSectionToProgramButton
             // 
             _addSectionToProgramButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -575,10 +600,10 @@
             _addSectionToProgramButton.FlatStyle = FlatStyle.Flat;
             _addSectionToProgramButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             _addSectionToProgramButton.ForeColor = Color.White;
-            _addSectionToProgramButton.Location = new Point(964, 33);
+            _addSectionToProgramButton.Location = new Point(962, 3);
             _addSectionToProgramButton.Name = "_addSectionToProgramButton";
-            _addSectionToProgramButton.Size = new Size(90, 24);
-            _addSectionToProgramButton.TabIndex = 39;
+            _addSectionToProgramButton.Size = new Size(86, 24);
+            _addSectionToProgramButton.TabIndex = 43;
             _addSectionToProgramButton.Text = "Add Class";
             _addSectionToProgramButton.UseVisualStyleBackColor = false;
             // 
@@ -608,6 +633,7 @@
             tableLayoutPanel3.PerformLayout();
             panel8.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
+            tableLayoutPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)_dgv).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -649,13 +675,14 @@
         private Panel panel7;
         private Panel panel8;
         private TableLayoutPanel tableLayoutPanel4;
+        private Label label4;
+        private TableLayoutPanel tableLayoutPanel5;
         private DataGridView _dgv;
         private DataGridViewTextBoxColumn ClassName;
         private DataGridViewTextBoxColumn ClassID;
         private DataGridViewTextBoxColumn ClassYearLevel;
         private DataGridViewTextBoxColumn ClassCount;
         private DataGridViewButtonColumn ClassDetails;
-        private Label label4;
         private Button _addSectionToProgramButton;
     }
 }
