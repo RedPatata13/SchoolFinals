@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Finals.Core;
-using Y2S1_INC_Compliance_proj.Models;
+using Finals.Models;
 
 namespace Finals.Forms.Entry.UserControls
 {

@@ -13,7 +13,7 @@ using Finals.Core.FeatureRegister;
 using Finals.Core.Student.StudentRegistration;
 using Finals.Forms.UserControls;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Y2S1_INC_Compliance_proj.Models;
+using Finals.Models;
 
 namespace Finals.Forms
 {

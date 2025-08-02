@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Accessibility;
+using Finals.Core.Admin.UserControls;
 using Finals.Forms;
 using Finals.Forms.UserControls;
 using Finals.Models;
 using Finals.Services;
 using Finals.Services.Contracts;
-using Y2S1_INC_Compliance_proj.Models;
 
 namespace Finals.Core.Admin.AdminProgramManagement
 {
@@ -135,12 +135,14 @@ namespace Finals.Core.Admin.AdminProgramManagement
             Model = model;
             CurrentUser = user;
             var presenter = new AdminProgramDetailsPresenter(this);
+            var uc = new AdminClassManager_CourseTemplate_Container();
+            CourseTemplatesContainer.Controls.Add(uc);
+            uc.Dock = DockStyle.Fill;
+            uc.ProgramId = model.ProgramId;
+            uc.UserId = user.UserID;
+            uc.UpdateTemplates();
         }
 
-        private void AddRowToSectionDGV(ClassSectionModel model)
-        {
-            //_dgv.Rows.Add(n)
-        }
 
         private void UpdateDGV(bool clearRows = true)
         {

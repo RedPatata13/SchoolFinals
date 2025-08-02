@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Finals.Models;
 using Finals.Repositories.Interfaces;
-using Y2S1_INC_Compliance_proj.Data;
+using Finals.Data;
 
 namespace Finals.Repositories
 {

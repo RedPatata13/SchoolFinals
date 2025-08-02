@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Y2S1_INC_Compliance_proj.Models
+namespace Finals.Models
 {
     public class StudentModel
     {

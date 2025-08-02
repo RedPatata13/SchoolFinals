@@ -10,7 +10,7 @@ using Finals.Core.Admin.AdminPersonalAccount;
 using Finals.Core.Admin.AdminProgramManagement;
 using Finals.Core.Admin.AdminYearManagement;
 using Finals.Forms;
-using Y2S1_INC_Compliance_proj.Models;
+using Finals.Models;
 
 namespace Finals.Core.FeatureRegister
 {

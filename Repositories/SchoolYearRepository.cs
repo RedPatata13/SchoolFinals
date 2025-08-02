@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Finals.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Y2S1_INC_Compliance_proj.Data;
-using Y2S1_INC_Compliance_proj.Models;
+using Finals.Data;
+using Finals.Models;
 
 namespace Finals.Repositories
 {

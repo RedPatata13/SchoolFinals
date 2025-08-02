@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Y2S1_INC_Compliance_proj.Models;
+using Finals.Models;
 
 namespace Finals.Repositories.Interfaces
 {
@@ -19,6 +19,7 @@ namespace Finals.Repositories.Interfaces
         IClassSectionTransitionRepository ClassSectionTransitions { get; }
         IClassBatchRepository ClassBatches { get; }
         IClassEntryRepository ClassEntries { get; }
+        ICourseTemplateRepository CourseTemplates { get; }
         void SaveChanges();
     }
 }

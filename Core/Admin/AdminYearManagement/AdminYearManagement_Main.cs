@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using Finals.Core.Admin.AdminYearManagement.UserControls;
 using Finals.Services;
 using Finals.Services.Contracts;
-using Y2S1_INC_Compliance_proj.Models;
+using Finals.Models;
 
 namespace Finals.Core.Admin.AdminYearManagement
 {

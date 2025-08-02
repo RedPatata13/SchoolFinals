@@ -33,6 +33,22 @@ namespace Finals.Forms.UserControls
             DialogResult = DialogResult.Cancel;
             Close();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if(String.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                button2.Enabled = false;
+                button2.BackColor = SystemColors.Menu;
+                button2.ForeColor = SystemColors.ScrollBar;
+            }
+            else
+            {
+                button2.Enabled = true;
+                button2.BackColor = SystemColors.Highlight;
+                button2.ForeColor = SystemColors.HighlightText;
+            }
+        }
     }
 
     public interface INewStringDialog

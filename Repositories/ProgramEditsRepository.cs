@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Finals.Models;
 using Finals.Repositories.Interfaces;
-using Y2S1_INC_Compliance_proj.Data;
+using Finals.Data;
 
 namespace Finals.Repositories
 {

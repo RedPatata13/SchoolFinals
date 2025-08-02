@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Finals.Core.Admin.UserControls;
 using Finals.Models;
-using Y2S1_INC_Compliance_proj.Models;
+using Finals.Models;
 
 namespace Finals.Core.Admin.AdminProgramManagement
 {

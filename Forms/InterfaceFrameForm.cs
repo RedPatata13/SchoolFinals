@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Finals.Core;
 using Finals.Core.Admin.AdminAccountsCRUD;
 using Finals.Forms.UserControls;
-using Y2S1_INC_Compliance_proj.Models;
+using Finals.Models;
 
 namespace Finals.Forms
 {

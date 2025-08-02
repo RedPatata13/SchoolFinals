@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Y2S1_INC_Compliance_proj.Migrations
+namespace Finals.Migrations
 {
     /// <inheritdoc />
     public partial class Program : Migration

@@ -46,6 +46,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(464, 29);
             textBox1.TabIndex = 0;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // panel1
             // 
@@ -89,11 +90,11 @@
             // 
             // button2
             // 
-            button2.BackColor = SystemColors.Highlight;
+            button2.BackColor = SystemColors.Menu;
             button2.Enabled = false;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = SystemColors.HighlightText;
+            button2.ForeColor = SystemColors.ScrollBar;
             button2.Location = new Point(424, 8);
             button2.Name = "button2";
             button2.Size = new Size(85, 29);

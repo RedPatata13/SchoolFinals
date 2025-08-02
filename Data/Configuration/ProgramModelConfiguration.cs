@@ -47,6 +47,11 @@ namespace Finals.Data.Configuration
                 .HasForeignKey(c => c.ProgramId)
                 .IsRequired();
 
+            builder.HasMany(p => p.courseTemplates)
+                .WithOne(ct => ct.Program)
+                .HasForeignKey(ct => ct.ProgramId)
+                .IsRequired();
+
             builder.ToTable("programmodel");
         }
     }

@@ -5,10 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using System;
 using System.Configuration;
-using Y2S1_INC_Compliance_proj.Data.Configuration;
-using Y2S1_INC_Compliance_proj.Models;
+using Finals.Data.Configuration;
+using Finals.Models;
 
-namespace Y2S1_INC_Compliance_proj.Data
+namespace Finals.Data
 {
     public class AppDbContext : DbContext
     {
@@ -28,6 +28,9 @@ namespace Y2S1_INC_Compliance_proj.Data
             modelBuilder.ApplyConfiguration(new ClassSectionEditConfiguration());
             modelBuilder.ApplyConfiguration(new ClassBatchModelConfiguration());
             modelBuilder.ApplyConfiguration(new ClassEntryModelConfiguration());
+            modelBuilder.ApplyConfiguration(new CourseTemplateModelConfiguration());
+            modelBuilder.ApplyConfiguration(new CourseTemplateItemModelConfiguration());
+            modelBuilder.ApplyConfiguration(new CourseModelConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 
@@ -52,5 +55,8 @@ namespace Y2S1_INC_Compliance_proj.Data
         public DbSet<ClassSectionTransitionModel> ClassSectionsTransition { get; set; } = null!;
         public DbSet<ClassSectionEditLog> ClassSectionsEdits { get; set; } = null!;
         public DbSet<ClassEntryModel> ClassEntries { get; set; } = null!;
+        public DbSet<CourseModel> Courses { get; set; } = null!;
+        public DbSet<CourseTemplateModel> CourseTemplates { get; set; } = null!;
+        public DbSet<CourseTemplateItem> CourseTemplatesItems { get; set; } = null!;
     }
 }

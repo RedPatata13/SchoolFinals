@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Y2S1_INC_Compliance_proj.Models;
+using Finals.Models;
 
-namespace Y2S1_INC_Compliance_proj.Data.Configuration
+namespace Finals.Data.Configuration
 {
     public class AdminModelConfiguration : IEntityTypeConfiguration<AdminModel>
     {

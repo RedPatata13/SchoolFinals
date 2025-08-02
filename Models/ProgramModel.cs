@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Y2S1_INC_Compliance_proj.Models;
+using Finals.Models;
 
 namespace Finals.Models
 {
@@ -22,5 +22,6 @@ namespace Finals.Models
         public DateTime? CreatedAt { get; set; }
 
         public ICollection<ClassSectionModel> ClassSections { get; set; } = null!;
+        public ICollection<CourseTemplateModel> courseTemplates { get; set; } = null!;
     }
 }

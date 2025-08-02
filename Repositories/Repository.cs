@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Finals.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Y2S1_INC_Compliance_proj.Data;
-using Y2S1_INC_Compliance_proj.Models;
+using Finals.Data;
+using Finals.Models;
 
 namespace Finals.Repositories
 {
@@ -23,6 +23,7 @@ namespace Finals.Repositories
         private IClassSectionRepository _classSections = null!;
         private IClassBatchRepository _classBatches = null!;
         private IClassEntryRepository _classEntries = null!;
+        private ICourseTemplateRepository _courseTemplates = null!;
         IUserModelRepository IRepository.Users => _users;
         ISchoolYearModelRepository IRepository.SchoolYears => _schools;
 
@@ -40,6 +41,8 @@ namespace Finals.Repositories
 
         IClassEntryRepository IRepository.ClassEntries => _classEntries;
 
+        ICourseTemplateRepository IRepository.CourseTemplates => _courseTemplates;
+
         public Repository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -52,6 +55,7 @@ namespace Finals.Repositories
             _classSections = new ClassSectionRepository(_dbContext);
             _classBatches = new ClassBatchRepository(_dbContext);
             _classEntries = new ClassEntryRepository(_dbContext);
+            _courseTemplates = new CourseTemplateRepository(_dbContext);
         }
 
         void IDisposable.Dispose()

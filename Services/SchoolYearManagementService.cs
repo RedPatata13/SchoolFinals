@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Finals.Core;
 using Finals.Repositories.Interfaces;
 using Finals.Services.Contracts;
-using Y2S1_INC_Compliance_proj.Models;
+using Finals.Models;
 
 namespace Finals.Services
 {

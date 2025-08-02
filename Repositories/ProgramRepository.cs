@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Finals.Models;
 using Finals.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Y2S1_INC_Compliance_proj.Data;
+using Finals.Data;
 
 namespace Finals.Repositories
 {
@@ -20,6 +20,8 @@ namespace Finals.Repositories
                 .Include(p => p.CreatedBy)
                 .Include(p => p.LastEditedBy)
                 .Include(p => p.ClassSections)
+                .Include(p => p.courseTemplates)
+                    .ThenInclude(ct => ct.Items)
                 .ToList();
         }
     }

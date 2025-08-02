@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Finals.Models;
 
-namespace Y2S1_INC_Compliance_proj.Models
+namespace Finals.Models
 {
     public class SchoolYearModel
     {

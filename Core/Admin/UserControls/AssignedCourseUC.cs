@@ -63,7 +63,7 @@ namespace Finals.Core.Admin.UserControls
                 // Add rows
                 foreach (var ac in _courses)
                 {
-                    dataGridView1.Rows.Add(ac.Course.CourseName, ac.Teacher.UserName);
+                    //dataGridView1.Rows.Add(ac.Course.CourseName, ac.Teacher.UserName);
                 }
 
                 // Attach button click event

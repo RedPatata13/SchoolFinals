@@ -5,7 +5,7 @@
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using Y2S1_INC_Compliance_proj.Models;
+    using Finals.Models;
 
     namespace Finals.Data.Configuration
     {
