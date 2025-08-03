@@ -14,7 +14,6 @@ namespace Finals.Models
         public string CourseId { get; set; } = null!;
         public CourseModel Course { get; set; } = null!;
         
-
         public string TeacherId { get; set; } = null!;
         public UserModel Teacher { get; set; } = null!;
 
@@ -23,6 +22,9 @@ namespace Finals.Models
 
         public DateTime DateAssigned { get; set; }
 
+        public string SectionId { get; set; } = null!;
+        public ClassSectionModel Section { get; set; } = null!;
 
+        ICollection<VenueModel> Schedules { get; set; } = null!;
     }
 }

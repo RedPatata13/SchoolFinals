@@ -20,6 +20,8 @@ namespace Finals.Repositories.Interfaces
         IClassBatchRepository ClassBatches { get; }
         IClassEntryRepository ClassEntries { get; }
         ICourseTemplateRepository CourseTemplates { get; }
+        IGradesClassificationRepository GradesClassifications { get; }
+        IGradesTreeRepository GradesTrees { get; }
         void SaveChanges();
     }
 }

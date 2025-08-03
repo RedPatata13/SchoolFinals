@@ -24,6 +24,8 @@ namespace Finals.Repositories
         private IClassBatchRepository _classBatches = null!;
         private IClassEntryRepository _classEntries = null!;
         private ICourseTemplateRepository _courseTemplates = null!;
+        private IGradesClassificationRepository _gradesClassifications = null!;
+        private IGradesTreeRepository _gradesTrees = null!;
         IUserModelRepository IRepository.Users => _users;
         ISchoolYearModelRepository IRepository.SchoolYears => _schools;
 
@@ -43,6 +45,10 @@ namespace Finals.Repositories
 
         ICourseTemplateRepository IRepository.CourseTemplates => _courseTemplates;
 
+        IGradesClassificationRepository IRepository.GradesClassifications => _gradesClassifications;
+
+        IGradesTreeRepository IRepository.GradesTrees => _gradesTrees;
+
         public Repository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -56,6 +62,8 @@ namespace Finals.Repositories
             _classBatches = new ClassBatchRepository(_dbContext);
             _classEntries = new ClassEntryRepository(_dbContext);
             _courseTemplates = new CourseTemplateRepository(_dbContext);
+            _gradesClassifications = new GradeClassificationRepository(_dbContext);
+            _gradesTrees = new GradesTreeRepository(_dbContext);
         }
 
         void IDisposable.Dispose()
