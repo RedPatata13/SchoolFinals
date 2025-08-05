@@ -13,7 +13,9 @@ namespace Finals.Models
         public string Description { get; set; } = null!;
         public int Capacity { get; set; }
         public string Location { get; set; } = null!;
-        public VenueModel() { }
         public DateTime Date { get; set; }
+
+        public string AssignedCourseModelId { get; set; } = null!;
+        public CourseModel_Assigned AssignedCourseModel { get; set; } = null!;
     }
 }

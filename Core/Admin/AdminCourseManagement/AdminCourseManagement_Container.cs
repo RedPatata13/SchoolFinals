@@ -12,10 +12,10 @@ namespace Finals.Core.Admin.AdminCourseManagement
 {
     public partial class AdminCourseManagement_Container : UserControl
     {
-        public AdminCourseManagement_Container()
+        public AdminCourseManagement_Container(string userId)
         {
             InitializeComponent();
-            this.Controls.Add(new AdminCourseManagement_LandingPage());
+            this.Controls.Add(new AdminCourseManagement_LandingPage(userId));
         }
     }
 }

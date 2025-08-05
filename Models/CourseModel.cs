@@ -11,6 +11,7 @@ namespace Finals.Models
     {
         public string CourseId { get; set; } = null!;
         public string CourseName { get; set; } = null!;
+        public int DefaultUnits { get; set; }
         public DateTime DateCreated { get; set; }
         public string Description { get; set; } = null!;
         public string CreatorId { get; set; } = null!;

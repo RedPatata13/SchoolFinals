@@ -40,7 +40,7 @@ namespace Finals.Core.FeatureRegister
             });
             frame.RegisterFeature(new TestFeature()
             {
-                _uc = new AdminCourseManagement_Container(),
+                _uc = new AdminCourseManagement_Container(_user.UserID),
                 _name = "Courses",
                 _description = "Manage your courses"
             });

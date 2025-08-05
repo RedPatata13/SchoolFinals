@@ -26,6 +26,10 @@ namespace Finals.Data.Configuration
                 .IsRequired()
                 .HasDefaultValue(DateTime.MinValue);
 
+            builder.Property(c => c.DefaultUnits)
+                .IsRequired()
+                .HasDefaultValue(-1);
+
             builder.Property(c => c.Description)
                 .IsRequired()
                 .HasMaxLength(500);

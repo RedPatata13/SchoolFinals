@@ -9,7 +9,7 @@ namespace Finals.Models
 {
     public class CourseModel_Assigned
     {
-        public string AssignedCourseModelID { get; set; } = null!;
+        public string AssignedCourseModelId { get; set; } = null!;
        
         public string CourseId { get; set; } = null!;
         public CourseModel Course { get; set; } = null!;
@@ -25,6 +25,6 @@ namespace Finals.Models
         public string SectionId { get; set; } = null!;
         public ClassSectionModel Section { get; set; } = null!;
 
-        ICollection<VenueModel> Schedules { get; set; } = null!;
+        public ICollection<VenueModel> Schedules { get; set; } = null!;
     }
 }

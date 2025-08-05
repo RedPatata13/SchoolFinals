@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Finals.Models
 {
     public class GradedTaskModel
-    {
+    { 
         public string TaskId { get; set; } = null!;
         public string TaskName { get; set; } = null!;
         public DateTime CreatedAt { get; set; }
