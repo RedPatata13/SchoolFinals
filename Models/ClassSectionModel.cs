@@ -13,7 +13,6 @@ namespace Finals.Models
         public string SectionName { get; set;} = null!;
         public int YearLevel { get; set; } = 0;
 
-        //public ICollection<UserModel> Students { get; set; } = null!;
         public ICollection<ClassSectionTransitionModel> IncomingTransition { get; set; } = null!;
 
         public string ProgramId { get; set; } = null!;

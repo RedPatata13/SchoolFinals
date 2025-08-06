@@ -22,6 +22,7 @@ namespace Finals.Core.Admin.AdminProgramManagement
             _adminProgramManagement = new AdminProgramManagement(user);
             if (_adminProgramManagement is UserControl uc)
             {
+                //uc.Dock = DockStyle.Fill;
                 Project(uc);
             } else
             {
@@ -69,6 +70,7 @@ namespace Finals.Core.Admin.AdminProgramManagement
                 adminProgramManagement.ProgramAction = (model) =>
                 {
                     var uc = new AdminProgramDetails(model, adminProgramManagement.CurrentUser);
+                    uc.Dock = DockStyle.Fill;
                     _container.Project(uc);
 
                     uc.BackClick += (_, _) => _container.Project(_container.MainPage);

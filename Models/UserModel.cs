@@ -13,7 +13,11 @@ namespace Finals.Models
         public string UserEmail { get; set; } = null!;
         public string UserPassword { get; set; } = null!;
         public UserRole UserRole { get; set; }
+        public DateTime DateCreated { get; set; }
         public bool IsActivated {  get; set; }
+
+        public string CreatorId { get; set; } = null!;
+        public UserModel Creator { get; set; } = null!; // Reference to the creator of the user, if applicable
     }
 
     public enum UserRole

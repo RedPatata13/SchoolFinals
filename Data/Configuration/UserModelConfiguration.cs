@@ -35,6 +35,16 @@ namespace Finals.Data.Configuration
                 .IsRequired()
                 .HasMaxLength (50);
 
+            builder.Property(u => u.DateCreated)
+                .IsRequired()
+                .HasDefaultValue(DateTime.MinValue);
+
+            builder.HasOne(u => u.Creator)
+                .WithMany()
+                .HasForeignKey(u => u.CreatorId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);
+
             builder.Property(u => u.IsActivated);
         }
     }

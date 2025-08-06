@@ -54,7 +54,8 @@ namespace Finals.Core.FeatureRegister
             frame.RegisterFeature(new TestFeature()
             {
                 //_uc = new AdminAccountsCRUD(),
-                _uc = new AdminStudentRecordsCRUD_Container(),
+                //_uc = new AdminStudentRecordsCRUD_Container(),
+                _uc = new AdminAccountsCRUD(_user.UserID) { Dock = DockStyle.Fill },
                 _name = "User Accounts",
                 _description = ""
             });

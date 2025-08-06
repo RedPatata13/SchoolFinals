@@ -28,9 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminClassSectionDetails));
             panel2 = new Panel();
             BackButton = new Button();
+            panel1 = new Panel();
+            label1 = new Label();
+            panel4 = new Panel();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            _progDetails_Status = new Label();
+            label3 = new Label();
+            _editStatusButton = new Button();
+            _editProgramName = new Button();
+            label12 = new Label();
+            _progDetailsProgramTitle = new Label();
+            _progDetails_CreatedBy = new Label();
+            _progDetails_DateCreated = new Label();
+            label2 = new Label();
+            label5 = new Label();
+            _progDetails_LastEditor = new Label();
+            label20 = new Label();
+            button7 = new Button();
+            panel8 = new Panel();
+            tableLayoutPanel4 = new TableLayoutPanel();
+            label4 = new Label();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            _addSectionToProgramButton = new Button();
+            CourseTemplatesContainer = new TabPage();
+            panel3 = new Panel();
+            classTransitionUserControlContainer1 = new Forms.UserControls.ClassTransitionUserControlContainer();
+            tabPage2 = new TabPage();
             panel2.SuspendLayout();
+            panel1.SuspendLayout();
+            panel4.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            panel8.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tableLayoutPanel5.SuspendLayout();
+            CourseTemplatesContainer.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
@@ -57,20 +95,430 @@
             BackButton.Text = "Back";
             BackButton.UseVisualStyleBackColor = false;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(label1);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 32);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1059, 64);
+            panel1.TabIndex = 35;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(0, 8);
+            label1.Name = "label1";
+            label1.Size = new Size(197, 45);
+            label1.TabIndex = 35;
+            label1.Text = "Class Details";
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(tableLayoutPanel2);
+            panel4.Dock = DockStyle.Top;
+            panel4.Location = new Point(0, 96);
+            panel4.Name = "panel4";
+            panel4.Padding = new Padding(0, 8, 0, 8);
+            panel4.Size = new Size(1059, 200);
+            panel4.TabIndex = 36;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.BackColor = SystemColors.Control;
+            tableLayoutPanel2.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+            tableLayoutPanel2.ColumnCount = 3;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.82249F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 77.1775055F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 92F));
+            tableLayoutPanel2.Controls.Add(_progDetails_Status, 1, 1);
+            tableLayoutPanel2.Controls.Add(label3, 0, 1);
+            tableLayoutPanel2.Controls.Add(_editStatusButton, 2, 1);
+            tableLayoutPanel2.Controls.Add(_editProgramName, 2, 0);
+            tableLayoutPanel2.Controls.Add(label12, 0, 0);
+            tableLayoutPanel2.Controls.Add(_progDetailsProgramTitle, 1, 0);
+            tableLayoutPanel2.Controls.Add(_progDetails_CreatedBy, 1, 3);
+            tableLayoutPanel2.Controls.Add(_progDetails_DateCreated, 1, 2);
+            tableLayoutPanel2.Controls.Add(label2, 0, 2);
+            tableLayoutPanel2.Controls.Add(label5, 0, 3);
+            tableLayoutPanel2.Controls.Add(_progDetails_LastEditor, 1, 5);
+            tableLayoutPanel2.Controls.Add(label20, 0, 5);
+            tableLayoutPanel2.Controls.Add(button7, 2, 5);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(0, 8);
+            tableLayoutPanel2.Margin = new Padding(3, 3, 3, 100);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 6;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel2.Size = new Size(1059, 184);
+            tableLayoutPanel2.TabIndex = 35;
+            // 
+            // _progDetails_Status
+            // 
+            _progDetails_Status.Anchor = AnchorStyles.Left;
+            _progDetails_Status.AutoSize = true;
+            _progDetails_Status.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _progDetails_Status.ForeColor = SystemColors.ControlDarkDark;
+            _progDetails_Status.Location = new Point(224, 36);
+            _progDetails_Status.Name = "_progDetails_Status";
+            _progDetails_Status.Size = new Size(48, 21);
+            _progDetails_Status.TabIndex = 32;
+            _progDetails_Status.Text = "Open";
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Left;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(4, 36);
+            label3.Name = "label3";
+            label3.Size = new Size(52, 21);
+            label3.TabIndex = 31;
+            label3.Text = "Status";
+            // 
+            // _editStatusButton
+            // 
+            _editStatusButton.Anchor = AnchorStyles.Left;
+            _editStatusButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            _editStatusButton.BackColor = SystemColors.WindowFrame;
+            _editStatusButton.FlatAppearance.BorderColor = Color.Black;
+            _editStatusButton.FlatStyle = FlatStyle.Flat;
+            _editStatusButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _editStatusButton.ForeColor = Color.White;
+            _editStatusButton.Location = new Point(968, 35);
+            _editStatusButton.Name = "_editStatusButton";
+            _editStatusButton.Size = new Size(85, 24);
+            _editStatusButton.TabIndex = 25;
+            _editStatusButton.Text = "Edit";
+            _editStatusButton.UseVisualStyleBackColor = false;
+            // 
+            // _editProgramName
+            // 
+            _editProgramName.Anchor = AnchorStyles.Left;
+            _editProgramName.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            _editProgramName.BackColor = SystemColors.WindowFrame;
+            _editProgramName.FlatAppearance.BorderColor = Color.Black;
+            _editProgramName.FlatStyle = FlatStyle.Flat;
+            _editProgramName.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _editProgramName.ForeColor = Color.White;
+            _editProgramName.Location = new Point(968, 4);
+            _editProgramName.Name = "_editProgramName";
+            _editProgramName.Size = new Size(85, 24);
+            _editProgramName.TabIndex = 24;
+            _editProgramName.Text = "Edit";
+            _editProgramName.UseVisualStyleBackColor = false;
+            // 
+            // label12
+            // 
+            label12.Anchor = AnchorStyles.Left;
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label12.Location = new Point(4, 5);
+            label12.Name = "label12";
+            label12.Size = new Size(92, 21);
+            label12.TabIndex = 0;
+            label12.Text = "Class Name";
+            // 
+            // _progDetailsProgramTitle
+            // 
+            _progDetailsProgramTitle.Anchor = AnchorStyles.Left;
+            _progDetailsProgramTitle.AutoSize = true;
+            _progDetailsProgramTitle.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _progDetailsProgramTitle.ForeColor = SystemColors.ControlDarkDark;
+            _progDetailsProgramTitle.Location = new Point(224, 5);
+            _progDetailsProgramTitle.Name = "_progDetailsProgramTitle";
+            _progDetailsProgramTitle.Size = new Size(177, 21);
+            _progDetailsProgramTitle.TabIndex = 1;
+            _progDetailsProgramTitle.Text = "Placeholder Class Name";
+            // 
+            // _progDetails_CreatedBy
+            // 
+            _progDetails_CreatedBy.Anchor = AnchorStyles.Left;
+            _progDetails_CreatedBy.AutoSize = true;
+            _progDetails_CreatedBy.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _progDetails_CreatedBy.ForeColor = SystemColors.ControlDarkDark;
+            _progDetails_CreatedBy.Location = new Point(224, 98);
+            _progDetails_CreatedBy.Name = "_progDetails_CreatedBy";
+            _progDetails_CreatedBy.Size = new Size(44, 21);
+            _progDetails_CreatedBy.TabIndex = 12;
+            _progDetails_CreatedBy.Text = "Desk";
+            // 
+            // _progDetails_DateCreated
+            // 
+            _progDetails_DateCreated.Anchor = AnchorStyles.Left;
+            _progDetails_DateCreated.AutoSize = true;
+            _progDetails_DateCreated.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _progDetails_DateCreated.ForeColor = SystemColors.ControlDarkDark;
+            _progDetails_DateCreated.Location = new Point(224, 67);
+            _progDetails_DateCreated.Name = "_progDetails_DateCreated";
+            _progDetails_DateCreated.Size = new Size(76, 21);
+            _progDetails_DateCreated.TabIndex = 6;
+            _progDetails_DateCreated.Text = "12/12/25";
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Left;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(4, 67);
+            label2.Name = "label2";
+            label2.Size = new Size(100, 21);
+            label2.TabIndex = 30;
+            label2.Text = "Date Created";
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Left;
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(4, 98);
+            label5.Name = "label5";
+            label5.Size = new Size(85, 21);
+            label5.TabIndex = 33;
+            label5.Text = "Created By";
+            // 
+            // _progDetails_LastEditor
+            // 
+            _progDetails_LastEditor.Anchor = AnchorStyles.Left;
+            _progDetails_LastEditor.AutoSize = true;
+            _progDetails_LastEditor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _progDetails_LastEditor.ForeColor = SystemColors.ControlDarkDark;
+            _progDetails_LastEditor.Location = new Point(224, 154);
+            _progDetails_LastEditor.Name = "_progDetails_LastEditor";
+            _progDetails_LastEditor.Size = new Size(44, 21);
+            _progDetails_LastEditor.TabIndex = 38;
+            _progDetails_LastEditor.Text = "Desk";
+            // 
+            // label20
+            // 
+            label20.Anchor = AnchorStyles.Left;
+            label20.AutoSize = true;
+            label20.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label20.Location = new Point(4, 154);
+            label20.Name = "label20";
+            label20.Size = new Size(106, 21);
+            label20.TabIndex = 37;
+            label20.Text = "Last Edited By";
+            // 
+            // button7
+            // 
+            button7.Anchor = AnchorStyles.Left;
+            button7.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button7.BackColor = SystemColors.ControlLightLight;
+            button7.FlatAppearance.BorderColor = Color.Black;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button7.ForeColor = SystemColors.ControlText;
+            button7.Location = new Point(968, 150);
+            button7.Name = "button7";
+            button7.Size = new Size(85, 28);
+            button7.TabIndex = 29;
+            button7.Text = "Audit Log";
+            button7.UseVisualStyleBackColor = false;
+            // 
+            // panel8
+            // 
+            panel8.AutoSize = true;
+            panel8.BorderStyle = BorderStyle.FixedSingle;
+            panel8.Controls.Add(tableLayoutPanel4);
+            panel8.Dock = DockStyle.Fill;
+            panel8.Location = new Point(0, 296);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(1059, 554);
+            panel8.TabIndex = 40;
+            // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.BackColor = SystemColors.ControlDark;
+            tableLayoutPanel4.ColumnCount = 1;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.Controls.Add(label4, 0, 0);
+            tableLayoutPanel4.Controls.Add(tabControl1, 0, 1);
+            tableLayoutPanel4.Dock = DockStyle.Top;
+            tableLayoutPanel4.Location = new Point(0, 0);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel4.Size = new Size(1057, 552);
+            tableLayoutPanel4.TabIndex = 40;
+            // 
+            // label4
+            // 
+            label4.BackColor = SystemColors.ControlLight;
+            label4.Dock = DockStyle.Fill;
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(3, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(1051, 30);
+            label4.TabIndex = 38;
+            label4.Text = "Class Information";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(CourseTemplatesContainer);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(3, 33);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(1051, 516);
+            tabControl1.TabIndex = 39;
+            // 
+            // tabPage1
+            // 
+            tabPage1.BorderStyle = BorderStyle.FixedSingle;
+            tabPage1.Controls.Add(tableLayoutPanel5);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(1043, 488);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Classes";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.BackColor = SystemColors.ControlLight;
+            tableLayoutPanel5.ColumnCount = 2;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
+            tableLayoutPanel5.Controls.Add(_addSectionToProgramButton, 1, 0);
+            tableLayoutPanel5.Controls.Add(panel3, 0, 0);
+            tableLayoutPanel5.Dock = DockStyle.Fill;
+            tableLayoutPanel5.Location = new Point(3, 3);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 1;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.Size = new Size(1035, 480);
+            tableLayoutPanel5.TabIndex = 40;
+            // 
+            // _addSectionToProgramButton
+            // 
+            _addSectionToProgramButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            _addSectionToProgramButton.BackColor = SystemColors.Highlight;
+            _addSectionToProgramButton.FlatAppearance.BorderColor = Color.Black;
+            _addSectionToProgramButton.FlatStyle = FlatStyle.Flat;
+            _addSectionToProgramButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _addSectionToProgramButton.ForeColor = Color.White;
+            _addSectionToProgramButton.Location = new Point(958, 3);
+            _addSectionToProgramButton.Name = "_addSectionToProgramButton";
+            _addSectionToProgramButton.Size = new Size(74, 24);
+            _addSectionToProgramButton.TabIndex = 43;
+            _addSectionToProgramButton.Text = "Add Class";
+            _addSectionToProgramButton.UseVisualStyleBackColor = false;
+            // 
+            // CourseTemplatesContainer
+            // 
+            CourseTemplatesContainer.AutoScroll = true;
+            CourseTemplatesContainer.BorderStyle = BorderStyle.FixedSingle;
+            CourseTemplatesContainer.Controls.Add(classTransitionUserControlContainer1);
+            CourseTemplatesContainer.Location = new Point(4, 24);
+            CourseTemplatesContainer.Name = "CourseTemplatesContainer";
+            CourseTemplatesContainer.Padding = new Padding(3);
+            CourseTemplatesContainer.Size = new Size(1043, 488);
+            CourseTemplatesContainer.TabIndex = 1;
+            CourseTemplatesContainer.Text = "Class Transitions";
+            CourseTemplatesContainer.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            panel3.AutoScroll = true;
+            panel3.BackColor = SystemColors.ControlDark;
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(3, 3);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(949, 474);
+            panel3.TabIndex = 44;
+            // 
+            // classTransitionUserControlContainer1
+            // 
+            classTransitionUserControlContainer1.BackColor = SystemColors.ControlLight;
+            classTransitionUserControlContainer1.BorderStyle = BorderStyle.FixedSingle;
+            classTransitionUserControlContainer1.Dock = DockStyle.Fill;
+            classTransitionUserControlContainer1.Location = new Point(3, 3);
+            classTransitionUserControlContainer1.MinimumSize = new Size(450, 122);
+            classTransitionUserControlContainer1.Name = "classTransitionUserControlContainer1";
+            classTransitionUserControlContainer1.Padding = new Padding(2);
+            classTransitionUserControlContainer1.Size = new Size(1035, 480);
+            classTransitionUserControlContainer1.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1043, 488);
+            tabPage2.TabIndex = 2;
+            tabPage2.Text = "Batches";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
             // AdminClassSectionDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            Controls.Add(panel8);
+            Controls.Add(panel4);
+            Controls.Add(panel1);
             Controls.Add(panel2);
             Name = "AdminClassSectionDetails";
-            Size = new Size(1059, 707);
+            Size = new Size(1059, 850);
             panel2.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel4.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
+            panel8.ResumeLayout(false);
+            tableLayoutPanel4.ResumeLayout(false);
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tableLayoutPanel5.ResumeLayout(false);
+            CourseTemplatesContainer.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Panel panel2;
         private Button BackButton;
+        private Panel panel1;
+        private Label label1;
+        private Panel panel4;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label _progDetails_Status;
+        private Label label3;
+        private Button _editStatusButton;
+        private Button _editProgramName;
+        private Label label12;
+        private Label _progDetailsProgramTitle;
+        private Label _progDetails_CreatedBy;
+        private Label _progDetails_DateCreated;
+        private Label label2;
+        private Label label5;
+        private Label _progDetails_LastEditor;
+        private Label label20;
+        private Button button7;
+        private Panel panel8;
+        private TableLayoutPanel tableLayoutPanel4;
+        private Label label4;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TableLayoutPanel tableLayoutPanel5;
+        private Button _addSectionToProgramButton;
+        private TabPage CourseTemplatesContainer;
+        private Panel panel3;
+        private Forms.UserControls.ClassTransitionUserControlContainer classTransitionUserControlContainer1;
+        private TabPage tabPage2;
     }
 }

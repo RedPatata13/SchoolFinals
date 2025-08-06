@@ -15,7 +15,9 @@ namespace Finals.Core.Admin.AdminCourseManagement
         public AdminCourseManagement_Container(string userId)
         {
             InitializeComponent();
-            this.Controls.Add(new AdminCourseManagement_LandingPage(userId));
+            var page = new AdminCourseManagement_LandingPage(userId);
+            page.Dock = DockStyle.Fill;
+            this.Controls.Add(page);
         }
     }
 }

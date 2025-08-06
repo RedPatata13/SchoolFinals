@@ -12,7 +12,7 @@ namespace Finals.Core.Admin.AdminAccountsCRUD
         private bool _edited = false;
         private string _name = "User accounts management.";
         private string _description = "Manage the information of your users.";
-        private UserControl _userControl = new AdminAccountsCRUD();
+        private UserControl _userControl = new UserControl();
         public bool IsEdited { get => _edited; set => _edited = value; }
 
         public Image Image => throw new NotImplementedException();

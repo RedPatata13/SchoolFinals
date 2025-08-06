@@ -4,6 +4,7 @@ using Finals.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Finals.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250806063648_UserDateCreated")]
+    partial class UserDateCreated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -567,9 +570,6 @@ namespace Finals.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("CreatorId")
-                        .HasColumnType("varchar(50)");
-
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
@@ -597,8 +597,6 @@ namespace Finals.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("UserID");
-
-                    b.HasIndex("CreatorId");
 
                     b.ToTable("UserModels");
                 });
@@ -848,16 +846,6 @@ namespace Finals.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Finals.Models.UserModel", b =>
-                {
-                    b.HasOne("Finals.Models.UserModel", "Creator")
-                        .WithMany()
-                        .HasForeignKey("CreatorId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("Creator");
                 });
 
             modelBuilder.Entity("Finals.Models.ClassBatchModel", b =>
