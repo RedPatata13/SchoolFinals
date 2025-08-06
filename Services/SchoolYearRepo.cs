@@ -1,0 +1,123 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Finals.Core;
+using Finals.Models;
+using Finals.Repositories.Interfaces;
+
+namespace Finals.Services
+{
+    public static class SchoolYearRepo
+    {
+        public static ICollection<SchoolYearModel> GetAll()
+        {
+            var repo = RepositoryFactory.Create();
+            try
+            {
+                return repo.SchoolYears.GetAll().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error retrieving school years", ex);
+            }
+            finally
+            {
+                repo.Dispose();
+            }
+        }
+
+        public static SchoolYearModel CreateNewSchoolYear(bool concludeCurrentSchoolYear = false)
+        {
+            if (concludeCurrentSchoolYear)
+            {
+                ConcludeCurrentSchoolYear();
+            }
+
+            var newSy = new SchoolYearModel()
+            {
+                // temporarily empty    
+            };
+
+            var result = GenerateSchoolYearID(newSy);
+
+            if (result != Status.Ok)
+            {
+                throw new InvalidOperationException("Failed to generate a valid School Year ID and Name.");
+            }
+
+            newSy.IsCurrent = true;
+            newSy.Status = SchoolYearStatus.Draft;
+            newSy.IsRegistrationOpen = false;
+
+            var repo = RepositoryFactory.Create();
+            try
+            {
+                repo.SchoolYears.Add(newSy);
+                repo.SaveChanges();
+                return newSy;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while creating a new school year: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                repo.Dispose();
+            }
+
+            throw new NotImplementedException("An operation that should not be reached has occured");
+        }
+
+        private static Status GenerateSchoolYearID(SchoolYearModel model)
+        {
+            var repo = RepositoryFactory.Create();
+            try
+            {
+                string startYear = (DateTime.Now.Year % 100).ToString("D2");
+                string endYear = ((DateTime.Now.Year + 1) % 100).ToString("D2");
+                string yearCode = $"{startYear}{endYear}";
+                string pattern = $@"^SY{startYear + endYear}(\.\d+)?$";
+                Regex regex = new Regex(pattern);
+
+                var schoolYears = repo.SchoolYears.GetAll();
+
+                int matchCount = schoolYears.Count(sy => regex.IsMatch(sy.SchoolYearId));
+
+                model.SchoolYearId = matchCount == 0 ? $"SY{yearCode}" : $"SY{yearCode}.{matchCount}";
+                model.Name = matchCount == 0 ? $"School Year {yearCode}" : $"School Year {yearCode}.{matchCount}";
+
+                return Status.Ok;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An unexpected error occurred while generating the School Year ID: " + ex.Message);
+                return Status.Error;
+            } finally { repo.Dispose(); }
+        }
+
+        public static void ConcludeCurrentSchoolYear()
+        {
+            IRepository repo = RepositoryFactory.Create();
+            try
+            {
+                var currSy = repo.SchoolYears.GetCurrentSchoolYear();
+                currSy.IsCurrent = false;
+                currSy.Status = SchoolYearStatus.Locked;
+
+                repo.SchoolYears.Update(currSy);
+                repo.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while concluding the current school year: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                repo.Dispose();
+            }
+        }
+    }
+}
