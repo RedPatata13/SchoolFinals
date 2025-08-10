@@ -133,6 +133,7 @@
             _courseSelectedContainer.Controls.Add(panel4);
             _courseSelectedContainer.Location = new Point(821, 10);
             _courseSelectedContainer.Name = "_courseSelectedContainer";
+            _courseSelectedContainer.Padding = new Padding(4);
             _courseSelectedContainer.Size = new Size(408, 670);
             _courseSelectedContainer.TabIndex = 6;
             // 
@@ -142,10 +143,10 @@
             panel5.Controls.Add(_selectedCourseDGV);
             panel5.Controls.Add(panel3);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(0, 48);
+            panel5.Location = new Point(4, 52);
             panel5.Name = "panel5";
             panel5.Padding = new Padding(8);
-            panel5.Size = new Size(406, 620);
+            panel5.Size = new Size(398, 612);
             panel5.TabIndex = 6;
             // 
             // _selectedCourseDGV
@@ -158,7 +159,7 @@
             _selectedCourseDGV.Location = new Point(8, 32);
             _selectedCourseDGV.Name = "_selectedCourseDGV";
             _selectedCourseDGV.ReadOnly = true;
-            _selectedCourseDGV.Size = new Size(390, 580);
+            _selectedCourseDGV.Size = new Size(382, 572);
             _selectedCourseDGV.TabIndex = 2;
             _selectedCourseDGV.CellContentClick += _selectedourses_CellContentClick;
             // 
@@ -189,7 +190,7 @@
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(8, 8);
             panel3.Name = "panel3";
-            panel3.Size = new Size(390, 24);
+            panel3.Size = new Size(382, 24);
             panel3.TabIndex = 1;
             // 
             // label5
@@ -228,9 +229,9 @@
             panel4.Controls.Add(button2);
             panel4.Controls.Add(label2);
             panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(0, 0);
+            panel4.Location = new Point(4, 4);
             panel4.Name = "panel4";
-            panel4.Size = new Size(406, 48);
+            panel4.Size = new Size(398, 48);
             panel4.TabIndex = 5;
             // 
             // button2
@@ -264,6 +265,7 @@
             _coursesContainer.Controls.Add(panel7);
             _coursesContainer.Location = new Point(13, 10);
             _coursesContainer.Name = "_coursesContainer";
+            _coursesContainer.Padding = new Padding(4);
             _coursesContainer.Size = new Size(800, 670);
             _coursesContainer.TabIndex = 5;
             // 
@@ -273,10 +275,10 @@
             panel8.Controls.Add(_coursesDGV);
             panel8.Controls.Add(panel2);
             panel8.Dock = DockStyle.Fill;
-            panel8.Location = new Point(0, 48);
+            panel8.Location = new Point(4, 52);
             panel8.Name = "panel8";
             panel8.Padding = new Padding(8);
-            panel8.Size = new Size(798, 620);
+            panel8.Size = new Size(790, 612);
             panel8.TabIndex = 4;
             // 
             // _coursesDGV
@@ -289,7 +291,7 @@
             _coursesDGV.Location = new Point(8, 32);
             _coursesDGV.Name = "_coursesDGV";
             _coursesDGV.ReadOnly = true;
-            _coursesDGV.Size = new Size(782, 580);
+            _coursesDGV.Size = new Size(774, 572);
             _coursesDGV.TabIndex = 1;
             _coursesDGV.CellContentClick += _courses_CellContentClick;
             // 
@@ -334,7 +336,7 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(8, 8);
             panel2.Name = "panel2";
-            panel2.Size = new Size(782, 24);
+            panel2.Size = new Size(774, 24);
             panel2.TabIndex = 0;
             // 
             // label4
@@ -373,9 +375,9 @@
             panel7.Controls.Add(textBox1);
             panel7.Controls.Add(button1);
             panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(0, 0);
+            panel7.Location = new Point(4, 4);
             panel7.Name = "panel7";
-            panel7.Size = new Size(798, 48);
+            panel7.Size = new Size(790, 48);
             panel7.TabIndex = 3;
             // 
             // label1

@@ -16,6 +16,17 @@ namespace Finals.Data.Configuration
             builder.HasKey(t => t.TeacherID);
 
             builder.Property(t => t.TeacherID).IsRequired().HasMaxLength(50);
+            builder.Property(t => t.FirstName)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            builder.Property(t => t.LastName)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            builder.Property(t => t.MiddleName)
+                .IsRequired()
+                .HasMaxLength(50);
 
             builder.HasOne(t => t.User).WithOne()
                 .HasForeignKey<TeacherModel>(t => t.UserID)

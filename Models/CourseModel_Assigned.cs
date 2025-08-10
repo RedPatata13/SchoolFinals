@@ -15,7 +15,7 @@ namespace Finals.Models
         public CourseModel Course { get; set; } = null!;
         
         public string TeacherId { get; set; } = null!;
-        public UserModel Teacher { get; set; } = null!;
+        public TeacherModel Teacher { get; set; } = null!;
 
         public string AssignedId { get; set; } = null!;
         public UserModel AssignedBy { get; set; } = null!;

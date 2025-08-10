@@ -10,6 +10,7 @@ namespace Finals.Repositories.Interfaces
     public interface IRepository : IDisposable
     {
         IUserModelRepository Users { get; }
+        ITeacherRepository Teacher { get; }
         ISchoolYearModelRepository SchoolYears { get; }
 
         IProgramRepository Programs { get; }

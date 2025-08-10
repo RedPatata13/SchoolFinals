@@ -15,6 +15,7 @@ namespace Finals.Repositories
     {
         private readonly AppDbContext _dbContext;
         private IUserModelRepository _users = null!;
+        private ITeacherRepository _teachers = null!;
         private ISchoolYearModelRepository _schools = null!;
         private IProgramRepository _programs = null!;
         private IProgramEditsRepository _programEdits = null!;
@@ -28,6 +29,7 @@ namespace Finals.Repositories
         private IGradesTreeRepository _gradesTrees = null!;
         private ICourseRepository _courses = null!;
         private IAssignedCoursesRepository _assignedCourses = null!;
+       
         IUserModelRepository IRepository.Users => _users;
         ISchoolYearModelRepository IRepository.SchoolYears => _schools;
 
@@ -55,10 +57,13 @@ namespace Finals.Repositories
 
         IAssignedCoursesRepository IRepository.AssignedCourses => _assignedCourses;
 
+        ITeacherRepository IRepository.Teacher => _teachers;
+
         public Repository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
             _users = new UserModelRepository(_dbContext);
+            _teachers = new TeacherRepository(_dbContext);
             _schools = new SchoolYearRepository(_dbContext);
             _programs = new ProgramRepository(_dbContext);
             _programEdits = new ProgramEditsRepository(_dbContext);

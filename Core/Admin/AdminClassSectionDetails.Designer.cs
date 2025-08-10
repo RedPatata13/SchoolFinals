@@ -446,6 +446,7 @@
             _courses.ReadOnly = true;
             _courses.Size = new Size(909, 450);
             _courses.TabIndex = 3;
+            _courses.CellContentClick += _courses_CellContentClick;
             // 
             // CourseName
             // 
@@ -556,6 +557,7 @@
             button2.TabIndex = 46;
             button2.Text = "Clear all";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button1
             // 

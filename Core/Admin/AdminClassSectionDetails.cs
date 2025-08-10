@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Finals.Core.Admin.AdminYearManagement.UserControls;
+using Finals.Forms;
 using Finals.Forms.UserControls;
 using Finals.Models;
 using Finals.Services;
@@ -24,7 +25,7 @@ namespace Finals.Core.Admin
             InitializeComponent();
             _model = model;
             _userId = userId;
-            var presenter = new AdminClassSectionPresenter(this);   
+            var presenter = new AdminClassSectionPresenter(this);
         }
 
         public ClassSectionModel Model
@@ -74,7 +75,7 @@ namespace Finals.Core.Admin
                     course.CourseId,
                     ScheduleFormat(course.Schedules.ToList()),
                     "Update Schedule",
-                    (course.Teacher != null && !String.IsNullOrWhiteSpace(course.Teacher.UserName)) ? course.Teacher.UserName : "TBA",
+                    (course.Teacher != null && !String.IsNullOrWhiteSpace(course.Teacher.ToString())) ? course.Teacher.ToString() : "TBA",
                     "Update Teacher"
                 );
 
@@ -90,6 +91,21 @@ namespace Finals.Core.Admin
             string suffix = (venues.Count > 1) ? $" + {venues.Count - 1}" : "";
 
             return $"{venues[0].Day} : {(!String.IsNullOrWhiteSpace(venues[0].Location) ? venues[0].Location : "TBA")}{suffix}";
+        }
+
+        private void _courses_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new SelectTeacherDialog())
+            {
+                dialog.StartPosition = FormStartPosition.CenterScreen;
+                dialog.Text = "Select Teacher";
+                var result = dialog.ShowDialog();
+            }
         }
     }
 
