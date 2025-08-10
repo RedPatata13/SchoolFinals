@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Finals.Data;
 using Finals.Models;
 using Finals.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Finals.Repositories
 {
@@ -13,6 +14,11 @@ namespace Finals.Repositories
     {
         public CourseRepository(AppDbContext context) : base(context)
         {
+        }
+
+        public override IEnumerable<CourseModel> GetAll()
+        {
+            return _context.Courses.Include(c => c.Creator).AsNoTracking().ToList();
         }
     }
 }

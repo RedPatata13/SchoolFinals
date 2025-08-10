@@ -30,9 +30,11 @@ namespace Finals.Data
             modelBuilder.ApplyConfiguration(new ClassEntryModelConfiguration());
             modelBuilder.ApplyConfiguration(new CourseTemplateModelConfiguration());
             modelBuilder.ApplyConfiguration(new CourseTemplateItemModelConfiguration());
+            modelBuilder.ApplyConfiguration(new CourseModel_AssignedConfiguration());
             modelBuilder.ApplyConfiguration(new CourseModelConfiguration());
             modelBuilder.ApplyConfiguration(new GradesClassificationConfiguration());
             modelBuilder.ApplyConfiguration(new GradesTreeConfiguration());
+            modelBuilder.ApplyConfiguration(new VenueModelConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 
@@ -60,7 +62,10 @@ namespace Finals.Data
         public DbSet<CourseModel> Courses { get; set; } = null!;
         public DbSet<CourseTemplateModel> CourseTemplates { get; set; } = null!;
         public DbSet<CourseTemplateItem> CourseTemplatesItems { get; set; } = null!;
+        public DbSet<CourseModel_Assigned> AssignedCourses { get; set; } = null!;
         public DbSet<GradesTreeModel> GradesTreeConfigurations { get; set; } = null!;
         public DbSet<GradesClassification> GradesClassifications { get; set; } = null!;
+
+        public DbSet<VenueModel> Venues { get; set; } = null!;
     }
 }

@@ -35,7 +35,7 @@ namespace Finals.Data.Configuration
                 .WithMany()
                 .HasForeignKey(c => c.TeacherId)
                 .OnDelete(DeleteBehavior.Restrict)
-                .IsRequired();
+                .IsRequired(false);
 
             builder.HasOne(c => c.Section)
                 .WithMany()
@@ -51,7 +51,7 @@ namespace Finals.Data.Configuration
                 .WithOne(s => s.AssignedCourseModel)
                 .HasForeignKey(s => s.AssignedCourseModelId)
                 .OnDelete(DeleteBehavior.Cascade)
-                .IsRequired();
+                .IsRequired(false);
         }
     }
 }

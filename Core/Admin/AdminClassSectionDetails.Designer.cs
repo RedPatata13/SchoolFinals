@@ -54,11 +54,26 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tableLayoutPanel5 = new TableLayoutPanel();
-            _addSectionToProgramButton = new Button();
+            panel5 = new Panel();
+            _courses = new DataGridView();
+            CourseName = new DataGridViewTextBoxColumn();
+            CourseId = new DataGridViewTextBoxColumn();
+            Schedule = new DataGridViewTextBoxColumn();
+            ChangeSchedule = new DataGridViewButtonColumn();
+            AssignedTeacher = new DataGridViewTextBoxColumn();
+            ChangeTeacher = new DataGridViewButtonColumn();
+            panel7 = new Panel();
+            label6 = new Label();
+            _courseCount = new Label();
+            label7 = new Label();
+            panel6 = new Panel();
+            button2 = new Button();
+            button1 = new Button();
+            _addCourseButtonClick = new Button();
             CourseTemplatesContainer = new TabPage();
-            panel3 = new Panel();
             classTransitionUserControlContainer1 = new Forms.UserControls.ClassTransitionUserControlContainer();
             tabPage2 = new TabPage();
+            panel3 = new Panel();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
@@ -68,6 +83,10 @@
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
+            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)_courses).BeginInit();
+            panel7.SuspendLayout();
+            panel6.SuspendLayout();
             CourseTemplatesContainer.SuspendLayout();
             SuspendLayout();
             // 
@@ -101,24 +120,24 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 32);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1059, 64);
+            panel1.Size = new Size(1059, 56);
             panel1.TabIndex = 35;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(0, 8);
             label1.Name = "label1";
-            label1.Size = new Size(197, 45);
+            label1.Size = new Size(196, 37);
             label1.TabIndex = 35;
-            label1.Text = "Class Details";
+            label1.Text = "Details of Class";
             // 
             // panel4
             // 
             panel4.Controls.Add(tableLayoutPanel2);
             panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(0, 96);
+            panel4.Location = new Point(0, 88);
             panel4.Name = "panel4";
             panel4.Padding = new Padding(0, 8, 0, 8);
             panel4.Size = new Size(1059, 200);
@@ -327,31 +346,32 @@
             panel8.AutoSize = true;
             panel8.BorderStyle = BorderStyle.FixedSingle;
             panel8.Controls.Add(tableLayoutPanel4);
+            panel8.Controls.Add(panel3);
             panel8.Dock = DockStyle.Fill;
-            panel8.Location = new Point(0, 296);
+            panel8.Location = new Point(0, 288);
             panel8.Name = "panel8";
-            panel8.Size = new Size(1059, 554);
+            panel8.Size = new Size(1059, 578);
             panel8.TabIndex = 40;
             // 
             // tableLayoutPanel4
             // 
-            tableLayoutPanel4.BackColor = SystemColors.ControlDark;
+            tableLayoutPanel4.BackColor = SystemColors.Control;
             tableLayoutPanel4.ColumnCount = 1;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel4.Controls.Add(label4, 0, 0);
             tableLayoutPanel4.Controls.Add(tabControl1, 0, 1);
             tableLayoutPanel4.Dock = DockStyle.Top;
-            tableLayoutPanel4.Location = new Point(0, 0);
+            tableLayoutPanel4.Location = new Point(0, 24);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 2;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel4.Size = new Size(1057, 552);
-            tableLayoutPanel4.TabIndex = 40;
+            tableLayoutPanel4.TabIndex = 41;
             // 
             // label4
             // 
-            label4.BackColor = SystemColors.ControlLight;
+            label4.BackColor = SystemColors.Control;
             label4.Dock = DockStyle.Fill;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(3, 0);
@@ -382,7 +402,7 @@
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(1043, 488);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "Classes";
+            tabPage1.Text = "Courses";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel5
@@ -390,31 +410,182 @@
             tableLayoutPanel5.BackColor = SystemColors.ControlLight;
             tableLayoutPanel5.ColumnCount = 2;
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            tableLayoutPanel5.Controls.Add(_addSectionToProgramButton, 1, 0);
-            tableLayoutPanel5.Controls.Add(panel3, 0, 0);
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            tableLayoutPanel5.Controls.Add(panel5, 0, 0);
+            tableLayoutPanel5.Controls.Add(panel6, 1, 0);
             tableLayoutPanel5.Dock = DockStyle.Fill;
             tableLayoutPanel5.Location = new Point(3, 3);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel5.Size = new Size(1035, 480);
             tableLayoutPanel5.TabIndex = 40;
             // 
-            // _addSectionToProgramButton
+            // panel5
             // 
-            _addSectionToProgramButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            _addSectionToProgramButton.BackColor = SystemColors.Highlight;
-            _addSectionToProgramButton.FlatAppearance.BorderColor = Color.Black;
-            _addSectionToProgramButton.FlatStyle = FlatStyle.Flat;
-            _addSectionToProgramButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            _addSectionToProgramButton.ForeColor = Color.White;
-            _addSectionToProgramButton.Location = new Point(958, 3);
-            _addSectionToProgramButton.Name = "_addSectionToProgramButton";
-            _addSectionToProgramButton.Size = new Size(74, 24);
-            _addSectionToProgramButton.TabIndex = 43;
-            _addSectionToProgramButton.Text = "Add Class";
-            _addSectionToProgramButton.UseVisualStyleBackColor = false;
+            panel5.AutoScroll = true;
+            panel5.BackColor = SystemColors.ControlDark;
+            panel5.Controls.Add(_courses);
+            panel5.Controls.Add(panel7);
+            panel5.Dock = DockStyle.Fill;
+            panel5.Location = new Point(3, 3);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(909, 474);
+            panel5.TabIndex = 44;
+            // 
+            // _courses
+            // 
+            _courses.AllowUserToAddRows = false;
+            _courses.AllowUserToDeleteRows = false;
+            _courses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            _courses.Columns.AddRange(new DataGridViewColumn[] { CourseName, CourseId, Schedule, ChangeSchedule, AssignedTeacher, ChangeTeacher });
+            _courses.Dock = DockStyle.Fill;
+            _courses.Location = new Point(0, 24);
+            _courses.Name = "_courses";
+            _courses.ReadOnly = true;
+            _courses.Size = new Size(909, 450);
+            _courses.TabIndex = 3;
+            // 
+            // CourseName
+            // 
+            CourseName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CourseName.HeaderText = "Course Name";
+            CourseName.Name = "CourseName";
+            CourseName.ReadOnly = true;
+            // 
+            // CourseId
+            // 
+            CourseId.HeaderText = "CourseId";
+            CourseId.Name = "CourseId";
+            CourseId.ReadOnly = true;
+            // 
+            // Schedule
+            // 
+            Schedule.HeaderText = "Schedule";
+            Schedule.Name = "Schedule";
+            Schedule.ReadOnly = true;
+            // 
+            // ChangeSchedule
+            // 
+            ChangeSchedule.HeaderText = "Change Schedule";
+            ChangeSchedule.Name = "ChangeSchedule";
+            ChangeSchedule.ReadOnly = true;
+            ChangeSchedule.Resizable = DataGridViewTriState.True;
+            ChangeSchedule.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // AssignedTeacher
+            // 
+            AssignedTeacher.HeaderText = "Teacher";
+            AssignedTeacher.Name = "AssignedTeacher";
+            AssignedTeacher.ReadOnly = true;
+            // 
+            // ChangeTeacher
+            // 
+            ChangeTeacher.HeaderText = "Change Teacher";
+            ChangeTeacher.Name = "ChangeTeacher";
+            ChangeTeacher.ReadOnly = true;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = SystemColors.ControlLight;
+            panel7.Controls.Add(label6);
+            panel7.Controls.Add(_courseCount);
+            panel7.Controls.Add(label7);
+            panel7.Dock = DockStyle.Top;
+            panel7.Location = new Point(0, 0);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(909, 24);
+            panel7.TabIndex = 1;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(720, 6);
+            label6.Name = "label6";
+            label6.Size = new Size(146, 13);
+            label6.TabIndex = 2;
+            label6.Text = "Unselected Courses Count:";
+            // 
+            // _courseCount
+            // 
+            _courseCount.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            _courseCount.AutoSize = true;
+            _courseCount.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _courseCount.Location = new Point(872, 6);
+            _courseCount.Name = "_courseCount";
+            _courseCount.Size = new Size(13, 13);
+            _courseCount.TabIndex = 1;
+            _courseCount.Text = "0";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Location = new Point(8, 6);
+            label7.Name = "label7";
+            label7.Size = new Size(51, 13);
+            label7.TabIndex = 0;
+            label7.Text = "Courses:";
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(button2);
+            panel6.Controls.Add(button1);
+            panel6.Controls.Add(_addCourseButtonClick);
+            panel6.Dock = DockStyle.Fill;
+            panel6.Location = new Point(918, 3);
+            panel6.Name = "panel6";
+            panel6.Padding = new Padding(0, 24, 0, 0);
+            panel6.Size = new Size(114, 474);
+            panel6.TabIndex = 45;
+            // 
+            // button2
+            // 
+            button2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button2.BackColor = Color.FromArgb(229, 57, 73);
+            button2.FlatAppearance.BorderColor = Color.Black;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.ForeColor = SystemColors.HighlightText;
+            button2.Location = new Point(0, 102);
+            button2.Name = "button2";
+            button2.Size = new Size(114, 26);
+            button2.TabIndex = 46;
+            button2.Text = "Clear all";
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button1.BackColor = SystemColors.WindowFrame;
+            button1.FlatAppearance.BorderColor = Color.Black;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(0, 56);
+            button1.Name = "button1";
+            button1.Size = new Size(114, 40);
+            button1.TabIndex = 45;
+            button1.Text = "Apply Course Template";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // _addCourseButtonClick
+            // 
+            _addCourseButtonClick.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            _addCourseButtonClick.BackColor = SystemColors.Highlight;
+            _addCourseButtonClick.FlatAppearance.BorderColor = Color.Black;
+            _addCourseButtonClick.FlatStyle = FlatStyle.Flat;
+            _addCourseButtonClick.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _addCourseButtonClick.ForeColor = Color.White;
+            _addCourseButtonClick.Location = new Point(0, 24);
+            _addCourseButtonClick.Name = "_addCourseButtonClick";
+            _addCourseButtonClick.Size = new Size(114, 26);
+            _addCourseButtonClick.TabIndex = 44;
+            _addCourseButtonClick.Text = "Add Course";
+            _addCourseButtonClick.UseVisualStyleBackColor = false;
             // 
             // CourseTemplatesContainer
             // 
@@ -428,16 +599,6 @@
             CourseTemplatesContainer.TabIndex = 1;
             CourseTemplatesContainer.Text = "Class Transitions";
             CourseTemplatesContainer.UseVisualStyleBackColor = true;
-            // 
-            // panel3
-            // 
-            panel3.AutoScroll = true;
-            panel3.BackColor = SystemColors.ControlDark;
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(3, 3);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(949, 474);
-            panel3.TabIndex = 44;
             // 
             // classTransitionUserControlContainer1
             // 
@@ -461,6 +622,14 @@
             tabPage2.Text = "Batches";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // panel3
+            // 
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(0, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1057, 24);
+            panel3.TabIndex = 0;
+            // 
             // AdminClassSectionDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -471,7 +640,7 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             Name = "AdminClassSectionDetails";
-            Size = new Size(1059, 850);
+            Size = new Size(1059, 866);
             panel2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -483,6 +652,11 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)_courses).EndInit();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
+            panel6.ResumeLayout(false);
             CourseTemplatesContainer.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -515,10 +689,25 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TableLayoutPanel tableLayoutPanel5;
-        private Button _addSectionToProgramButton;
+        private Panel panel5;
+        private Panel panel6;
+        private Button button2;
+        private Button button1;
+        private Button _addCourseButtonClick;
         private TabPage CourseTemplatesContainer;
-        private Panel panel3;
         private Forms.UserControls.ClassTransitionUserControlContainer classTransitionUserControlContainer1;
         private TabPage tabPage2;
+        private Panel panel3;
+        private Panel panel7;
+        private Label label6;
+        private Label _courseCount;
+        private Label label7;
+        private DataGridView _courses;
+        private DataGridViewTextBoxColumn CourseName;
+        private DataGridViewTextBoxColumn CourseId;
+        private DataGridViewTextBoxColumn Schedule;
+        private DataGridViewButtonColumn ChangeSchedule;
+        private DataGridViewTextBoxColumn AssignedTeacher;
+        private DataGridViewButtonColumn ChangeTeacher;
     }
 }

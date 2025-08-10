@@ -25,6 +25,6 @@ namespace Finals.Models
         public string SectionId { get; set; } = null!;
         public ClassSectionModel Section { get; set; } = null!;
 
-        public ICollection<VenueModel> Schedules { get; set; } = null!;
+        public ICollection<VenueModel> Schedules { get; set; } = new List<VenueModel>();
     }
 }

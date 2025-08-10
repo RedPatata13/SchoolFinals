@@ -24,6 +24,7 @@ namespace Finals.Core.Admin.AdminProgramManagement
         private string _programTitle = string.Empty;
         private Action _onAddToSection = null!;
         private Action _dgv_CellButtonClick = null!;
+        //private string userId = string.Empty;
 
         public event EventHandler AddSectionToProgramClick
         {
@@ -194,7 +195,7 @@ namespace Finals.Core.Admin.AdminProgramManagement
                     var parent = this.Parent;
                     if (parent != null)
                     {
-                        var uc = new AdminClassSectionDetails(classSection);
+                        var uc = new AdminClassSectionDetails(classSection, _currentUser.UserID);
                         Projector.Project(parent, uc);
                         uc.BackClick += (_, _) =>
                         {

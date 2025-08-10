@@ -243,7 +243,7 @@
             _addCourseButton.Name = "_addCourseButton";
             _addCourseButton.Size = new Size(160, 28);
             _addCourseButton.TabIndex = 34;
-            _addCourseButton.Text = "Create New Program";
+            _addCourseButton.Text = "Create New Course";
             _addCourseButton.UseVisualStyleBackColor = false;
             // 
             // _totalPrograms

@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            _ucStatus = new Label();
             label1 = new Label();
             _clearAllClick = new Button();
             _addEntryButton = new Button();
             panel2 = new Panel();
-            UC_Container = new Panel();
             button1 = new Button();
             button2 = new Button();
-            _ucStatus = new Label();
+            UC_Container = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -52,6 +52,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(461, 40);
             panel1.TabIndex = 1;
+            // 
+            // _ucStatus
+            // 
+            _ucStatus.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            _ucStatus.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _ucStatus.ForeColor = SystemColors.ControlDarkDark;
+            _ucStatus.Location = new Point(240, 8);
+            _ucStatus.Name = "_ucStatus";
+            _ucStatus.Size = new Size(72, 24);
+            _ucStatus.TabIndex = 48;
+            _ucStatus.Text = "Viewing";
+            _ucStatus.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label1
             // 
@@ -105,18 +117,6 @@
             panel2.Size = new Size(461, 40);
             panel2.TabIndex = 2;
             // 
-            // UC_Container
-            // 
-            UC_Container.AutoScroll = true;
-            UC_Container.BackColor = SystemColors.ControlDarkDark;
-            UC_Container.BorderStyle = BorderStyle.FixedSingle;
-            UC_Container.Dock = DockStyle.Fill;
-            UC_Container.Location = new Point(2, 42);
-            UC_Container.Name = "UC_Container";
-            UC_Container.Padding = new Padding(4);
-            UC_Container.Size = new Size(461, 227);
-            UC_Container.TabIndex = 3;
-            // 
             // button1
             // 
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -150,16 +150,17 @@
             button2.Text = "Cancel";
             button2.UseVisualStyleBackColor = false;
             // 
-            // _ucStatus
+            // UC_Container
             // 
-            _ucStatus.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            _ucStatus.ForeColor = SystemColors.ControlDarkDark;
-            _ucStatus.Location = new Point(240, 8);
-            _ucStatus.Name = "_ucStatus";
-            _ucStatus.Size = new Size(72, 24);
-            _ucStatus.TabIndex = 48;
-            _ucStatus.Text = "Viewing";
-            _ucStatus.TextAlign = ContentAlignment.MiddleRight;
+            UC_Container.AutoScroll = true;
+            UC_Container.BackColor = SystemColors.ControlDarkDark;
+            UC_Container.BorderStyle = BorderStyle.FixedSingle;
+            UC_Container.Dock = DockStyle.Fill;
+            UC_Container.Location = new Point(2, 42);
+            UC_Container.Name = "UC_Container";
+            UC_Container.Padding = new Padding(4);
+            UC_Container.Size = new Size(461, 227);
+            UC_Container.TabIndex = 3;
             // 
             // ClassTransitionUserControlContainer
             // 
