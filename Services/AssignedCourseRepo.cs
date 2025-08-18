@@ -68,5 +68,30 @@ namespace Finals.Services
                 repo.Dispose();
             }
         }
+
+        public static void UpdateAssignedTeacher(string ac_id, string teacher_id)
+        {
+            var repo = RepositoryFactory.Create();
+            try
+            {
+                var teacher = repo.Teacher.GetById(teacher_id);
+                if (teacher == null) throw new Exception("Selected Teacher cannot be found");
+
+                var ac = repo.AssignedCourses.GetById(ac_id);
+                if (ac == null) throw new Exception("Selected course cannot be found");
+
+                ac.Teacher = null!;
+                ac.TeacherId = teacher.TeacherID;
+
+                repo.AssignedCourses.Update(ac);
+                repo.SaveChanges();
+
+                MessageBox.Show("Assigned course succesfully updated!", "Update Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occured while trying to update the Assigned Course " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } finally { repo.Dispose(); }
+        }
     }
 }

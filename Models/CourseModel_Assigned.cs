@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,8 @@ namespace Finals.Models
         public string SectionId { get; set; } = null!;
         public ClassSectionModel Section { get; set; } = null!;
 
+        [NotMapped]
+        public ICollection<StudentModel> Enrollees { get; set;} = new List<StudentModel>();
         public ICollection<VenueModel> Schedules { get; set; } = new List<VenueModel>();
     }
 }

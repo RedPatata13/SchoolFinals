@@ -18,7 +18,7 @@ namespace Finals.Models
 
         public override string ToString()
         {
-            return $"{LastName ?? ""}, {FirstName ?? ""}, {MiddleName ?? ""}".Trim();
+            return $"{LastName ?? ""}, {FirstName ?? ""} {(MiddleName ?? "").Substring(0, 1)}.".Trim();
         }
     }
 }

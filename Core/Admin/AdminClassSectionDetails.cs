@@ -20,6 +20,8 @@ namespace Finals.Core.Admin
         private ClassSectionModel _model;
         private ICollection<CourseModel_Assigned> _assignedCourses = new List<CourseModel_Assigned>();
         private string _userId = null!;
+        private Action<CourseModel_Assigned> _onTeacherUpdate = null!;
+        private Func<Action> _onScheduleUpdate = null!;
         public AdminClassSectionDetails(ClassSectionModel model, string userId)
         {
             InitializeComponent();
@@ -58,7 +60,17 @@ namespace Finals.Core.Admin
                 UpdateCoursesDGV();
             }
         }
+        public Action<CourseModel_Assigned> OnTeacherUpdate
+        {
+            get => _onTeacherUpdate;
+            set => _onTeacherUpdate = value;
+        }
 
+        public Func<Action> OnScheduleUpdate
+        {
+            get => _onScheduleUpdate;
+            set => _onScheduleUpdate = value;
+        }
         public string UserId => _userId;
 
         private void UpdateCoursesDGV()
@@ -95,7 +107,19 @@ namespace Finals.Core.Admin
 
         private void _courses_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+            int updateTeacherColumnIndex = _courses.Columns.Count - 1;
+            if (e.ColumnIndex == updateTeacherColumnIndex)
+            {
+                var row = _courses.Rows[e.RowIndex];
+                var ac = row.Tag as CourseModel_Assigned;
 
+                if(ac != null)
+                {
+                    this.OnTeacherUpdate?.Invoke(ac);
+                    UpdateCoursesDGV();
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -116,6 +140,8 @@ namespace Finals.Core.Admin
         event EventHandler AddCourseButtonClick;
         string UserId { get; }
         ICollection<CourseModel_Assigned> AssignedCourses { get; set; }
+        Action<CourseModel_Assigned> OnTeacherUpdate {  get; set; }
+        Func<Action> OnScheduleUpdate { get; set; }
     }
 
     public class AdminClassSectionPresenter
@@ -131,6 +157,7 @@ namespace Finals.Core.Admin
         {
             _view.AddCourseButtonClick += (_, _) => AddCourseButtonInvoke();
             _view.AssignedCourses = AssignedCourseRepo.GetAllBySection(_view.Model.SectionID);
+            _view.OnTeacherUpdate = ReassignTeacher;
         }
 
         private void AddCourseButtonInvoke()
@@ -163,6 +190,23 @@ namespace Finals.Core.Admin
                     _view.AssignedCourses = _view.AssignedCourses.Concat(list).ToList();
                     AssignedCourseRepo.AddAssignedCourse(list.ToArray());
                     
+                }
+            }
+        }
+
+        private void ReassignTeacher(CourseModel_Assigned course)
+        {
+            using (var dialog = new SelectTeacherDialog())
+            {
+                dialog.Text = "Select a Teacher";
+                dialog.StartPosition = FormStartPosition.CenterScreen;
+                var result = dialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    course.Teacher = dialog.Value;
+                    course.TeacherId = dialog.Value.TeacherID;
+
+                    AssignedCourseRepo.UpdateAssignedTeacher(course.AssignedCourseModelId, dialog.Value.TeacherID);
                 }
             }
         }

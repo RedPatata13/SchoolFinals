@@ -12,11 +12,10 @@ namespace Finals.Models
         public string SectionID { get; set; } = null!;
         public string SectionName { get; set;} = null!;
         public int YearLevel { get; set; } = 0;
-
-        public ICollection<ClassSectionTransitionModel> IncomingTransition { get; set; } = null!;
-
         public string ProgramId { get; set; } = null!;
         public ProgramModel Program { get; set; } = null!;
         public ICollection<ClassBatchModel> Batches { get; set;} = null!;
+        public ICollection<ClassSectionTransitionModel> IncomingTransition { get; set; } = null!;
+        public ICollection<CourseModel> DefaultCourses { get; set;} = null!;
     }
 }
