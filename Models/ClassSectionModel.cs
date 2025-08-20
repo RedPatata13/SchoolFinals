@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace Finals.Models
         public ProgramModel Program { get; set; } = null!;
         public ICollection<ClassBatchModel> Batches { get; set;} = null!;
         public ICollection<ClassSectionTransitionModel> IncomingTransition { get; set; } = null!;
+        [NotMapped]
         public ICollection<CourseModel> DefaultCourses { get; set;} = null!;
     }
 }
