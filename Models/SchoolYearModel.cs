@@ -17,6 +17,7 @@ namespace Finals.Models
 
         // Status Management (simplified)
         public SchoolYearStatus Status { get; set; } = SchoolYearStatus.Draft;
+        public SchoolYearType SchoolYearType { get; set; } = SchoolYearType.NotSet;
 
         // Date Range (school year, not phases)
         [Required]
@@ -33,10 +34,19 @@ namespace Finals.Models
 
     public enum SchoolYearStatus
     {
-        Draft,      // Not yet active
-        Active,     // Ongoing
-        Locked,     // No edits allowed
-        Archived    // Read-only
+        Draft,
+        Active, 
+        Locked, 
+        Archived    
+    }
+
+    public enum SchoolYearType
+    {
+       NotSet,
+       Current,
+       Previous,
+       Upcoming,
+       Archived
     }
 
     //public enum SYPhase

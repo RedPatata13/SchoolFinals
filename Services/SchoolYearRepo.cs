@@ -95,7 +95,8 @@ namespace Finals.Services
             {
                 MessageBox.Show("An unexpected error occurred while generating the School Year ID: " + ex.Message);
                 return Status.Error;
-            } finally { repo.Dispose(); }
+            }
+            finally { repo.Dispose(); }
         }
 
         public static void ConcludeCurrentSchoolYear()
@@ -113,6 +114,65 @@ namespace Finals.Services
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred while concluding the current school year: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                repo.Dispose();
+            }
+        }
+
+        public static SchoolYearModel? GetCurrentSchoolYear()
+        {
+            var repo = RepositoryFactory.Create();
+            try
+            {
+                var sy = repo.SchoolYears.GetCurrentSchoolYear();
+                //if (sy != null) MessageBox.Show(sy.SchoolYearId);
+                return sy;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while retrieving the current school year: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            finally
+            {
+                repo.Dispose();
+            }
+        }
+
+        public static SchoolYearModel? GetPreviousSchoolYear()
+        {
+            var repo = RepositoryFactory.Create();
+            try
+            {
+                var sy = repo.SchoolYears.GetPreviousSchoolYear();
+                return sy;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while retrieving the previous school year: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            finally
+            {
+                repo.Dispose();
+            }
+        }
+
+        public static SchoolYearModel? GetUpcomingSchoolYear()
+        {
+            var repo = RepositoryFactory.Create();
+            try
+            {
+                var sy = repo.SchoolYears.GetUpcomingSchoolYear();
+                return sy;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while retrieving the upcoming school year: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
             finally
             {

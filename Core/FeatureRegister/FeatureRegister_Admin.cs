@@ -28,9 +28,9 @@ namespace Finals.Core.FeatureRegister
         {
             frame.RegisterFeature(new TestFeature()
             {
-                _uc = new AdminYearManagement_Main(),
+                _uc = new AdminYearManagement_Main() { Dock = DockStyle.Fill },
                 _name = "School Year",
-                _description = ""
+                _description = "Manage and view School years."
             });
             frame.RegisterFeature(new TestFeature()
             {

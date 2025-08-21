@@ -10,6 +10,8 @@ namespace Finals.Repositories.Interfaces
     public interface ISchoolYearModelRepository : IBaseRepository<SchoolYearModel>
     {
         SchoolYearModel GetCurrentSchoolYear();
+        SchoolYearModel GetPreviousSchoolYear();
+        SchoolYearModel GetUpcomingSchoolYear();
     }
 
 

@@ -12,112 +12,89 @@ using Finals.Core.Admin.AdminYearManagement.UserControls;
 using Finals.Services;
 using Finals.Services.Contracts;
 using Finals.Models;
+using Finals.Forms;
 
 namespace Finals.Core.Admin.AdminYearManagement
 {
     public partial class AdminYearManagement_Main : UserControl, IAdminYearManagement_Main
     {
-        private SchoolYearModel _curr = null!;
-        private SchoolYearPhaseUserControl _uc = null!;
+        private SchoolYearModel? _curr = null!;
+        private SchoolYearModel? _prev = null!;
+        private SchoolYearModel? _upcoming = null!;
+        private SchoolYearModel? _displayed = null!;
         private string sy_Name = null!;
 
         public AdminYearManagement_Main()
         {
             InitializeComponent();
-
-            panel1.Controls.Clear();
-            var uc = new SchoolYearPhaseUserControl();
-            uc.Dock = DockStyle.Fill;
-            panel1.Controls.Add(uc);
-
-            _uc = uc;
-
             var presenter = new AdminYearManagementPresenter(this);
+            _displayed = _curr;
         }
 
-        public SchoolYearModel CurrentSchoolYear 
+        public SchoolYearModel? CurrentSchoolYear 
         {
             get => _curr;
             set
             {
                 _curr = value;
-                _uc.SchoolYear = value;
-                SYDetails_Name.Text = value.Name;
-                SYDetails_ID.Text = value.SchoolYearId;
-                SYDetails_Status.Text = value.Status.ToString();
-                SYDetails_DateStarted.Text = value.StartDate.ToString();
-                SYDetails_DateEnd.Text = value.EndDate.ToString();
-                SYDetails_IsRegistrationOpen.Text = (value.IsRegistrationOpen) ? "YES" : "NO";
-            }
-        }
-        public string SY_Name 
-        {
-            get => _curr.Name;
-            set
-            {
-                _curr.Name = value;
-                _uc.SchoolYear.Name = value;
-                SYDetails_Name.Text = value;
-                
-            }
-        }
-        public SchoolYearStatus SchoolYearStatus
-        {
-            get => _curr.Status;
-            set
-            {
-                _curr.Status = value;
-                SYDetails_Status.Text = value.ToString();
-            }
-        }
-        public DateTime StartDate 
-        {
-            get => _curr.StartDate;
-            set
-            {
-                _curr.StartDate = value;
-                SYDetails_DateStarted.Text = value.ToString();
-            }
-        }
-        public DateTime EndDate
-        {
-            get => _curr.EndDate;
-            set
-            {
-                _curr.EndDate = value;
-                SYDetails_DateEnd.Text = value.ToString();
-            }
-        }
-        public bool IsRegistrationOpen 
-        { 
-            get => _curr.IsRegistrationOpen;
-            set
-            {
-
-                _curr.IsRegistrationOpen = value;
-                SYDetails_IsRegistrationOpen.Text = (value) ? "YES" : "NO";
             }
         }
 
-        public event EventHandler SYBannerMainAction
+        public SchoolYearModel? UpcomingSchoolYear
         {
-            add => _uc.MainAction += value;
-            remove => _uc.MainAction -= value;
+            get => _upcoming;
+            set
+            {
+                _upcoming = value;
+            }
+        }
+
+        public SchoolYearModel? PreviousSchoolYear
+        {
+            get => _prev;
+            set
+            {
+                _prev = value;
+            }
+        }
+
+        public SchoolYearModel SchoolYearDisplayed => _displayed!;
+
+        public event EventHandler CurrentSyClick
+        {
+            add => _currSyButton.Click += value;
+            remove => _currSyButton.Click -= value;
+        }
+        public event EventHandler UpcomingSyClick
+        {
+            add => _nextSyButton.Click += value;
+            remove => _nextSyButton.Click -= value;
+        }
+        public event EventHandler PreviousSyClick
+        {
+            add => _prevSyButton.Click += value;
+            remove => _prevSyButton.Click -= value;
+        }
+
+        public void ProjectSy(SchoolYearModel? model)
+        {
+            _displayed = model;
+            var uc = new SchoolYearDetailsUC(model);
+            uc.Size = new Size(this.Width, uc.Height);
+            Projector.Project(_syProjector, uc);
         }
     }
 
     public interface IAdminYearManagement_Main
     {
-        SchoolYearModel CurrentSchoolYear { get; set; }
-        string SY_Name { get; set; }
-        SchoolYearStatus SchoolYearStatus { get; set; }
-        
-        DateTime StartDate { get; set; }
-        DateTime EndDate { get; set; }
-        bool IsRegistrationOpen { get; set; }
-
-
-        event EventHandler SYBannerMainAction;
+        SchoolYearModel? CurrentSchoolYear { get; set; }
+        SchoolYearModel? UpcomingSchoolYear { get; set; }
+        SchoolYearModel? PreviousSchoolYear { get; set; }
+        SchoolYearModel? SchoolYearDisplayed { get; }
+        event EventHandler CurrentSyClick;
+        event EventHandler UpcomingSyClick;
+        event EventHandler PreviousSyClick;
+        void ProjectSy(SchoolYearModel? model);
     }
 
     public class AdminYearManagementPresenter
@@ -127,88 +104,42 @@ namespace Finals.Core.Admin.AdminYearManagement
         public AdminYearManagementPresenter(IAdminYearManagement_Main view)
         {
             _view = view;
+            PopulateSchoolYear();
             WireEvents();
+            Initialize();
+            
+        }
+        private void PopulateSchoolYear()
+        {
+            _view.CurrentSchoolYear = SchoolYearRepo.GetCurrentSchoolYear();
+            _view.PreviousSchoolYear = SchoolYearRepo.GetPreviousSchoolYear();
+            _view.UpcomingSchoolYear = SchoolYearRepo.GetUpcomingSchoolYear();
         }
         private void WireEvents()
         {
-            SetSchoolYearToLatest();
+            _view.CurrentSyClick += (_, _) => OnCurrentSyClick();
+            _view.UpcomingSyClick += (_, _) => OnNextSyClick();
+            _view.PreviousSyClick += (_, _) => OnPrevSyClick();
+        }
+        private void Initialize()
+        {
+            _view.ProjectSy(null!);
+            OnCurrentSyClick();
+        }
+        private void OnCurrentSyClick()
+        {
+            _view.ProjectSy(_view.CurrentSchoolYear!);
+            _view.ProjectSy(_view.CurrentSchoolYear!);
         }
 
-        private void SetSchoolYearToLatest()
+        private void OnPrevSyClick()
         {
-            ISchoolYearManagerService service = null!;
-            try
-            {
-                service = new SchoolYearManagerService();
-                var sy = service.GetCurrentSchoolYear();
-                _view.CurrentSchoolYear = sy;
-
-                SetNewMainBannerEvents(Popup);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (service != null) service.Dispose();
-            }
-
-            void Popup()
-            {
-                using (var dialog = new ConfirmSchoolYearConclude())
-                {
-                    dialog.StartPosition = FormStartPosition.CenterScreen;
-                    var res = dialog.ShowDialog();
-
-                    if (res == DialogResult.OK)
-                    {
-                        CreateSchoolYearDraft();
-                    }
-                    else if (res == DialogResult.Cancel)
-                    {
-                        // Do nothing, user cancelled
-                    }
-                    else
-                    {
-                        MessageBox.Show("An unexpected error occurred while creating a new school year draft.");
-                    }
-                }
-            }
+            _view.ProjectSy(_view.PreviousSchoolYear);
         }
 
-        private void CreateSchoolYearDraft()
+        private void OnNextSyClick()
         {
-            ISchoolYearManagementService service = null!;
-            try
-            {
-                service = new SchoolYearManagementService();
-                var newSy = service.CreateNewSchoolYear(true); // true to conclude the current school year
-                MessageBox.Show("A new School Year draft has been created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                _view.CurrentSchoolYear = newSy; // update the view with the new school year draft
-            } 
-            catch (Exception ex)
-            {
-                MessageBox.Show("An unexpected error has occured while trying to create a new School Year draft " + ex.Message);
-            } 
-            finally
-            {
-                if (service != null) service.Dispose();
-            }
-        }
-
-        private void SetNewMainBannerEvents(Action action)
-        {
-            if (_currentMainAction != null)
-            {
-                _view.SYBannerMainAction -= _currentMainAction;
-            }
-            _currentMainAction = (_, _) =>
-            {
-                action?.Invoke();
-            };
-            _view.SYBannerMainAction += _currentMainAction;
+            _view.ProjectSy(_view.UpcomingSchoolYear);
         }
     }
 }

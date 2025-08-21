@@ -14,14 +14,28 @@ namespace Finals.Repositories
     {
         public SchoolYearRepository(AppDbContext context) : base(context)
         {
-            
+
         }
 
         public SchoolYearModel GetCurrentSchoolYear()
         {
             return _context.SchoolYearModels.
                 Include(sy => sy.Semesters).
-                FirstOrDefault(sy => sy.IsCurrent)!;
+                FirstOrDefault(sy => sy.SchoolYearType == SchoolYearType.Current)!;
+        }
+
+        public SchoolYearModel GetPreviousSchoolYear()
+        {
+            return _context.SchoolYearModels.
+                Include(sy => sy.Semesters).
+                FirstOrDefault(sy => sy.SchoolYearType == SchoolYearType.Previous)!;
+        }
+
+        public SchoolYearModel GetUpcomingSchoolYear()
+        {
+            return _context.SchoolYearModels.
+                Include(sy => sy.Semesters).
+                FirstOrDefault(sy => sy.SchoolYearType == SchoolYearType.Upcoming)!;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Finals.Models
         public CourseModel_Assigned AssignedCourse { get; set; } = null!;
 
         public string SchoolYearId { get; set; } = null!;
+
         public SchoolYearModel Schoolyear { get; set; } = null!;
         public ICollection<StudentModel> Students { get; set; } = null!;
     }

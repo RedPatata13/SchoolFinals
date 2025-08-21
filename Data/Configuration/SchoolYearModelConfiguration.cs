@@ -18,7 +18,7 @@
                 builder.Property(sy => sy.Name).IsRequired().HasMaxLength(50);
                 builder.Property(sy => sy.IsCurrent).IsRequired();
                 builder.Property(sy => sy.IsRegistrationOpen).IsRequired();
-
+                builder.Property(sy => sy.SchoolYearType).IsRequired().HasDefaultValue(SchoolYearType.NotSet);
                 builder.HasMany(sy => sy.Semesters).WithOne(s => s.SchoolYear).HasForeignKey(s => s.SchoolYearId);
 
                 builder.Property(sy => sy.StartDate).IsRequired();
