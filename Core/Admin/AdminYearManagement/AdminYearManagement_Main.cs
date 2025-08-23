@@ -60,6 +60,12 @@ namespace Finals.Core.Admin.AdminYearManagement
 
         public SchoolYearModel SchoolYearDisplayed => _displayed!;
 
+        public event EventHandler SeeSchoolYearsClick
+        {
+            add => _seeSyButton.Click += value;
+            remove => _seeSyButton.Click -= value;
+        }
+
         public event EventHandler CurrentSyClick
         {
             add => _currSyButton.Click += value;
@@ -94,6 +100,7 @@ namespace Finals.Core.Admin.AdminYearManagement
         event EventHandler CurrentSyClick;
         event EventHandler UpcomingSyClick;
         event EventHandler PreviousSyClick;
+        event EventHandler SeeSchoolYearsClick;
         void ProjectSy(SchoolYearModel? model);
     }
 
@@ -120,6 +127,7 @@ namespace Finals.Core.Admin.AdminYearManagement
             _view.CurrentSyClick += (_, _) => OnCurrentSyClick();
             _view.UpcomingSyClick += (_, _) => OnNextSyClick();
             _view.PreviousSyClick += (_, _) => OnPrevSyClick();
+            _view.SeeSchoolYearsClick += (_, _) => OnSeeSyClick();
         }
         private void Initialize()
         {
@@ -140,6 +148,22 @@ namespace Finals.Core.Admin.AdminYearManagement
         private void OnNextSyClick()
         {
             _view.ProjectSy(_view.UpcomingSchoolYear);
+        }
+
+        private void OnSeeSyClick()
+        {
+            using (var dialog = new SelectSchoolYearDialog())
+            {
+                dialog.Text = "Select School Year";
+                dialog.StartPosition = FormStartPosition.CenterScreen;
+                var result = dialog.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    _view.ProjectSy(dialog.Value);
+                    MessageBox.Show($"School Year: {dialog.Value.Name} selected", "Viewed School Year has been changed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

@@ -71,7 +71,6 @@
             _coursesContainer.SuspendLayout();
             panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)_teacherDGV).BeginInit();
-            panel2.SuspendLayout();
             panel7.SuspendLayout();
             SuspendLayout();
             // 
@@ -285,7 +284,10 @@
             // panel4
             // 
             panel4.BackColor = SystemColors.Control;
+            panel4.Controls.Add(label4);
+            panel4.Controls.Add(_courseCount);
             panel4.Controls.Add(label2);
+            panel4.Controls.Add(label3);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(4, 4);
             panel4.Name = "panel4";
@@ -368,9 +370,6 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(label4);
-            panel2.Controls.Add(_courseCount);
-            panel2.Controls.Add(label3);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(8, 8);
             panel2.Name = "panel2";
@@ -381,7 +380,7 @@
             // 
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(1199, 6);
+            label4.Location = new Point(236, 20);
             label4.Name = "label4";
             label4.Size = new Size(146, 13);
             label4.TabIndex = 2;
@@ -393,7 +392,7 @@
             _courseCount.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             _courseCount.AutoSize = true;
             _courseCount.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            _courseCount.Location = new Point(1351, 6);
+            _courseCount.Location = new Point(388, 20);
             _courseCount.Name = "_courseCount";
             _courseCount.Size = new Size(13, 13);
             _courseCount.TabIndex = 1;
@@ -403,7 +402,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(8, 6);
+            label3.Location = new Point(-955, 20);
             label3.Name = "label3";
             label3.Size = new Size(53, 13);
             label3.TabIndex = 0;
@@ -472,8 +471,6 @@
             _coursesContainer.ResumeLayout(false);
             panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)_teacherDGV).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             ResumeLayout(false);

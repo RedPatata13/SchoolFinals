@@ -37,5 +37,19 @@ namespace Finals.Repositories
                 Include(sy => sy.Semesters).
                 FirstOrDefault(sy => sy.SchoolYearType == SchoolYearType.Upcoming)!;
         }
+
+        public override SchoolYearModel GetById(string id)
+        {
+            return _context.SchoolYearModels.Include(sy => sy.Semesters)
+                .FirstOrDefault(sy => sy.SchoolYearId == id)!;
+        }
+
+        public override IEnumerable<SchoolYearModel> GetAll()
+        {
+            return _context.SchoolYearModels
+                .Include(sy => sy.Semesters)
+                .AsNoTracking()
+                .ToList();
+        }
     }
 }

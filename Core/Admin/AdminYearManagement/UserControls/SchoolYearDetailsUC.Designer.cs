@@ -64,10 +64,17 @@
             label3 = new Label();
             SYDetails_ID = new Label();
             SYDetails_Status = new Label();
+            panel3 = new Panel();
+            _semestersContainer = new Panel();
+            panel4 = new Panel();
+            _addSemesterButton = new Button();
+            label1 = new Label();
             _syInfo2Container.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             _syInfoContainer.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
+            panel3.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -537,10 +544,70 @@
             SYDetails_Status.TabIndex = 32;
             SYDetails_Status.Text = "Ongoing";
             // 
+            // panel3
+            // 
+            panel3.Controls.Add(_semestersContainer);
+            panel3.Controls.Add(panel4);
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(0, 816);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1059, 528);
+            panel3.TabIndex = 34;
+            // 
+            // _semestersContainer
+            // 
+            _semestersContainer.BackColor = SystemColors.ControlDark;
+            _semestersContainer.BorderStyle = BorderStyle.FixedSingle;
+            _semestersContainer.Dock = DockStyle.Fill;
+            _semestersContainer.Location = new Point(0, 40);
+            _semestersContainer.Name = "_semestersContainer";
+            _semestersContainer.Padding = new Padding(8);
+            _semestersContainer.Size = new Size(1059, 488);
+            _semestersContainer.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(_addSemesterButton);
+            panel4.Controls.Add(label1);
+            panel4.Dock = DockStyle.Top;
+            panel4.Location = new Point(0, 0);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(1059, 40);
+            panel4.TabIndex = 0;
+            // 
+            // _addSemesterButton
+            // 
+            _addSemesterButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            _addSemesterButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            _addSemesterButton.BackColor = SystemColors.Highlight;
+            _addSemesterButton.FlatAppearance.BorderColor = Color.Black;
+            _addSemesterButton.FlatStyle = FlatStyle.Flat;
+            _addSemesterButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _addSemesterButton.ForeColor = SystemColors.HighlightText;
+            _addSemesterButton.Location = new Point(966, 8);
+            _addSemesterButton.Name = "_addSemesterButton";
+            _addSemesterButton.Size = new Size(85, 24);
+            _addSemesterButton.TabIndex = 25;
+            _addSemesterButton.Text = "Add";
+            _addSemesterButton.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(8, 8);
+            label1.Name = "label1";
+            label1.Size = new Size(82, 21);
+            label1.TabIndex = 0;
+            label1.Text = "Semesters";
+            // 
             // SchoolYearDetailsUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            Controls.Add(panel3);
             Controls.Add(panel5);
             Controls.Add(_syInfo2Container);
             Controls.Add(panel9);
@@ -549,13 +616,16 @@
             Controls.Add(_syBannerContainer);
             Controls.Add(panel1);
             Name = "SchoolYearDetailsUC";
-            Size = new Size(1059, 822);
+            Size = new Size(1059, 1344);
             _syInfo2Container.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             _syInfoContainer.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -598,5 +668,9 @@
         private Label SYDetails_ID;
         private Label SYDetails_Status;
         private Panel panel4;
+        private Panel panel3;
+        private Label label1;
+        private Button _addSemesterButton;
+        private Panel _semestersContainer;
     }
 }

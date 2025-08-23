@@ -14,9 +14,28 @@ namespace Finals.Models
         public DateTime DateCreated { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
+        public bool IsActive { get; set; } = true;
+        public SemesterStatus Status { get; set; } = SemesterStatus.Preparatory;
+        public SemesterType SemesterType = SemesterType.Standard;
 
-
+        // has to be of type: SemesterType.Extra
+        public ICollection<SemesterModel>? ExtraSemesters { get; set; } = null!;
         public string SchoolYearId { get; set; } = null!;
         public SchoolYearModel SchoolYear { get; set; } = null!;
+
+        public string? StandardSemesterId = null!;
+        public SemesterModel? StandardSemester = null!;
+    }
+
+    public enum SemesterStatus
+    {
+        Ongoing,
+        Concluded,
+        Preparatory
+    }
+
+    public enum SemesterType
+    {
+        Standard, Extra
     }
 }

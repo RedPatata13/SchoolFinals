@@ -7,7 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Finals.Forms;
+using Finals.Forms.UserControls;
 using Finals.Models;
+using Finals.Services;
 
 namespace Finals.Core.Admin.AdminYearManagement.UserControls
 {
@@ -30,16 +33,17 @@ namespace Finals.Core.Admin.AdminYearManagement.UserControls
             InitializeComponent();
             this.Controls.Add(NoSchoolYear);
             SchoolYear = sy;
+            var presenter = new SchoolYearDetailsPresenter(this);
         }
 
-        public SchoolYearModel? SchoolYear 
+        public SchoolYearModel? SchoolYear
         {
             get => _sy;
             set
             {
-                if(value == null)
+                if (value == null)
                 {
-                    foreach(Control control in this.Controls)
+                    foreach (Control control in this.Controls)
                     {
                         control.Visible = false;
                     }
@@ -49,29 +53,82 @@ namespace Finals.Core.Admin.AdminYearManagement.UserControls
                     return;
                 }
 
-                foreach(Control control in this.Controls)
+                foreach (Control control in this.Controls)
                 {
                     control.Visible = true;
                 }
                 NoSchoolYear.Visible = false;
                 _sy = value;
                 LoadSchoolYearDetails(value);
+                LoadSemesters();
             }
+        }
+
+        public event EventHandler AddSemesterClick
+        {
+            add => _addSemesterButton.Click += value;
+            remove => _addSemesterButton.Click -= value;
         }
 
         private void LoadSchoolYearDetails(SchoolYearModel model)
         {
-            if(model == null) throw new Exception("School year model cannot be null.");
+            if (model == null) throw new Exception("School year model cannot be null.");
 
             _syBannerContainer.Controls.Clear();
             var uc = new SchoolYearPhaseUserControl() { Dock = DockStyle.Fill, SchoolYear = model };
             _syBannerContainer.Controls.Add(uc);
+        }
+        private void LoadSemesters()
+        {
+            if (_sy == null) return;
+            _semestersContainer.Controls.Clear();
+            if (_sy.Semesters == null || _sy.Semesters.Count == 0)
+            {
+                _semestersContainer.Controls.Add(new Label()
+                {
+                    Text = "No semesters available",
+                    Dock = DockStyle.Fill,
+                    BackColor = SystemColors.Control,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Font = new Font("Segoe UI", 14, FontStyle.Italic),
+                    ForeColor = SystemColors.GrayText
+                });
+                return;
+            }
+
+            var tabControl = new TabControl();
+            foreach (var semester in _sy.Semesters)
+            {
+                var tabPage = new TabPage(semester.SemesterName)
+                {
+                    Dock = DockStyle.Fill,
+                    BorderStyle = BorderStyle.FixedSingle,
+                    AutoScroll = true
+                };
+                tabControl.TabPages.Add(tabPage);
+
+                var uc = new SemesterUC(semester)
+                {
+                    Dock = DockStyle.Fill
+                };
+
+                tabPage.Controls.Add(uc);
+            }
+            tabControl.Dock = DockStyle.Fill;   
+            _semestersContainer.Controls.Add(tabControl);
+        }
+        public void RefreshInput()
+        {
+            //_sy = _sy!;
+            LoadSemesters();
         }
     }
 
     public interface ISchoolYearDetailsUC
     {
         SchoolYearModel? SchoolYear { get; set; }
+        event EventHandler AddSemesterClick;
+        void RefreshInput();
     }
 
     public class SchoolYearDetailsPresenter
@@ -85,7 +142,39 @@ namespace Finals.Core.Admin.AdminYearManagement.UserControls
 
         private void WireEvents()
         {
+            _view.AddSemesterClick += AddSemesterButton_Click;
+        }
 
+        private void AddSemesterButton_Click(object? sender, EventArgs? e)
+        {
+            using (var dialog = new SemesterCreationDialog())
+            {
+                dialog.Text = "Create a new semester";
+                var result = dialog.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    var semester = dialog.Value;
+                    if(_view.SchoolYear == null)
+                    {
+                        MessageBox.Show("No school year selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    semester.SchoolYearId = _view.SchoolYear.SchoolYearId;
+                    if(_view.SchoolYear.Semesters == null)
+                    {
+                        _view.SchoolYear.Semesters = new List<SemesterModel>();
+                    }
+                    else if (_view.SchoolYear.Semesters.Any(s => s.SemesterName == semester.SemesterName))
+                    {
+                        MessageBox.Show("A semester with this name already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    _view.SchoolYear.Semesters.Add(semester);
+                    SchoolYearRepo.AddSemesterToSchoolYear(_view.SchoolYear.SchoolYearId, semester);
+                    _view.RefreshInput();
+                }
+            }
         }
     }
 }

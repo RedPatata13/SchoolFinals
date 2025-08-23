@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button1 = new Button();
+            _seeSyButton = new Button();
             _currSyButton = new Button();
             _prevSyButton = new Button();
             _nextSyButton = new Button();
@@ -39,7 +39,7 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(_seeSyButton);
             panel1.Controls.Add(_currSyButton);
             panel1.Controls.Add(_prevSyButton);
             panel1.Controls.Add(_nextSyButton);
@@ -49,22 +49,22 @@
             panel1.Size = new Size(1132, 42);
             panel1.TabIndex = 0;
             // 
-            // button1
+            // _seeSyButton
             // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button1.AutoSize = true;
-            button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button1.BackColor = SystemColors.ControlLight;
-            button1.FlatAppearance.BorderColor = Color.Black;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ControlText;
-            button1.Location = new Point(1001, 8);
-            button1.Name = "button1";
-            button1.Size = new Size(125, 27);
-            button1.TabIndex = 38;
-            button1.Text = "School Year Records";
-            button1.UseVisualStyleBackColor = false;
+            _seeSyButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            _seeSyButton.AutoSize = true;
+            _seeSyButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            _seeSyButton.BackColor = SystemColors.ControlLight;
+            _seeSyButton.FlatAppearance.BorderColor = Color.Black;
+            _seeSyButton.FlatStyle = FlatStyle.Flat;
+            _seeSyButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _seeSyButton.ForeColor = SystemColors.ControlText;
+            _seeSyButton.Location = new Point(1001, 8);
+            _seeSyButton.Name = "_seeSyButton";
+            _seeSyButton.Size = new Size(125, 27);
+            _seeSyButton.TabIndex = 38;
+            _seeSyButton.Text = "School Year Records";
+            _seeSyButton.UseVisualStyleBackColor = false;
             // 
             // _currSyButton
             // 
@@ -149,6 +149,6 @@
         private Button _prevSyButton;
         private Button _nextSyButton;
         private Panel _syProjector;
-        private Button button1;
+        private Button _seeSyButton;
     }
 }

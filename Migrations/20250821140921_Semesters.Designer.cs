@@ -4,6 +4,7 @@ using Finals.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Finals.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250821140921_Semesters")]
+    partial class Semesters
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -543,11 +546,6 @@ namespace Finals.Migrations
                         .HasColumnType("datetime(6)")
                         .HasDefaultValue(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
-                    b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
-                        .HasDefaultValue(false);
-
                     b.Property<string>("SchoolYearId")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
@@ -557,19 +555,9 @@ namespace Finals.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("StandardSemesterId")
-                        .HasColumnType("varchar(30)");
-
-                    b.Property<int>("Status")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(2);
-
                     b.HasKey("SemesterId");
 
                     b.HasIndex("SchoolYearId");
-
-                    b.HasIndex("StandardSemesterId");
 
                     b.ToTable("Semesters");
                 });
@@ -971,14 +959,7 @@ namespace Finals.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Finals.Models.SemesterModel", "StandardSemester")
-                        .WithMany("ExtraSemesters")
-                        .HasForeignKey("StandardSemesterId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.Navigation("SchoolYear");
-
-                    b.Navigation("StandardSemester");
                 });
 
             modelBuilder.Entity("Finals.Models.StudentModel", b =>
@@ -1065,11 +1046,6 @@ namespace Finals.Migrations
             modelBuilder.Entity("Finals.Models.SchoolYearModel", b =>
                 {
                     b.Navigation("Semesters");
-                });
-
-            modelBuilder.Entity("Finals.Models.SemesterModel", b =>
-                {
-                    b.Navigation("ExtraSemesters");
                 });
 #pragma warning restore 612, 618
         }

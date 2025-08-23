@@ -11,6 +11,7 @@ namespace Finals.Repositories.Interfaces
     {
         IUserModelRepository Users { get; }
         ITeacherRepository Teacher { get; }
+        ISemesterRepository Semesters { get; }
         ISchoolYearModelRepository SchoolYears { get; }
 
         IProgramRepository Programs { get; }

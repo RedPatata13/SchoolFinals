@@ -51,7 +51,25 @@ namespace Finals.Services
             newSy.IsCurrent = true;
             newSy.Status = SchoolYearStatus.Draft;
             newSy.IsRegistrationOpen = false;
-
+            Func<string, SemesterModel> semester_template = (string name) =>
+            {
+                return new SemesterModel()
+                {
+                    SemesterId = Guid.NewGuid().ToString().Substring(0, 10),
+                    SemesterName = name,
+                    DateStart = DateTime.MinValue,
+                    DateEnd = DateTime.MinValue,
+                    DateCreated = DateTime.Now,
+                    SchoolYearId = newSy.SchoolYearId,
+                    Status = SemesterStatus.Preparatory,
+                    IsActive = false
+                };
+            };
+            var fSemester = semester_template("First Semester");
+            var sSemester = semester_template("Second Semester");
+            var summerSemester = semester_template("Summer");
+            sSemester.ExtraSemesters = new List<SemesterModel>() { summerSemester };
+            newSy.Semesters = new List<SemesterModel> { fSemester, sSemester };
             var repo = RepositoryFactory.Create();
             try
             {
@@ -114,6 +132,51 @@ namespace Finals.Services
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred while concluding the current school year: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                repo.Dispose();
+            }
+        }
+
+        public static void AddSemesterToSchoolYear(string sy_id, SemesterModel model)
+        {
+            IRepository repo = RepositoryFactory.Create();
+            try
+            {
+                if (sy_id == null)
+                {
+                    MessageBox.Show("School Year ID cannot be null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (model == null)
+                {
+                    MessageBox.Show("Semester model cannot be null.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    var schoolYear = repo.SchoolYears.GetById(sy_id);
+                    if (schoolYear == null)
+                    {
+                        MessageBox.Show("School Year not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    model.SchoolYearId = schoolYear.SchoolYearId;
+                    if(String.IsNullOrWhiteSpace(model.SemesterId))
+                    {
+                        model.SemesterId = Guid.NewGuid().ToString().Substring(0, 10);
+                    }
+
+                    repo.Semesters.Add(model);
+                    repo.SaveChanges();
+                    MessageBox.Show("School year updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while updating the school year: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
