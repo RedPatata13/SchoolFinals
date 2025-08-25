@@ -25,6 +25,8 @@ namespace Finals.Models
 
         public string? StandardSemesterId = null!;
         public SemesterModel? StandardSemester = null!;
+
+
     }
 
     public enum SemesterStatus

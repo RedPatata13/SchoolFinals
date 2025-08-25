@@ -52,6 +52,16 @@ namespace Finals.Data.Configuration
                 .HasForeignKey(s => s.AssignedCourseModelId)
                 .OnDelete(DeleteBehavior.Cascade)
                 .IsRequired(false);
+
+            builder.HasOne(c => c.Semester)
+                .WithMany()
+                .HasForeignKey(c => c.SemesterId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
+
+            builder.Property(c => c.Status)
+                .IsRequired()
+                .HasDefaultValue(AssignedCourseStatus.Default);
         }
     }
 }

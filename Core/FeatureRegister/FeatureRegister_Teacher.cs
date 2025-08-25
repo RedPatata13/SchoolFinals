@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Finals.Core.Teacher.TeacherCourseDetailsPage;
+using Finals.Core.Teacher.TeacherCourses;
 using Finals.Core.Teacher.TeacherCoursesPage;
 using Finals.Forms;
+using Finals.Forms.UserControls;
 
 namespace Finals.Core.FeatureRegister
 {
@@ -15,8 +17,12 @@ namespace Finals.Core.FeatureRegister
 
         public void RegisterFeatures(IInterfaceFrame frame)
         {
-            frame.RegisterFeature(new TeacherCoursePage_Feature());
-            frame.RegisterFeature(new TeacherCourseDetails_Feature());
+            frame.RegisterFeature(new TestFeature()
+            {
+                _uc = new TeacherCoursePage_MainContainer(),
+                _name = "Your Courses",
+                _description = "Your courses for this semester."
+            });
             frame.RegisterFeature(new TestFeature()
             {
                 _uc = new Teacher.TeacherCourseTasks.TeacherCourseTasks_Main(),

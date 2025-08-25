@@ -12,11 +12,17 @@ using Finals.Models;
 
 namespace Finals.Core.Teacher.TeacherCourseDetailsPage
 {
-    public partial class TeacherCourseDetailsPage_Main : UserControl
+    public partial class TeacherCourseDetailsPage_Main : UserControl, ITeacherCourseDetailsPage_Main
     {
-        public TeacherCourseDetailsPage_Main()
+        public TeacherCourseDetailsPage_Main(CourseModel_Assigned course)
         {
             InitializeComponent();
+        }
+
+        public event EventHandler BackClick
+        {
+            add => _backButton.Click += value;
+            remove => _backButton.Click -= value;
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -71,5 +77,9 @@ namespace Finals.Core.Teacher.TeacherCourseDetailsPage
                 dialog.ShowDialog(this);
             }
         }
+    }
+    public interface ITeacherCourseDetailsPage_Main
+    {
+        event EventHandler BackClick;
     }
 }

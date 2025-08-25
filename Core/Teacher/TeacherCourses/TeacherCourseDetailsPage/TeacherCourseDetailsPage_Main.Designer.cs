@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button5 = new Button();
+            _backButton = new Button();
             panel2 = new Panel();
             panel4 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -46,6 +46,7 @@
             panel12 = new Panel();
             panel13 = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
+            button6 = new Button();
             label8 = new Label();
             label9 = new Label();
             label10 = new Label();
@@ -54,6 +55,8 @@
             label13 = new Label();
             label16 = new Label();
             label15 = new Label();
+            label1 = new Label();
+            label25 = new Label();
             tableLayoutPanel3 = new TableLayoutPanel();
             panel5 = new Panel();
             panel8 = new Panel();
@@ -78,9 +81,6 @@
             label18 = new Label();
             label19 = new Label();
             panel3 = new Panel();
-            label1 = new Label();
-            label25 = new Label();
-            button6 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
@@ -104,29 +104,29 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(button5);
+            panel1.Controls.Add(_backButton);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1059, 40);
             panel1.TabIndex = 0;
             // 
-            // button5
+            // _backButton
             // 
-            button5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button5.AutoSize = true;
-            button5.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button5.BackColor = SystemColors.Control;
-            button5.FlatAppearance.BorderColor = Color.Black;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.ForeColor = SystemColors.ControlText;
-            button5.Location = new Point(24, 8);
-            button5.Name = "button5";
-            button5.Size = new Size(44, 27);
-            button5.TabIndex = 24;
-            button5.Text = "Back";
-            button5.UseVisualStyleBackColor = false;
+            _backButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            _backButton.AutoSize = true;
+            _backButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            _backButton.BackColor = SystemColors.Control;
+            _backButton.FlatAppearance.BorderColor = Color.Black;
+            _backButton.FlatStyle = FlatStyle.Flat;
+            _backButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _backButton.ForeColor = SystemColors.ControlText;
+            _backButton.Location = new Point(24, 8);
+            _backButton.Name = "_backButton";
+            _backButton.Size = new Size(44, 27);
+            _backButton.TabIndex = 24;
+            _backButton.Text = "Back";
+            _backButton.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -360,6 +360,23 @@
             tableLayoutPanel2.Size = new Size(1019, 152);
             tableLayoutPanel2.TabIndex = 7;
             // 
+            // button6
+            // 
+            button6.Anchor = AnchorStyles.None;
+            button6.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button6.BackColor = SystemColors.WindowFrame;
+            button6.FlatAppearance.BorderColor = Color.Black;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button6.ForeColor = Color.White;
+            button6.Location = new Point(937, 124);
+            button6.Name = "button6";
+            button6.Size = new Size(71, 25);
+            button6.TabIndex = 24;
+            button6.Text = "See all";
+            button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
+            // 
             // label8
             // 
             label8.Anchor = AnchorStyles.Left;
@@ -451,6 +468,29 @@
             label15.Size = new Size(73, 21);
             label15.TabIndex = 11;
             label15.Text = "Schedule";
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Left;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(3, 126);
+            label1.Name = "label1";
+            label1.Size = new Size(161, 21);
+            label1.TabIndex = 13;
+            label1.Text = "Grades Classifications";
+            // 
+            // label25
+            // 
+            label25.Anchor = AnchorStyles.Left;
+            label25.AutoSize = true;
+            label25.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label25.ForeColor = SystemColors.ControlDarkDark;
+            label25.Location = new Point(215, 126);
+            label25.Name = "label25";
+            label25.Size = new Size(19, 21);
+            label25.TabIndex = 14;
+            label25.Text = "5";
             // 
             // tableLayoutPanel3
             // 
@@ -721,46 +761,6 @@
             panel3.Size = new Size(1059, 8);
             panel3.TabIndex = 20;
             // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Left;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(3, 126);
-            label1.Name = "label1";
-            label1.Size = new Size(161, 21);
-            label1.TabIndex = 13;
-            label1.Text = "Grades Classifications";
-            // 
-            // label25
-            // 
-            label25.Anchor = AnchorStyles.Left;
-            label25.AutoSize = true;
-            label25.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label25.ForeColor = SystemColors.ControlDarkDark;
-            label25.Location = new Point(215, 126);
-            label25.Name = "label25";
-            label25.Size = new Size(19, 21);
-            label25.TabIndex = 14;
-            label25.Text = "5";
-            // 
-            // button6
-            // 
-            button6.Anchor = AnchorStyles.None;
-            button6.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button6.BackColor = SystemColors.WindowFrame;
-            button6.FlatAppearance.BorderColor = Color.Black;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.ForeColor = Color.White;
-            button6.Location = new Point(937, 124);
-            button6.Name = "button6";
-            button6.Size = new Size(71, 25);
-            button6.TabIndex = 24;
-            button6.Text = "See all";
-            button6.UseVisualStyleBackColor = false;
-            button6.Click += button6_Click;
-            // 
             // TeacherCourseDetailsPage_Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -856,7 +856,7 @@
         private Label label23;
         private Label label24;
         private Button button3;
-        private Button button5;
+        private Button _backButton;
         private Label label1;
         private Label label25;
         private Button button6;

@@ -11,7 +11,7 @@ namespace Finals.Models
     public class CourseModel_Assigned
     {
         public string AssignedCourseModelId { get; set; } = null!;
-       
+        public DateTime DateAssigned { get; set; }
         public string CourseId { get; set; } = null!;
         public CourseModel Course { get; set; } = null!;
         
@@ -21,13 +21,22 @@ namespace Finals.Models
         public string AssignedId { get; set; } = null!;
         public UserModel AssignedBy { get; set; } = null!;
 
-        public DateTime DateAssigned { get; set; }
+        public string SemesterId { get; set; } = null!;
+        public SemesterModel Semester { get; set; } = null!;
 
         public string SectionId { get; set; } = null!;
         public ClassSectionModel Section { get; set; } = null!;
 
         [NotMapped]
-        public ICollection<StudentModel> Enrollees { get; set;} = new List<StudentModel>();
+        public ICollection<AssignedCourseRegistration> Registrations { get; set; } = new List<AssignedCourseRegistration>();
+
+        public AssignedCourseStatus Status { get; set; } = AssignedCourseStatus.Default;
+
         public ICollection<VenueModel> Schedules { get; set; } = new List<VenueModel>();
+    }
+
+    public enum AssignedCourseStatus
+    {
+        Default, Active, Archived
     }
 }

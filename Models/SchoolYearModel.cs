@@ -26,6 +26,8 @@ namespace Finals.Models
         [Required]
         public DateTime EndDate { get; set; }
         public ICollection<SemesterModel> Semesters { get; set; } = null!;
+        [NotMapped]
+        public ICollection<SchoolYearRegistration> SchoolYearEntrees { get; set; } = null!;
 
         public bool IsOpen => Status == SchoolYearStatus.Active;
         public bool IsCurrent { get; set; }
