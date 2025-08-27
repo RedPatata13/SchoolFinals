@@ -17,7 +17,7 @@ namespace Finals.Models
         public ProgramModel Program { get; set; } = null!;
         public ICollection<ClassBatchModel> Batches { get; set;} = null!;
         public ICollection<ClassSectionTransitionModel> IncomingTransition { get; set; } = null!;
-        [NotMapped]
         public ICollection<CourseModel> DefaultCourses { get; set;} = null!;
+        //public ICollection<SemesterModel> Semesters { get; set; } = null!;
     }
 }

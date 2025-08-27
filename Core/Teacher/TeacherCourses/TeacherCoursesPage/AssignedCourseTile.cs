@@ -50,7 +50,7 @@ namespace Finals.Core.Teacher.TeacherCoursesPage
             
             InitializeComponent();
             CourseModel = model;
-            var hover = new SimpleHoverEffect(Color.LightGray);
+            var hover = new SimpleHoverEffect(Color.LightGray, true);
             hover.ApplyEvents(panel1);
         }
 

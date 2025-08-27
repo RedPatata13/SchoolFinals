@@ -44,6 +44,7 @@ namespace Finals.Forms.UserControls
         private Color _prevColor = Color.Transparent;
         public Color MouseEnter { get => _mouseEnter; set => _mouseEnter = value; }
         public Color PrevColor { get => _prevColor; set =>  _prevColor = value; }
+        private bool CascadeEvents = false;
 
         public void ApplyEvents(Control control)
         {
@@ -51,17 +52,29 @@ namespace Finals.Forms.UserControls
             control.MouseEnter += (_, _) =>
             {
                 control.BackColor = MouseEnter;
+                //if (CascadeEvents && control.HasChildren) ApplyToChildren(control);
             };
 
             control.MouseLeave += (_, _) =>
             {
                 control.BackColor = PrevColor;
+                //if (CascadeEvents && control.HasChildren) ApplyToChildren(control);
             };
         }
 
-        public SimpleHoverEffect(Color color)
+        public SimpleHoverEffect(Color color, bool cascade = false)
         {
             _mouseEnter = color;
+            CascadeEvents = cascade;
+        }
+
+        private void ApplyToChildren(Control control)
+        {
+            foreach (Control child in control.Controls)
+            {
+                ApplyEvents(control);
+                if (child.HasChildren) ApplyToChildren(child);
+            }
         }
     }
 }

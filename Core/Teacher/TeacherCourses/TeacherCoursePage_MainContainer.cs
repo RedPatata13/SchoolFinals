@@ -31,18 +31,31 @@ namespace Finals.Core.Teacher.TeacherCourses
             coursePage.BackClick += (_, _) => action?.Invoke();
         }
 
-        public void DisplayLandingPage()
+        private void DisplayLandingPage()
         {
-            var landingPage = new TeacherCoursePage_LandingPage();
-            landingPage.Dock = DockStyle.Fill;
+            var landingPageFactory = () =>
+            {
+                return new TeacherCoursePage_LandingPage();
+            };
+            var landingPage = landingPageFactory();
             landingPage.LoadCoursePage = DisplayCoursePage;
+            landingPage.BackToLandingPage = () => ProjectLandingPage(landingPageFactory, landingPage);
+
+            ProjectLandingPage(landingPageFactory, landingPage);
+        }
+
+        public void ProjectLandingPage(Func<TeacherCoursePage_LandingPage> landingPageFactory, TeacherCoursePage_LandingPage current)
+        {
+            var landingPage = landingPageFactory();
+            landingPage.Dock = DockStyle.Fill;
             Projector.Project(this, landingPage);
+            current.Dispose();
         }
     }
 
     public interface ITeacherCoursePage_MainContainer
     {
-        void DisplayLandingPage();
+        void ProjectLandingPage(Func<TeacherCoursePage_LandingPage> landingPageFactory, TeacherCoursePage_LandingPage current);
         void DisplayCoursePage(CourseModel_Assigned course, Action action);
     }
 }

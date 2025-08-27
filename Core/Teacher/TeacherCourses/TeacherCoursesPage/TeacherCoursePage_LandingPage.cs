@@ -28,6 +28,7 @@ namespace Finals.Core.Teacher.TeacherCoursesPage
             AutoSize = false
         };
         private Action<CourseModel_Assigned, Action> _loadCoursePage = null!;
+        private Action _loadLandingPage = null!;
         public ICollection<CourseModel_Assigned> courses
         {
             get => _courses;
@@ -41,7 +42,20 @@ namespace Finals.Core.Teacher.TeacherCoursesPage
         public Action<CourseModel_Assigned, Action> LoadCoursePage 
         {
             get => _loadCoursePage;
-            set => _loadCoursePage = value;
+            set
+            {
+                _loadCoursePage = value;
+                RenderCourses();
+            }
+        }
+        public Action BackToLandingPage
+        {
+            get => _loadLandingPage;
+            set
+            {
+                _loadLandingPage = value;
+                RenderCourses();
+            }
         }
 
         private void RenderCourses()
@@ -75,5 +89,6 @@ namespace Finals.Core.Teacher.TeacherCoursesPage
     {
         ICollection<CourseModel_Assigned> courses { get; set; }
         Action<CourseModel_Assigned, Action> LoadCoursePage { get; set; }
+        Action BackToLandingPage { get; set; }
     }
 }

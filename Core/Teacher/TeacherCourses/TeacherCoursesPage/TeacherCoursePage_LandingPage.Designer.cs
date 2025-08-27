@@ -80,15 +80,16 @@
             // 
             // _TilesContainer
             // 
-            _TilesContainer.BackColor = SystemColors.ActiveCaption;
+            _TilesContainer.BackColor = Color.Transparent;
             _TilesContainer.Dock = DockStyle.Top;
             _TilesContainer.Location = new Point(0, 56);
+            _TilesContainer.MinimumSize = new Size(0, 600);
             _TilesContainer.Name = "_TilesContainer";
-            _TilesContainer.Padding = new Padding(12);
-            _TilesContainer.Size = new Size(1059, 456);
+            _TilesContainer.Padding = new Padding(0, 12, 0, 12);
+            _TilesContainer.Size = new Size(1059, 651);
             _TilesContainer.TabIndex = 2;
             // 
-            // TeacherCoursePage_MainContainer
+            // TeacherCoursePage_LandingPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -96,7 +97,7 @@
             Controls.Add(_TilesContainer);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Name = "TeacherCoursePage_MainContainer";
+            Name = "TeacherCoursePage_LandingPage";
             Size = new Size(1059, 707);
             panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);

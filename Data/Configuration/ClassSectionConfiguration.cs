@@ -39,7 +39,11 @@ namespace Finals.Data.Configuration
                 .WithOne(b => b.ClassSection)
                 .HasForeignKey(b => b.ClassSectionId)
                 .IsRequired();
-               
+
+            builder.HasMany(c => c.DefaultCourses)
+                .WithMany()
+                .UsingEntity(j => j.ToTable("ClassSectionDefaultCourses"));
+
 
             builder.ToTable("ClassSections");
         }
