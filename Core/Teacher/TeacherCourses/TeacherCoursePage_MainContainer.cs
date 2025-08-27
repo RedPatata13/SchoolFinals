@@ -29,6 +29,7 @@ namespace Finals.Core.Teacher.TeacherCourses
             Projector.Project(this, coursePage);
 
             coursePage.BackClick += (_, _) => action?.Invoke();
+            //MessageBox.Show("this gets clicked");
         }
 
         private void DisplayLandingPage()
@@ -41,13 +42,17 @@ namespace Finals.Core.Teacher.TeacherCourses
             landingPage.LoadCoursePage = DisplayCoursePage;
             landingPage.BackToLandingPage = () => ProjectLandingPage(landingPageFactory, landingPage);
 
-            ProjectLandingPage(landingPageFactory, landingPage);
+            //ProjectLandingPage(landingPageFactory, landingPage);
+            landingPage.Dock = DockStyle.Fill;
+            Projector.Project(this, landingPage);
         }
 
         public void ProjectLandingPage(Func<TeacherCoursePage_LandingPage> landingPageFactory, TeacherCoursePage_LandingPage current)
         {
             var landingPage = landingPageFactory();
             landingPage.Dock = DockStyle.Fill;
+            landingPage.LoadCoursePage = DisplayCoursePage;
+            landingPage.BackToLandingPage = () => ProjectLandingPage(landingPageFactory, landingPage);
             Projector.Project(this, landingPage);
             current.Dispose();
         }

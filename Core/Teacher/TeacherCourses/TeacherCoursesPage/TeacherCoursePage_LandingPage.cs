@@ -45,6 +45,7 @@ namespace Finals.Core.Teacher.TeacherCoursesPage
             set
             {
                 _loadCoursePage = value;
+                //MessageBox.Show("setter called");   
                 RenderCourses();
             }
         }
@@ -74,7 +75,12 @@ namespace Finals.Core.Teacher.TeacherCoursesPage
             foreach (var course in _courses)
             {
                 var tile = new AssignedCourseTile(course);
-                
+                tile.TileClicked += (s, e) =>
+                {
+                    LoadCoursePage?.Invoke(course, BackToLandingPage);
+                    if(LoadCoursePage == null) MessageBox.Show("LoadCoursePage is null");
+                    //MessageBox.Show("tile clicked");
+                };
                 _TilesContainer.Controls.Add(tile);
             }
         }
