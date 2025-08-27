@@ -26,6 +26,7 @@ namespace Finals.Core.Teacher.TeacherCourses
         {
             var coursePage = new TeacherCourseDetailsPage_Main(course);
             coursePage.Dock = DockStyle.Fill;
+            coursePage.ProjectToContainer = ProjectToContainer;
             Projector.Project(this, coursePage);
 
             coursePage.BackClick += (_, _) => action?.Invoke();
@@ -56,11 +57,18 @@ namespace Finals.Core.Teacher.TeacherCourses
             Projector.Project(this, landingPage);
             current.Dispose();
         }
+
+        public void ProjectToContainer(Control control, bool fillDock = false)
+        {
+            if(fillDock) control.Dock = DockStyle.Fill;
+            Projector.Project(this, control);
+        }
     }
 
     public interface ITeacherCoursePage_MainContainer
     {
         void ProjectLandingPage(Func<TeacherCoursePage_LandingPage> landingPageFactory, TeacherCoursePage_LandingPage current);
         void DisplayCoursePage(CourseModel_Assigned course, Action action);
+        void ProjectToContainer(Control control, bool fillDock = false);
     }
 }

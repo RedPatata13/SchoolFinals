@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Forms.UserControls.HoverEffect hoverEffect2 = new Forms.UserControls.HoverEffect();
+            Forms.UserControls.HoverEffect hoverEffect4 = new Forms.UserControls.HoverEffect();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskDetailsDialog));
             coursePanel1 = new UserControls.CoursePanel();
             panel1 = new Panel();
@@ -82,9 +82,9 @@
             // 
             // coursePanel1
             // 
-            hoverEffect2.MouseEnter = SystemColors.ControlLight;
-            hoverEffect2.PrevColor = SystemColors.ActiveBorder;
-            coursePanel1.DefaultHoverEffects = hoverEffect2;
+            hoverEffect4.MouseEnter = SystemColors.ControlLight;
+            hoverEffect4.PrevColor = SystemColors.ActiveBorder;
+            coursePanel1.DefaultHoverEffects = hoverEffect4;
             coursePanel1.IsOngoing = false;
             coursePanel1.Location = new Point(0, 0);
             coursePanel1.Name = "coursePanel1";
@@ -95,9 +95,9 @@
             // panel1
             // 
             panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(12, 8);
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1095, 24);
+            panel1.Size = new Size(1119, 24);
             panel1.TabIndex = 0;
             // 
             // panel3
@@ -109,9 +109,9 @@
             panel3.Controls.Add(label5);
             panel3.Controls.Add(panel4);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(12, 136);
+            panel3.Location = new Point(0, 128);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1095, 629);
+            panel3.Size = new Size(1119, 645);
             panel3.TabIndex = 6;
             // 
             // panel10
@@ -290,7 +290,7 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
-            button3.Location = new Point(800, 16);
+            button3.Location = new Point(800, 24);
             button3.Name = "button3";
             button3.Size = new Size(85, 24);
             button3.TabIndex = 26;
@@ -303,7 +303,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F);
             label5.ForeColor = SystemColors.ControlDarkDark;
-            label5.Location = new Point(696, 24);
+            label5.Location = new Point(696, 32);
             label5.Name = "label5";
             label5.Size = new Size(103, 15);
             label5.TabIndex = 6;
@@ -370,9 +370,9 @@
             // panel9
             // 
             panel9.Dock = DockStyle.Top;
-            panel9.Location = new Point(12, 128);
+            panel9.Location = new Point(0, 120);
             panel9.Name = "panel9";
-            panel9.Size = new Size(1095, 8);
+            panel9.Size = new Size(1119, 8);
             panel9.TabIndex = 5;
             // 
             // panel11
@@ -381,9 +381,9 @@
             panel11.BorderStyle = BorderStyle.FixedSingle;
             panel11.Controls.Add(tableLayoutPanel2);
             panel11.Dock = DockStyle.Top;
-            panel11.Location = new Point(12, 40);
+            panel11.Location = new Point(0, 32);
             panel11.Name = "panel11";
-            panel11.Size = new Size(1095, 88);
+            panel11.Size = new Size(1119, 88);
             panel11.TabIndex = 4;
             // 
             // tableLayoutPanel2
@@ -515,9 +515,9 @@
             // panel2
             // 
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(12, 32);
+            panel2.Location = new Point(0, 24);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1095, 8);
+            panel2.Size = new Size(1119, 8);
             panel2.TabIndex = 1;
             // 
             // panel12
@@ -526,9 +526,9 @@
             panel12.Controls.Add(button7);
             panel12.Controls.Add(button6);
             panel12.Dock = DockStyle.Bottom;
-            panel12.Location = new Point(12, 728);
+            panel12.Location = new Point(0, 736);
             panel12.Name = "panel12";
-            panel12.Size = new Size(1095, 37);
+            panel12.Size = new Size(1119, 37);
             panel12.TabIndex = 7;
             // 
             // button7
@@ -540,7 +540,7 @@
             button7.FlatStyle = FlatStyle.Flat;
             button7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button7.ForeColor = SystemColors.ControlText;
-            button7.Location = new Point(8, 8);
+            button7.Location = new Point(944, 8);
             button7.Name = "button7";
             button7.Size = new Size(85, 24);
             button7.TabIndex = 28;
@@ -556,7 +556,7 @@
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.White;
-            button6.Location = new Point(96, 8);
+            button6.Location = new Point(1032, 8);
             button6.Name = "button6";
             button6.Size = new Size(85, 24);
             button6.TabIndex = 27;
@@ -576,7 +576,6 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "TaskDetailsDialog";
-            Padding = new Padding(12, 8, 12, 8);
             StartPosition = FormStartPosition.CenterParent;
             Text = "TaskDetailsDialog";
             panel3.ResumeLayout(false);

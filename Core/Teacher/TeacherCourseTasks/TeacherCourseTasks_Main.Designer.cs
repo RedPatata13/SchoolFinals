@@ -354,10 +354,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            BackColor = SystemColors.ActiveCaption;
             Controls.Add(tableLayoutPanel3);
             Controls.Add(panel3);
             Controls.Add(panel12);
             Controls.Add(panel1);
+            MinimumSize = new Size(0, 707);
             Name = "TeacherCourseTasks_Main";
             Size = new Size(1059, 707);
             tableLayoutPanel3.ResumeLayout(false);

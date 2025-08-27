@@ -29,6 +29,7 @@ namespace Finals.Core.Teacher.TeacherCoursesPage
         };
         private Action<CourseModel_Assigned, Action> _loadCoursePage = null!;
         private Action _loadLandingPage = null!;
+        private Action _projectToContainer = null!;
         public ICollection<CourseModel_Assigned> courses
         {
             get => _courses;
@@ -55,6 +56,16 @@ namespace Finals.Core.Teacher.TeacherCoursesPage
             set
             {
                 _loadLandingPage = value;
+                RenderCourses();
+            }
+        }
+
+        public Action ProjectToContainer
+        {
+            get => _projectToContainer;
+            set
+            {
+                _projectToContainer = value;
                 RenderCourses();
             }
         }
@@ -96,5 +107,6 @@ namespace Finals.Core.Teacher.TeacherCoursesPage
         ICollection<CourseModel_Assigned> courses { get; set; }
         Action<CourseModel_Assigned, Action> LoadCoursePage { get; set; }
         Action BackToLandingPage { get; set; }
+        Action ProjectToContainer { get; set; }
     }
 }

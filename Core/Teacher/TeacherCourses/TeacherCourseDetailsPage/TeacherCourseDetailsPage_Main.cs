@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Finals.Forms.UserControls;
 using Finals.Models;
+using Finals.Core.Teacher.TeacherCourseTasks;
 
 namespace Finals.Core.Teacher.TeacherCourseDetailsPage
 {
     public partial class TeacherCourseDetailsPage_Main : UserControl, ITeacherCourseDetailsPage_Main
     {
+        private Action<Control, bool> _projectToContainer = null!;
         public TeacherCourseDetailsPage_Main(CourseModel_Assigned course)
         {
             InitializeComponent();
@@ -77,9 +79,24 @@ namespace Finals.Core.Teacher.TeacherCourseDetailsPage
                 dialog.ShowDialog(this);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ProjectToContainer?.Invoke(new TeacherCourseTasks_Main(), true);
+        }
+
+        public Action<Control, bool> ProjectToContainer
+        {
+            get => _projectToContainer;
+            set
+            {
+                _projectToContainer = value;
+            }
+        }
     }
     public interface ITeacherCourseDetailsPage_Main
     {
         event EventHandler BackClick;
+        Action<Control, bool> ProjectToContainer { get; set; }
     }
 }

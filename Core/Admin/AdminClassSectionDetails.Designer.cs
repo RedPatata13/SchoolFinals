@@ -80,6 +80,13 @@
             tabPage1 = new TabPage();
             tableLayoutPanel5 = new TableLayoutPanel();
             panel5 = new Panel();
+            _defaultCourses = new DataGridView();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            CourseDateCreated = new DataGridViewTextBoxColumn();
+            DateAdded = new DataGridViewTextBoxColumn();
+            AddedBy = new DataGridViewTextBoxColumn();
+            RemoveCourse = new DataGridViewButtonColumn();
             panel7 = new Panel();
             _selectorComboBox = new ComboBox();
             label6 = new Label();
@@ -95,13 +102,6 @@
             label4 = new Label();
             label10 = new Label();
             panel3 = new Panel();
-            _defaultCourses = new DataGridView();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            CourseDateCreated = new DataGridViewTextBoxColumn();
-            DateAdded = new DataGridViewTextBoxColumn();
-            AddedBy = new DataGridViewTextBoxColumn();
-            RemoveCourse = new DataGridViewButtonColumn();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
@@ -122,11 +122,11 @@
             tabPage1.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)_defaultCourses).BeginInit();
             panel7.SuspendLayout();
             panel6.SuspendLayout();
             CourseTemplatesContainer.SuspendLayout();
             panel14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)_defaultCourses).BeginInit();
             SuspendLayout();
             // 
             // panel2
@@ -517,6 +517,7 @@
             _courses.Location = new Point(0, 40);
             _courses.Name = "_courses";
             _courses.ReadOnly = true;
+            _courses.RowHeadersVisible = false;
             _courses.Size = new Size(907, 410);
             _courses.TabIndex = 3;
             // 
@@ -746,6 +747,58 @@
             panel5.Size = new Size(909, 450);
             panel5.TabIndex = 44;
             // 
+            // _defaultCourses
+            // 
+            _defaultCourses.AllowUserToAddRows = false;
+            _defaultCourses.AllowUserToDeleteRows = false;
+            _defaultCourses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            _defaultCourses.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, CourseDateCreated, DateAdded, AddedBy, RemoveCourse });
+            _defaultCourses.Dock = DockStyle.Fill;
+            _defaultCourses.Location = new Point(0, 40);
+            _defaultCourses.Name = "_defaultCourses";
+            _defaultCourses.ReadOnly = true;
+            _defaultCourses.RowHeadersVisible = false;
+            _defaultCourses.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            _defaultCourses.Size = new Size(909, 410);
+            _defaultCourses.TabIndex = 4;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn5.HeaderText = "Course Name";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.HeaderText = "CourseId";
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // CourseDateCreated
+            // 
+            CourseDateCreated.HeaderText = "Date Created";
+            CourseDateCreated.Name = "CourseDateCreated";
+            CourseDateCreated.ReadOnly = true;
+            // 
+            // DateAdded
+            // 
+            DateAdded.HeaderText = "Date Added";
+            DateAdded.Name = "DateAdded";
+            DateAdded.ReadOnly = true;
+            // 
+            // AddedBy
+            // 
+            AddedBy.HeaderText = "Added By";
+            AddedBy.Name = "AddedBy";
+            AddedBy.ReadOnly = true;
+            // 
+            // RemoveCourse
+            // 
+            RemoveCourse.HeaderText = "Remove Course";
+            RemoveCourse.Name = "RemoveCourse";
+            RemoveCourse.ReadOnly = true;
+            // 
             // panel7
             // 
             panel7.BackColor = SystemColors.ControlLight;
@@ -922,56 +975,6 @@
             panel3.Size = new Size(1057, 8);
             panel3.TabIndex = 0;
             // 
-            // _defaultCourses
-            // 
-            _defaultCourses.AllowUserToAddRows = false;
-            _defaultCourses.AllowUserToDeleteRows = false;
-            _defaultCourses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            _defaultCourses.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, CourseDateCreated, DateAdded, AddedBy, RemoveCourse });
-            _defaultCourses.Dock = DockStyle.Fill;
-            _defaultCourses.Location = new Point(0, 40);
-            _defaultCourses.Name = "_defaultCourses";
-            _defaultCourses.ReadOnly = true;
-            _defaultCourses.Size = new Size(909, 410);
-            _defaultCourses.TabIndex = 4;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn5.HeaderText = "Course Name";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.HeaderText = "CourseId";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // CourseDateCreated
-            // 
-            CourseDateCreated.HeaderText = "Date Created";
-            CourseDateCreated.Name = "CourseDateCreated";
-            CourseDateCreated.ReadOnly = true;
-            // 
-            // DateAdded
-            // 
-            DateAdded.HeaderText = "Date Added";
-            DateAdded.Name = "DateAdded";
-            DateAdded.ReadOnly = true;
-            // 
-            // AddedBy
-            // 
-            AddedBy.HeaderText = "Added By";
-            AddedBy.Name = "AddedBy";
-            AddedBy.ReadOnly = true;
-            // 
-            // RemoveCourse
-            // 
-            RemoveCourse.HeaderText = "Remove Course";
-            RemoveCourse.Name = "RemoveCourse";
-            RemoveCourse.ReadOnly = true;
-            // 
             // AdminClassSectionDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1008,12 +1011,12 @@
             tabPage1.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
             panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)_defaultCourses).EndInit();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             panel6.ResumeLayout(false);
             CourseTemplatesContainer.ResumeLayout(false);
             panel14.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)_defaultCourses).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

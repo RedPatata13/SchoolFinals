@@ -235,6 +235,7 @@
             button1.TabIndex = 23;
             button1.Text = "See all";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // label24
             // 
