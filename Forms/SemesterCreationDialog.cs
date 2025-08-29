@@ -13,7 +13,7 @@ namespace Finals.Forms
 {
     public partial class SemesterCreationDialog : Form, ISemesterCreationDialog
     {
-        private SemesterModel _value = new SemesterModel();
+        private TermModel _value = new TermModel();
         public SemesterCreationDialog()
         {
             InitializeComponent();
@@ -24,18 +24,18 @@ namespace Finals.Forms
             startDateTimeSelector.CustomFormat = endDateTimeSelector.CustomFormat = "hh:mm tt";
         }
 
-        public SemesterModel Value
+        public TermModel Value
         {
             get
             {
-                _value.SemesterName = textBox1.Text.Trim();
+                _value.TermName = textBox1.Text.Trim();
                 _value.DateStart = StartDate_Date;
                 _value.DateEnd = EndDate_Date;
                 _value.IsActive = false;
-                _value.Status = SemesterStatus.Preparatory;
-                _value.SemesterType = SemesterType.Standard;
+                _value.Status = TermStatus.Preparatory;
+                _value.TermType = TermType.Standard;
                 _value.DateCreated = DateTime.Now;
-                _value.SemesterId = Guid.NewGuid().ToString().Substring(0, 10);
+                _value.TermId = Guid.NewGuid().ToString().Substring(0, 10);
 
                 return _value;
             }
@@ -87,7 +87,7 @@ namespace Finals.Forms
             ValidateInput();
             var input = textBox1.Text.Trim();
             _charCount.Text = $"{input.Length}/100";
-            _value.SemesterName = input;
+            _value.TermName = input;
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -117,7 +117,7 @@ namespace Finals.Forms
 
     public interface ISemesterCreationDialog
     {
-        SemesterModel Value { get; set; }
+        TermModel Value { get; set; }
         string SemesterName { get; }
         DateTime StartDate_Date { get; }
         DateTime EndDate_Date { get; }

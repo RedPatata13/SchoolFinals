@@ -20,34 +20,34 @@ namespace Finals.Repositories
         public SchoolYearModel GetCurrentSchoolYear()
         {
             return _context.SchoolYearModels.
-                Include(sy => sy.Semesters).
+                Include(sy => sy.Terms).
                 FirstOrDefault(sy => sy.SchoolYearType == SchoolYearType.Current)!;
         }
 
         public SchoolYearModel GetPreviousSchoolYear()
         {
             return _context.SchoolYearModels.
-                Include(sy => sy.Semesters).
+                Include(sy => sy.Terms).
                 FirstOrDefault(sy => sy.SchoolYearType == SchoolYearType.Previous)!;
         }
 
         public SchoolYearModel GetUpcomingSchoolYear()
         {
             return _context.SchoolYearModels.
-                Include(sy => sy.Semesters).
+                Include(sy => sy.Terms).
                 FirstOrDefault(sy => sy.SchoolYearType == SchoolYearType.Upcoming)!;
         }
 
         public override SchoolYearModel GetById(string id)
         {
-            return _context.SchoolYearModels.Include(sy => sy.Semesters)
+            return _context.SchoolYearModels.Include(sy => sy.Terms)
                 .FirstOrDefault(sy => sy.SchoolYearId == id)!;
         }
 
         public override IEnumerable<SchoolYearModel> GetAll()
         {
             return _context.SchoolYearModels
-                .Include(sy => sy.Semesters)
+                .Include(sy => sy.Terms)
                 .AsNoTracking()
                 .ToList();
         }

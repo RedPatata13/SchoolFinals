@@ -12,7 +12,7 @@ namespace Finals.Models
         public string ClassSectionId { get; set; } = null!;
         public ClassSectionModel ClassSection { get; set; } = null!;
         public string SemesterId { get; set; } = null!;
-        public SemesterModel Semester { get; set; } = null!;
+        public TermModel Semester { get; set; } = null!;
         public ICollection<CourseModel> Courses { get; set; } = null!;
     }
 }

@@ -7,7 +7,7 @@ using Finals.Models;
 
 namespace Finals.Repositories.Interfaces
 {
-    public interface ISemesterRepository : IBaseRepository<SemesterModel>
+    public interface ISemesterRepository : IBaseRepository<TermModel>
     {
 
     }

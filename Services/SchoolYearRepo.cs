@@ -51,25 +51,25 @@ namespace Finals.Services
             newSy.IsCurrent = true;
             newSy.Status = SchoolYearStatus.Draft;
             newSy.IsRegistrationOpen = false;
-            Func<string, SemesterModel> semester_template = (string name) =>
+            Func<string, TermModel> semester_template = (string name) =>
             {
-                return new SemesterModel()
+                return new TermModel()
                 {
-                    SemesterId = Guid.NewGuid().ToString().Substring(0, 10),
-                    SemesterName = name,
+                    TermId = Guid.NewGuid().ToString().Substring(0, 10),
+                    TermName = name,
                     DateStart = DateTime.MinValue,
                     DateEnd = DateTime.MinValue,
                     DateCreated = DateTime.Now,
                     SchoolYearId = newSy.SchoolYearId,
-                    Status = SemesterStatus.Preparatory,
+                    Status = TermStatus.Preparatory,
                     IsActive = false
                 };
             };
             var fSemester = semester_template("First Semester");
             var sSemester = semester_template("Second Semester");
             var summerSemester = semester_template("Summer");
-            sSemester.ExtraSemesters = new List<SemesterModel>() { summerSemester };
-            newSy.Semesters = new List<SemesterModel> { fSemester, sSemester };
+            sSemester.ExtraTerms = new List<TermModel>() { summerSemester };
+            newSy.Terms = new List<TermModel> { fSemester, sSemester };
             var repo = RepositoryFactory.Create();
             try
             {
@@ -139,7 +139,7 @@ namespace Finals.Services
             }
         }
 
-        public static void AddSemesterToSchoolYear(string sy_id, SemesterModel model)
+        public static void AddSemesterToSchoolYear(string sy_id, TermModel model)
         {
             IRepository repo = RepositoryFactory.Create();
             try
@@ -164,9 +164,9 @@ namespace Finals.Services
                     }
 
                     model.SchoolYearId = schoolYear.SchoolYearId;
-                    if(String.IsNullOrWhiteSpace(model.SemesterId))
+                    if(String.IsNullOrWhiteSpace(model.TermId))
                     {
-                        model.SemesterId = Guid.NewGuid().ToString().Substring(0, 10);
+                        model.TermId = Guid.NewGuid().ToString().Substring(0, 10);
                     }
 
                     repo.Semesters.Add(model);

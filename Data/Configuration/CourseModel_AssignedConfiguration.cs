@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Finals.Data.Configuration
-{
+{  
     public class CourseModel_AssignedConfiguration : IEntityTypeConfiguration<CourseModel_Assigned>
     {
         public void Configure(EntityTypeBuilder<CourseModel_Assigned> builder)
@@ -62,6 +62,12 @@ namespace Finals.Data.Configuration
             builder.Property(c => c.Status)
                 .IsRequired()
                 .HasDefaultValue(AssignedCourseStatus.Default);
+
+            builder.HasOne(c => c.Term)
+                .WithMany()
+                .HasForeignKey(c => c.TermId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);
         }
     }
 }

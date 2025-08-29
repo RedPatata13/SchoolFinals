@@ -7,34 +7,35 @@ using Finals.Models;
 
 namespace Finals.Models
 {
-    public class SemesterModel
+    public class TermModel
     {
-        public string SemesterId { get; set; } = null!;
-        public string SemesterName { get; set; } = null!;
+        public string TermId { get; set; } = null!;
+        public string TermName { get; set; } = null!;
         public DateTime DateCreated { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
         public bool IsActive { get; set; } = true;
-        public SemesterStatus Status { get; set; } = SemesterStatus.Preparatory;
-        public SemesterType SemesterType = SemesterType.Standard;
+        public TermStatus Status { get; set; } = TermStatus.Preparatory;
+        public TermType TermType = TermType.Standard;
 
         // has to be of type: SemesterType.Extra
-        public ICollection<SemesterModel>? ExtraSemesters { get; set; } = null!;
+        public ICollection<TermModel>? ExtraTerms { get; set; } = null!;
         public string SchoolYearId { get; set; } = null!;
         public SchoolYearModel SchoolYear { get; set; } = null!;
 
-        public string? StandardSemesterId = null!;
-        public SemesterModel? StandardSemester = null!;
+        //public bool IsExtraTerm = false;
+        public string? StandardTermId = null!;
+        public TermModel? StandardTerm = null!;
     }
 
-    public enum SemesterStatus
+    public enum TermStatus
     {
         Ongoing,
         Concluded,
         Preparatory
     }
 
-    public enum SemesterType
+    public enum TermType
     {
         Standard, Extra, TemplateItem
     }

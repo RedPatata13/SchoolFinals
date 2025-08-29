@@ -82,7 +82,7 @@ namespace Finals.Core.Admin.AdminYearManagement.UserControls
         {
             if (_sy == null) return;
             _semestersContainer.Controls.Clear();
-            if (_sy.Semesters == null || _sy.Semesters.Count == 0)
+            if (_sy.Terms == null || _sy.Terms.Count == 0)
             {
                 _semestersContainer.Controls.Add(new Label()
                 {
@@ -97,9 +97,9 @@ namespace Finals.Core.Admin.AdminYearManagement.UserControls
             }
 
             var tabControl = new TabControl();
-            foreach (var semester in _sy.Semesters)
+            foreach (var semester in _sy.Terms)
             {
-                var tabPage = new TabPage(semester.SemesterName)
+                var tabPage = new TabPage(semester.TermName)
                 {
                     Dock = DockStyle.Fill,
                     BorderStyle = BorderStyle.FixedSingle,
@@ -161,16 +161,16 @@ namespace Finals.Core.Admin.AdminYearManagement.UserControls
                         return;
                     }
                     semester.SchoolYearId = _view.SchoolYear.SchoolYearId;
-                    if(_view.SchoolYear.Semesters == null)
+                    if(_view.SchoolYear.Terms == null)
                     {
-                        _view.SchoolYear.Semesters = new List<SemesterModel>();
+                        _view.SchoolYear.Terms = new List<TermModel>();
                     }
-                    else if (_view.SchoolYear.Semesters.Any(s => s.SemesterName == semester.SemesterName))
+                    else if (_view.SchoolYear.Terms.Any(s => s.TermName == semester.TermName))
                     {
                         MessageBox.Show("A semester with this name already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    _view.SchoolYear.Semesters.Add(semester);
+                    _view.SchoolYear.Terms.Add(semester);
                     SchoolYearRepo.AddSemesterToSchoolYear(_view.SchoolYear.SchoolYearId, semester);
                     _view.RefreshInput();
                 }

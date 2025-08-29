@@ -13,14 +13,14 @@ namespace Finals.Forms.UserControls
 {
     public partial class SemesterUC : UserControl, ISemesterUC
     {
-        private SemesterModel _model = new SemesterModel();
-        public SemesterUC(SemesterModel model)
+        private TermModel _model = new TermModel();
+        public SemesterUC(TermModel model)
         {
             InitializeComponent();
             Model = model;
         }
 
-        public SemesterModel Model
+        public TermModel Model
         {
             get => _model;
             set => _model = value;
@@ -29,6 +29,6 @@ namespace Finals.Forms.UserControls
 
     public interface ISemesterUC
     {
-        SemesterModel Model { get; set; }
+        TermModel Model { get; set; }
     }
 }

@@ -19,9 +19,9 @@
                 builder.Property(sy => sy.IsCurrent).IsRequired();
                 builder.Property(sy => sy.IsRegistrationOpen).IsRequired();
                 builder.Property(sy => sy.SchoolYearType).IsRequired().HasDefaultValue(SchoolYearType.NotSet);
-                builder.HasMany(sy => sy.Semesters).WithOne(s => s.SchoolYear).HasForeignKey(s => s.SchoolYearId);
-
-                builder.Property(sy => sy.StartDate).IsRequired();
+                builder.HasMany(sy => sy.Terms).WithOne(s => s.SchoolYear).HasForeignKey(s => s.SchoolYearId);
+                builder.HasMany(sy => sy.SchoolYearEntrees).WithOne(e => e.SchoolYear).HasForeignKey(e => e.SchoolYearId);
+            builder.Property(sy => sy.StartDate).IsRequired();
                 builder.Property(sy => sy.EndDate).IsRequired();
             }
         }

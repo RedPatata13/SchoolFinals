@@ -15,9 +15,11 @@ namespace Finals.Models
         public int YearLevel { get; set; } = 0;
         public string ProgramId { get; set; } = null!;
         public ProgramModel Program { get; set; } = null!;
-        public ICollection<ClassBatchModel> Batches { get; set;} = null!;
+        //public ICollection<ClassBatchModel> Batches { get; set;} = null!; //redundant remove later
         public ICollection<ClassSectionTransitionModel> IncomingTransition { get; set; } = null!;
         public ICollection<CourseModel> DefaultCourses { get; set;} = null!;
+
+        public ICollection<ClassSectionTermDataModel> TermData { get; set; } = null!;
         //public ICollection<SemesterModel> Semesters { get; set; } = null!;
     }
 }

@@ -35,14 +35,19 @@ namespace Finals.Data.Configuration
                 .IsRequired();
 
 
-            builder.HasMany(c => c.Batches)
-                .WithOne(b => b.ClassSection)
-                .HasForeignKey(b => b.ClassSectionId)
-                .IsRequired();
+            //builder.HasMany(c => c.Batches)
+            //    .WithOne(b => b.ClassSection)
+            //    .HasForeignKey(b => b.ClassSectionId)
+            //    .IsRequired();
 
             builder.HasMany(c => c.DefaultCourses)
                 .WithMany()
                 .UsingEntity(j => j.ToTable("ClassSectionDefaultCourses"));
+
+            builder.HasMany(c => c.TermData)
+                .WithOne(td => td.ClassSection)
+                .HasForeignKey(td => td.ClassSectionId)
+                .IsRequired(false);
 
 
             builder.ToTable("ClassSections");

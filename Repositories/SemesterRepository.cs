@@ -9,7 +9,7 @@ using Finals.Repositories.Interfaces;
 
 namespace Finals.Repositories
 {
-    public class SemesterRepository : BaseRepository<SemesterModel>, ISemesterRepository
+    public class SemesterRepository : BaseRepository<TermModel>, ISemesterRepository
     {
         public SemesterRepository(AppDbContext context) : base(context)
         {

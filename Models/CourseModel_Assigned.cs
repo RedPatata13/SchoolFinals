@@ -22,11 +22,13 @@ namespace Finals.Models
         public UserModel AssignedBy { get; set; } = null!;
 
         public string SemesterId { get; set; } = null!;
-        public SemesterModel Semester { get; set; } = null!;
+        public TermModel Semester { get; set; } = null!;
 
         public string SectionId { get; set; } = null!;
         public ClassSectionModel Section { get; set; } = null!;
 
+        public string TermId { get; set; } = null!;
+        public ClassSectionTermDataModel Term { get; set; } = null!;
         [NotMapped]
         public ICollection<AssignedCourseRegistration> Registrations { get; set; } = new List<AssignedCourseRegistration>();
 

@@ -10,7 +10,7 @@ namespace Finals.Models
     {
         public string SemesterRegistrationId { get; set; } = null!;
         public string SemesterId { get; set; } = null!;
-        public SemesterModel Semester { get; set; } = null!;
+        public TermModel Semester { get; set; } = null!;
         public string UserId { get; set; } = null!;
         public StudentModel Student { get; set; } = null!;
         public DateTime RegistrationDate { get; set; } = DateTime.MinValue;

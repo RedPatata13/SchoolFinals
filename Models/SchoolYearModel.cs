@@ -9,24 +9,22 @@ namespace Finals.Models
     public class SchoolYearModel
     {
         [Key]
-        public string SchoolYearId { get; set; } = Guid.NewGuid().ToString(); // EF Core PK
+        public string SchoolYearId { get; set; } = Guid.NewGuid().ToString();
 
         [Required]
         [StringLength(50)]
-        public string Name { get; set; } = null!; // e.g., "2024-2025"
+        public string Name { get; set; } = null!; 
 
-        // Status Management (simplified)
+
         public SchoolYearStatus Status { get; set; } = SchoolYearStatus.Draft;
         public SchoolYearType SchoolYearType { get; set; } = SchoolYearType.NotSet;
 
-        // Date Range (school year, not phases)
         [Required]
         public DateTime StartDate { get; set; }
 
         [Required]
         public DateTime EndDate { get; set; }
-        public ICollection<SemesterModel> Semesters { get; set; } = null!;
-        [NotMapped]
+        public ICollection<TermModel> Terms { get; set; } = null!;
         public ICollection<SchoolYearRegistration> SchoolYearEntrees { get; set; } = null!;
 
         public bool IsOpen => Status == SchoolYearStatus.Active;

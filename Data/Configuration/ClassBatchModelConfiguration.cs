@@ -34,10 +34,10 @@ namespace Finals.Data.Configuration
                 .HasConversion<string>()
                 .HasDefaultValue(ClassBatchStatus.Default);
 
-            builder.HasOne(c => c.ClassSection)
-                .WithMany(b => b.Batches)
-                .HasForeignKey(c => c.ClassSectionId)
-                .IsRequired();
+            //builder.HasOne(c => c.ClassSection)
+            //    .WithMany(b => b.Batches)
+            //    .HasForeignKey(c => c.ClassSectionId)
+            //    .IsRequired();
 
             builder.HasMany(c => c.ClassEntries)
                 .WithOne(e => e.ClassBatch)
