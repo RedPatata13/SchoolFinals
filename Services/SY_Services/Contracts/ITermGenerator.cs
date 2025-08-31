@@ -9,7 +9,7 @@ namespace Finals.Services.SY_Services.Contracts
 {
     public interface ITermGenerator
     {
-        ICollection<TermModel> GenerateTerms(SchoolYearModel schoolYear, params string[] termNames);
+        ICollection<TermModel> GenerateTerms(string schoolYearId, params string[] termNames);
         void AddExtraTermsToStandardTerm(TermModel termModel, params string[] extraTermNames);
     }
 }

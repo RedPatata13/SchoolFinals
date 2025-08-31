@@ -7,7 +7,7 @@ using Finals.Models;
 
 namespace Finals.Services.SY_Services.Contracts
 {
-    public interface IProgramTermDataGenerator
+    public interface IClassSectionTermDataGenerator
     {
         ClassSectionTermDataModel GenerateProgramTermData(string classSectionId, string schoolYearId, string termId, bool nullNonStrings = true);
     }

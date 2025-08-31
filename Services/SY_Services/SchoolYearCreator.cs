@@ -13,12 +13,12 @@ namespace Finals.Services.SY_Services
     public class SchoolYearCreator : ISchoolYearCreator
     {
         private readonly ITermGenerator _termGenerator;
-        private readonly IProgramTermDataGenerator _programTermDataGenerator;
+        private readonly IClassSectionTermDataGenerator _programTermDataGenerator;
         private readonly Func<IRepository> _repositoryFactory;
         private readonly string _userId;
         public SchoolYearCreator(
             ITermGenerator termGenerator,
-            IProgramTermDataGenerator programTermDataGenerator,
+            IClassSectionTermDataGenerator programTermDataGenerator,
             Func<IRepository> repositoryFactory,
             string userId)
         {
@@ -76,7 +76,7 @@ namespace Finals.Services.SY_Services
 
         private void GenerateTerms(SchoolYearModel sy, SYTemplate template)
         {
-            var terms = _termGenerator.GenerateTerms(sy, template.TermNames.ToArray());
+            var terms = _termGenerator.GenerateTerms(sy.SchoolYearId, template.TermNames.ToArray());
             var termMap = terms.ToDictionary(t => t.TermName, t => t);
             foreach (var kv in template.ExtraTerms)
             {
