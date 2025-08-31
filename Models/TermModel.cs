@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Finals.Models;
 
 namespace Finals.Models
-{
+{ 
     public class TermModel
     {
         public string TermId { get; set; } = null!;

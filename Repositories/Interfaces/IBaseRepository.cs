@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Finals.Repositories.Interfaces
 {
-    public interface IBaseRepository<T>
+    public interface IBaseRepository<T> : IDisposable
     {
         T GetById(string id);
         IEnumerable<T> GetAll();

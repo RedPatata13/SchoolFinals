@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Transactions;
 using Finals.Core;
 using Finals.Models;
 using Finals.Repositories.Interfaces;
-using Finals.Services.SY_Creation_Pipe;
+//using Finals.Services.SY_Creation_Pipe;
 
 namespace Finals.Services
 {
@@ -42,7 +43,7 @@ namespace Finals.Services
                 // temporarily empty    
             };
 
-            var result = GenerateSchoolYearIdAndName(newSy);
+            var result = GenerateSchoolYearIdentity(newSy);
 
             if (result != Status.Ok)
             {
@@ -90,7 +91,7 @@ namespace Finals.Services
             throw new NotImplementedException("An operation that should not be reached has occured");
         }
 
-        private static Status GenerateSchoolYearIdAndName(SchoolYearModel model)
+        private static Status GenerateSchoolYearIdentity(SchoolYearModel model)
         {
             var repo = RepositoryFactory.Create();
             try
@@ -242,29 +243,6 @@ namespace Finals.Services
             {
                 repo.Dispose();
             }
-        }
-
-        public static void InitializeNewSchoolYear(ITermGenerator termGenerator, IProgramTermDataGenerator programTermDataGenerator)
-        {
-            //create sy
-            var schoolYear = new SchoolYearModel();
-            var id_gen_status = GenerateSchoolYearIdAndName(schoolYear);
-
-            if(id_gen_status != Status.Ok) { throw new Exception("An unexpected error has occured.");  }
-
-            //gen terms
-            var terms = termGenerator.GenerateTerms(schoolYear, "First Semester", "Second Semester");
-            var second = terms.FirstOrDefault(t => t.TermName == "Second Semeter");
-            
-            if(second != null) termGenerator.AddExtraTermsToStandardTerm(second, "Summer");
-
-            var programs = ProgramRepo.GetAll();
-            foreach (var program in programs)
-            {
-                programTermDataGenerator.GenerateProgramTermData(program.ProgramId, schoolYear.SchoolYearId);
-            }
-
-            // set schoolYear to current
         }
     }
 }

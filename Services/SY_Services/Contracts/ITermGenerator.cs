@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Finals.Models;
 
-namespace Finals.Services.SY_Creation_Pipe
+namespace Finals.Services.SY_Services.Contracts
 {
     public interface ITermGenerator
     {
