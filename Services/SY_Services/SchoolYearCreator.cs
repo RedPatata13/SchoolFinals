@@ -38,12 +38,13 @@ namespace Finals.Services.SY_Services
             var sy = new SchoolYearModel();
             GenerateSchoolYearIdentity(sy);
             GenerateTerms(sy, template);
+            SetSchoolYearAsActive(sy);
             GenerateProgramTermData(sy);
-            if (concludeCurrentSchoolYear)
-            {
-                ConcludeCurrentSchoolYear();
-                SetSchoolYearAsActive(sy);
-            }
+            //if (concludeCurrentSchoolYear)
+            //{
+            //    ConcludeCurrentSchoolYear();
+            //    SetSchoolYearAsActive(sy);
+            //}
 
             return sy;
         }
@@ -161,6 +162,7 @@ namespace Finals.Services.SY_Services
             {
                 sy.Status = SchoolYearStatus.Active;
                 sy.IsCurrent = true;
+                sy.SchoolYearType = SchoolYearType.Current;
                 repo.SchoolYears.Add(sy);
                 repo.SaveChanges();
                 MessageBox.Show("New school year set as active successfully.",

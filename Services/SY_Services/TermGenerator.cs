@@ -21,7 +21,7 @@ namespace Finals.Services.SY_Services
             {
                 var extraTerm = new TermModel
                 {
-                    TermId = Guid.NewGuid().ToString(),
+                    TermId = Guid.NewGuid().ToString().Substring(0, 10),
                     TermName = extraTermName,
                     SchoolYearId = termModel.SchoolYearId,
                     DateStart = default(DateTime),
@@ -39,14 +39,15 @@ namespace Finals.Services.SY_Services
         {
             return termNames.Select(name => new TermModel
             {
-                TermId = Guid.NewGuid().ToString(),
+                TermId = Guid.NewGuid().ToString().Substring(0, 10),
                 TermName = name,
                 DateCreated = DateTime.UtcNow,
                 DateStart = default(DateTime),
                 DateEnd = default(DateTime),
                 IsActive = true,
                 Status = TermStatus.Preparatory,
-                TermType = TermType.Standard
+                TermType = TermType.Standard,
+                SchoolYearId = schoolYearId
             }).ToList();
         }
     }
