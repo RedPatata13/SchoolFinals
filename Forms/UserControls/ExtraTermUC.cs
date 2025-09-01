@@ -26,6 +26,9 @@ namespace Finals.Forms.UserControls
             set
             {
                 _term = value;
+                string termName = (String.IsNullOrWhiteSpace(_term.TermName)) ? "Unnamed Term" : _term.TermName;
+                _termName.Text = termName;
+                _termNameHeader.Text = $"{termName} Configuration";
             }
         }
     }

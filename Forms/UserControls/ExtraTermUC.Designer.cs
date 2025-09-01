@@ -31,11 +31,11 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             button4 = new Button();
             button3 = new Button();
-            label2 = new Label();
+            _termName = new Label();
             label3 = new Label();
             label5 = new Label();
             panel4 = new Panel();
-            label4 = new Label();
+            _termNameHeader = new Label();
             tableLayoutPanel2.SuspendLayout();
             panel4.SuspendLayout();
             SuspendLayout();
@@ -49,7 +49,7 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 96F));
             tableLayoutPanel2.Controls.Add(button4, 2, 1);
             tableLayoutPanel2.Controls.Add(button3, 2, 0);
-            tableLayoutPanel2.Controls.Add(label2, 1, 0);
+            tableLayoutPanel2.Controls.Add(_termName, 1, 0);
             tableLayoutPanel2.Controls.Add(label3, 0, 0);
             tableLayoutPanel2.Controls.Add(label5, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Top;
@@ -94,16 +94,16 @@
             button3.Text = "Edit";
             button3.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // _termName
             // 
-            label2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(218, 10);
-            label2.Name = "label2";
-            label2.Size = new Size(511, 21);
-            label2.TabIndex = 16;
-            label2.Text = "Semester Name";
+            _termName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            _termName.AutoSize = true;
+            _termName.Font = new Font("Segoe UI", 12F);
+            _termName.Location = new Point(218, 10);
+            _termName.Name = "_termName";
+            _termName.Size = new Size(511, 21);
+            _termName.TabIndex = 16;
+            _termName.Text = "Semester Name";
             // 
             // label3
             // 
@@ -112,9 +112,9 @@
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.Location = new Point(20, 10);
             label3.Name = "label3";
-            label3.Size = new Size(124, 21);
+            label3.Size = new Size(90, 21);
             label3.TabIndex = 1;
-            label3.Text = "Semester Name:";
+            label3.Text = "Term Name";
             // 
             // label5
             // 
@@ -123,28 +123,28 @@
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.Location = new Point(20, 48);
             label5.Name = "label5";
-            label5.Size = new Size(174, 21);
+            label5.Size = new Size(171, 21);
             label5.TabIndex = 29;
-            label5.Text = "Remove this Extra term.";
+            label5.Text = "Remove this Extra term";
             // 
             // panel4
             // 
-            panel4.Controls.Add(label4);
+            panel4.Controls.Add(_termNameHeader);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
             panel4.Size = new Size(846, 48);
             panel4.TabIndex = 7;
             // 
-            // label4
+            // _termNameHeader
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(8, 8);
-            label4.Name = "label4";
-            label4.Size = new Size(319, 30);
-            label4.TabIndex = 1;
-            label4.Text = "[Semester's Name] Configuration";
+            _termNameHeader.AutoSize = true;
+            _termNameHeader.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _termNameHeader.Location = new Point(8, 8);
+            _termNameHeader.Name = "_termNameHeader";
+            _termNameHeader.Size = new Size(319, 30);
+            _termNameHeader.TabIndex = 1;
+            _termNameHeader.Text = "[Semester's Name] Configuration";
             // 
             // ExtraTermUC
             // 
@@ -167,10 +167,10 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Button button4;
         private Button button3;
-        private Label label2;
+        private Label _termName;
         private Label label3;
         private Label label5;
         private Panel panel4;
-        private Label label4;
+        private Label _termNameHeader;
     }
 }

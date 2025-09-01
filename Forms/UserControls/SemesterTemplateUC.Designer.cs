@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             _header = new Panel();
-            _nameSettings = new Label();
+            _termName = new Label();
             label1 = new Label();
-            _semesterName = new Label();
+            _termNameDetails = new Label();
             _editProgramName = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             button5 = new Button();
@@ -69,22 +69,22 @@
             // 
             // _header
             // 
-            _header.Controls.Add(_nameSettings);
+            _header.Controls.Add(_termName);
             _header.Dock = DockStyle.Top;
             _header.Location = new Point(0, 0);
             _header.Name = "_header";
             _header.Size = new Size(906, 48);
             _header.TabIndex = 0;
             // 
-            // _nameSettings
+            // _termName
             // 
-            _nameSettings.AutoSize = true;
-            _nameSettings.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            _nameSettings.Location = new Point(8, 8);
-            _nameSettings.Name = "_nameSettings";
-            _nameSettings.Size = new Size(319, 30);
-            _nameSettings.TabIndex = 1;
-            _nameSettings.Text = "[Semester's Name] Configuration";
+            _termName.AutoSize = true;
+            _termName.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _termName.Location = new Point(8, 8);
+            _termName.Name = "_termName";
+            _termName.Size = new Size(319, 30);
+            _termName.TabIndex = 1;
+            _termName.Text = "[Semester's Name] Configuration";
             // 
             // label1
             // 
@@ -93,20 +93,20 @@
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(20, 10);
             label1.Name = "label1";
-            label1.Size = new Size(124, 21);
+            label1.Size = new Size(90, 21);
             label1.TabIndex = 1;
-            label1.Text = "Semester Name:";
+            label1.Text = "Term Name";
             // 
-            // _semesterName
+            // _termNameDetails
             // 
-            _semesterName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            _semesterName.AutoSize = true;
-            _semesterName.Font = new Font("Segoe UI", 12F);
-            _semesterName.Location = new Point(174, 10);
-            _semesterName.Name = "_semesterName";
-            _semesterName.Size = new Size(623, 21);
-            _semesterName.TabIndex = 16;
-            _semesterName.Text = "Semester Name";
+            _termNameDetails.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            _termNameDetails.AutoSize = true;
+            _termNameDetails.Font = new Font("Segoe UI", 12F);
+            _termNameDetails.Location = new Point(174, 10);
+            _termNameDetails.Name = "_termNameDetails";
+            _termNameDetails.Size = new Size(623, 21);
+            _termNameDetails.TabIndex = 16;
+            _termNameDetails.Text = "_termName";
             // 
             // _editProgramName
             // 
@@ -132,7 +132,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 96F));
             tableLayoutPanel1.Controls.Add(_editProgramName, 2, 0);
-            tableLayoutPanel1.Controls.Add(_semesterName, 1, 0);
+            tableLayoutPanel1.Controls.Add(_termNameDetails, 1, 0);
             tableLayoutPanel1.Controls.Add(label1, 0, 0);
             tableLayoutPanel1.Controls.Add(button5, 2, 1);
             tableLayoutPanel1.Controls.Add(label6, 0, 1);
@@ -169,9 +169,9 @@
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.Location = new Point(20, 50);
             label6.Name = "label6";
-            label6.Size = new Size(136, 21);
+            label6.Size = new Size(133, 21);
             label6.TabIndex = 30;
-            label6.Text = "Remove this term.";
+            label6.Text = "Remove this term";
             // 
             // panel1
             // 
@@ -431,9 +431,9 @@
         #endregion
 
         private Panel _header;
-        private Label _nameSettings;
+        private Label _termName;
         private Label label1;
-        private Label _semesterName;
+        private Label _termNameDetails;
         private Button _editProgramName;
         private TableLayoutPanel tableLayoutPanel1;
         private Label label6;
