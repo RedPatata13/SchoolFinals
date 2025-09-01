@@ -7,6 +7,7 @@ using System;
 using System.Configuration;
 using Finals.Data.Configuration;
 using Finals.Models;
+using Finals.Services.SY_Services;
 
 namespace Finals.Data
 {
@@ -37,6 +38,7 @@ namespace Finals.Data
             // SY
             modelBuilder.ApplyConfiguration(new SchoolYearModelConfiguration());
             modelBuilder.ApplyConfiguration(new SchoolYearRegistrationConfiguration());
+            modelBuilder.ApplyConfiguration(new SYTemplateConfiguration());
 
             // Class Section
             modelBuilder.ApplyConfiguration(new ClassSectionTermDataConfiguration());
@@ -56,6 +58,7 @@ namespace Finals.Data
         // School Cycle
         public DbSet<SchoolYearModel> SchoolYearModels { get; set; } = null!;
         public DbSet<SchoolYearRegistration> SchoolYearRegistrations { get; set; } = null!;
+        public DbSet<SYTemplate> SYTemplates { get; set; } = null!;
 
         public DbSet<TermModel> Semesters { get; set; } = null!;
 

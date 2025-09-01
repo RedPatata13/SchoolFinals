@@ -34,11 +34,13 @@
             _prevSyButton = new Button();
             _nextSyButton = new Button();
             _syProjector = new Panel();
+            _configurationButton = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(_configurationButton);
             panel1.Controls.Add(_seeSyButton);
             panel1.Controls.Add(_currSyButton);
             panel1.Controls.Add(_prevSyButton);
@@ -125,6 +127,23 @@
             _syProjector.Size = new Size(1132, 617);
             _syProjector.TabIndex = 1;
             // 
+            // _configurationButton
+            // 
+            _configurationButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            _configurationButton.AutoSize = true;
+            _configurationButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            _configurationButton.BackColor = SystemColors.ControlLight;
+            _configurationButton.FlatAppearance.BorderColor = Color.Black;
+            _configurationButton.FlatStyle = FlatStyle.Flat;
+            _configurationButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _configurationButton.ForeColor = SystemColors.ControlText;
+            _configurationButton.Location = new Point(904, 8);
+            _configurationButton.Name = "_configurationButton";
+            _configurationButton.Size = new Size(93, 27);
+            _configurationButton.TabIndex = 39;
+            _configurationButton.Text = "Configuration";
+            _configurationButton.UseVisualStyleBackColor = false;
+            // 
             // AdminYearManagement_Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -150,5 +169,6 @@
         private Button _nextSyButton;
         private Panel _syProjector;
         private Button _seeSyButton;
+        private Button _configurationButton;
     }
 }

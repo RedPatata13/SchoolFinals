@@ -13,6 +13,7 @@ using Finals.Services;
 using Finals.Services.Contracts;
 using Finals.Models;
 using Finals.Forms;
+using Finals.Services.SY_Services;
 
 namespace Finals.Core.Admin.AdminYearManagement
 {
@@ -60,6 +61,12 @@ namespace Finals.Core.Admin.AdminYearManagement
 
         public SchoolYearModel SchoolYearDisplayed => _displayed!;
 
+        public event EventHandler ConfigureSYClick
+        {
+            add => _configurationButton.Click += value;
+            remove => _configurationButton.Click -= value;
+        }
+
         public event EventHandler SeeSchoolYearsClick
         {
             add => _seeSyButton.Click += value;
@@ -101,6 +108,7 @@ namespace Finals.Core.Admin.AdminYearManagement
         event EventHandler UpcomingSyClick;
         event EventHandler PreviousSyClick;
         event EventHandler SeeSchoolYearsClick;
+        event EventHandler ConfigureSYClick;
         void ProjectSy(SchoolYearModel? model);
     }
 
@@ -108,6 +116,16 @@ namespace Finals.Core.Admin.AdminYearManagement
     {
         public readonly IAdminYearManagement_Main _view;
         private EventHandler _currentMainAction = (_, _) => { }; // do nothing
+        private SYTemplate _tempTemplate = new SYTemplate()
+        {
+            TemplateId = "STANDARDTEMPLATEID",
+            TemplateName = "Standard Template",
+            TermNames = new List<string>() { "First Semester", "Second Semester" },
+            ExtraTerms = new Dictionary<string, string>()
+            {
+                { "Second Semester", "Summer" }
+            }
+        };
         public AdminYearManagementPresenter(IAdminYearManagement_Main view)
         {
             _view = view;
@@ -128,6 +146,7 @@ namespace Finals.Core.Admin.AdminYearManagement
             _view.UpcomingSyClick += (_, _) => OnNextSyClick();
             _view.PreviousSyClick += (_, _) => OnPrevSyClick();
             _view.SeeSchoolYearsClick += (_, _) => OnSeeSyClick();
+            _view.ConfigureSYClick += (_, _) => OnConfigureSyClick();
         }
         private void Initialize()
         {
@@ -163,6 +182,35 @@ namespace Finals.Core.Admin.AdminYearManagement
                     _view.ProjectSy(dialog.Value);
                     MessageBox.Show($"School Year: {dialog.Value.Name} selected", "Viewed School Year has been changed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+        }
+
+        private void OnConfigureSyClick()
+        {
+            var repo = RepositoryFactory.Create();
+            try
+            {
+                var template = repo.SYTemplates.GetById("STANDARDTEMPLATEID");
+                using (var dialog = new SchoolYearConfigurationForm(template))
+                {
+                    dialog.Text = "School Year Configuration";
+                    dialog.StartPosition = FormStartPosition.CenterScreen;
+                    var result = dialog.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while retrieving the school year template: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                repo.Dispose();
+
             }
         }
     }

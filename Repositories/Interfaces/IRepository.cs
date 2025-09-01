@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Finals.Models;
+using Finals.Services.SY_Services;
 
 namespace Finals.Repositories.Interfaces
 {
@@ -13,7 +14,7 @@ namespace Finals.Repositories.Interfaces
         ITeacherRepository Teacher { get; }
         ISemesterRepository Semesters { get; }
         ISchoolYearModelRepository SchoolYears { get; }
-
+        BaseRepository<SYTemplate> SYTemplates { get; }
         IProgramRepository Programs { get; }
         IProgramEditsRepository ProgramEdits { get; }
         IClassSectionEditRepository ClassSectionEdits { get; }

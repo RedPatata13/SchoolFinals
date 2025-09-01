@@ -7,6 +7,7 @@ using Finals.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Finals.Data;
 using Finals.Models;
+using Finals.Services.SY_Services;
 
 namespace Finals.Repositories
 {
@@ -30,7 +31,8 @@ namespace Finals.Repositories
         private ICourseRepository _courses = null!;
         private IAssignedCoursesRepository _assignedCourses = null!;
         private ISemesterRepository _semesters = null!;
-       
+        private BaseRepository<SYTemplate> _syTemplates = null!;    
+
         IUserModelRepository IRepository.Users => _users;
         ISchoolYearModelRepository IRepository.SchoolYears => _schools;
 
@@ -60,7 +62,10 @@ namespace Finals.Repositories
 
         ITeacherRepository IRepository.Teacher => _teachers;
 
-        public ISemesterRepository Semesters => _semesters;
+
+        ISemesterRepository IRepository.Semesters => _semesters;
+
+        BaseRepository<SYTemplate> IRepository.SYTemplates => _syTemplates;
 
         public Repository(AppDbContext dbContext)
         {
@@ -81,6 +86,7 @@ namespace Finals.Repositories
             _courses = new CourseRepository(_dbContext);
             _assignedCourses = new AssignedCoursesRepository(_dbContext);
             _semesters = new SemesterRepository(_dbContext);
+            _syTemplates = new BaseRepository<SYTemplate>(_dbContext);
         }
 
         void IDisposable.Dispose()
