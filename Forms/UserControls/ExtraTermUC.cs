@@ -7,14 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Finals.Models;
 
 namespace Finals.Forms.UserControls
 {
-    public partial class ExtraTermUC : UserControl
+    public partial class ExtraTermUC : UserControl, IExtraTermUC
     {
-        public ExtraTermUC()
+        private TermModel _term = null!;
+        public ExtraTermUC(TermModel model)
         {
             InitializeComponent();
+            Term = model;
         }
+
+        public TermModel Term
+        {
+            get => _term;
+            set
+            {
+                _term = value;
+            }
+        }
+    }
+
+    public interface IExtraTermUC
+    {
+        TermModel Term { get; set; }
     }
 }

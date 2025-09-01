@@ -14,7 +14,7 @@ namespace Finals.Repositories.Interfaces
         ITeacherRepository Teacher { get; }
         ISemesterRepository Semesters { get; }
         ISchoolYearModelRepository SchoolYears { get; }
-        BaseRepository<SYTemplate> SYTemplates { get; }
+        ISYTemplateRepository SYTemplates { get; }
         IProgramRepository Programs { get; }
         IProgramEditsRepository ProgramEdits { get; }
         IClassSectionEditRepository ClassSectionEdits { get; }

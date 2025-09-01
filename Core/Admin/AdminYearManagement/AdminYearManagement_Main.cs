@@ -23,6 +23,7 @@ namespace Finals.Core.Admin.AdminYearManagement
         private SchoolYearModel? _prev = null!;
         private SchoolYearModel? _upcoming = null!;
         private SchoolYearModel? _displayed = null!;
+        private SYTemplate _tempalte = null!;
         private string sy_Name = null!;
 
         public AdminYearManagement_Main()
@@ -60,6 +61,12 @@ namespace Finals.Core.Admin.AdminYearManagement
         }
 
         public SchoolYearModel SchoolYearDisplayed => _displayed!;
+
+        public SYTemplate SYTemplate
+        {
+            get => _tempalte;
+            set => _tempalte = value;
+        }
 
         public event EventHandler ConfigureSYClick
         {
@@ -103,6 +110,7 @@ namespace Finals.Core.Admin.AdminYearManagement
         SchoolYearModel? CurrentSchoolYear { get; set; }
         SchoolYearModel? UpcomingSchoolYear { get; set; }
         SchoolYearModel? PreviousSchoolYear { get; set; }
+        SYTemplate SYTemplate { get; set; }
         SchoolYearModel? SchoolYearDisplayed { get; }
         event EventHandler CurrentSyClick;
         event EventHandler UpcomingSyClick;
@@ -116,29 +124,20 @@ namespace Finals.Core.Admin.AdminYearManagement
     {
         public readonly IAdminYearManagement_Main _view;
         private EventHandler _currentMainAction = (_, _) => { }; // do nothing
-        private SYTemplate _tempTemplate = new SYTemplate()
-        {
-            TemplateId = "STANDARDTEMPLATEID",
-            TemplateName = "Standard Template",
-            TermNames = new List<string>() { "First Semester", "Second Semester" },
-            ExtraTerms = new Dictionary<string, string>()
-            {
-                { "Second Semester", "Summer" }
-            }
-        };
         public AdminYearManagementPresenter(IAdminYearManagement_Main view)
         {
             _view = view;
             PopulateSchoolYear();
             WireEvents();
             Initialize();
-            
+
         }
         private void PopulateSchoolYear()
         {
             _view.CurrentSchoolYear = SchoolYearRepo.GetCurrentSchoolYear();
             _view.PreviousSchoolYear = SchoolYearRepo.GetPreviousSchoolYear();
             _view.UpcomingSchoolYear = SchoolYearRepo.GetUpcomingSchoolYear();
+            _view.SYTemplate = GetCurrentTemplate();
         }
         private void WireEvents()
         {
@@ -187,30 +186,37 @@ namespace Finals.Core.Admin.AdminYearManagement
 
         private void OnConfigureSyClick()
         {
+            using (var dialog = new SchoolYearConfigurationForm(_view.SYTemplate))
+            {
+                dialog.Text = "School Year Configuration";
+                dialog.StartPosition = FormStartPosition.CenterScreen;
+                var result = dialog.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }
+        }
+
+        private SYTemplate GetCurrentTemplate()
+        {
             var repo = RepositoryFactory.Create();
             try
             {
-                var template = repo.SYTemplates.GetById("STANDARDTEMPLATEID");
-                using (var dialog = new SchoolYearConfigurationForm(template))
-                {
-                    dialog.Text = "School Year Configuration";
-                    dialog.StartPosition = FormStartPosition.CenterScreen;
-                    var result = dialog.ShowDialog();
-
-                    if (result == DialogResult.OK)
-                    {
-
-                    }
-                }
+                var template = repo.SYTemplates.GetActiveTemplate()
+                    ?? throw new InvalidOperationException("No active template found.");
+                return template;
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred while retrieving the school year template: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
             }
             finally
             {
                 repo.Dispose();
-
             }
         }
     }

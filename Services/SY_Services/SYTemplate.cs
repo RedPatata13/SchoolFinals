@@ -21,5 +21,6 @@ namespace Finals.Services.SY_Services
         /// value: Comma-separated extra term names
         /// </summary>
         public Dictionary<string, string> ExtraTerms { get; set; } = new Dictionary<string, string>();
+        public bool IsActive { get; set; } = false;
     }
 }

@@ -25,7 +25,7 @@ namespace Finals.Forms.UserControls
         public SemesterTemplateUC(TermModel term)
         {
             InitializeComponent();
-            _term = term;
+            Term = term;
         }
 
         public TermModel Term
@@ -54,7 +54,7 @@ namespace Finals.Forms.UserControls
             };
             foreach (var extraTerm in _term.ExtraTerms)
             {
-                var extraTermUC = new SemesterUC(extraTerm);
+                var extraTermUC = new ExtraTermUC(extraTerm);
                 extraTermUC.Dock = DockStyle.Fill;
 
                 var tabPage = new TabPage(extraTerm.TermName);

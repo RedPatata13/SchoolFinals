@@ -29,6 +29,7 @@ namespace Finals.Data.Configuration
                           v => System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(v, (System.Text.Json.JsonSerializerOptions?)null) ?? new Dictionary<string, string>()
                      )
                      .IsRequired();
+            builder.Property(builder => builder.IsActive);
         }
     }
 }
