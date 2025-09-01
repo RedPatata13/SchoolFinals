@@ -27,6 +27,8 @@ namespace Finals.Data.Configuration
                    .WithOne(s => s.StandardTerm)
                    .HasForeignKey(s => s.StandardTermId)
                    .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Property(s => s.Precendence).IsRequired().HasDefaultValue(-1);
             //builder.Property
             builder.ToTable("Terms");
         }

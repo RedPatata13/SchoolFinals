@@ -26,6 +26,8 @@ namespace Finals.Models
         //public bool IsExtraTerm = false;
         public string? StandardTermId = null!;
         public TermModel? StandardTerm = null!;
+
+        public int Precendence { get; set; } = -1;
     }
 
     public enum TermStatus

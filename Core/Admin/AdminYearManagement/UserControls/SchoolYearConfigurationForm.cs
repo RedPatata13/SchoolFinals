@@ -70,8 +70,8 @@ namespace Finals.Core.Admin.AdminYearManagement.UserControls
             };
             
             var terms = SYTemplateUtil.ConstructTermsFromTemplate(SYTemplate);
-
-            foreach(var term in terms)
+            terms.OrderBy(t => t.Precendence == - 1? int.MaxValue : t.Precendence);
+            foreach (var term in terms)
             {
                 var termUc = new SemesterTemplateUC(term);
                 termUc.Dock = DockStyle.Fill;

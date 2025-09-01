@@ -128,7 +128,6 @@
             // panel3
             // 
             panel3.BackColor = SystemColors.Control;
-            panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(_termsContainer);
             panel3.Controls.Add(panel4);
             panel3.Dock = DockStyle.Fill;
@@ -146,7 +145,7 @@
             _termsContainer.Location = new Point(8, 64);
             _termsContainer.Name = "_termsContainer";
             _termsContainer.Padding = new Padding(8);
-            _termsContainer.Size = new Size(1224, 450);
+            _termsContainer.Size = new Size(1226, 452);
             _termsContainer.TabIndex = 40;
             // 
             // panel4
@@ -157,7 +156,7 @@
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(8, 8);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1224, 56);
+            panel4.Size = new Size(1226, 56);
             panel4.TabIndex = 39;
             // 
             // label4

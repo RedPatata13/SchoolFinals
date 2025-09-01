@@ -187,10 +187,10 @@
             // 
             panel2.Controls.Add(_extraTermsContainer);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 40);
+            panel2.Location = new Point(0, 48);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(16, 0, 8, 8);
-            panel2.Size = new Size(906, 190);
+            panel2.Size = new Size(906, 182);
             panel2.TabIndex = 8;
             // 
             // _extraTermsContainer
@@ -203,7 +203,7 @@
             _extraTermsContainer.MaximumSize = new Size(0, 182);
             _extraTermsContainer.Name = "_extraTermsContainer";
             _extraTermsContainer.Padding = new Padding(8);
-            _extraTermsContainer.Size = new Size(882, 182);
+            _extraTermsContainer.Size = new Size(882, 174);
             _extraTermsContainer.TabIndex = 7;
             // 
             // tabControl1
@@ -213,7 +213,7 @@
             tabControl1.Location = new Point(8, 8);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(864, 164);
+            tabControl1.Size = new Size(864, 156);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -223,13 +223,14 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(856, 136);
+            tabPage1.Size = new Size(856, 128);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Summer";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
+            tableLayoutPanel2.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             tableLayoutPanel2.ColumnCount = 3;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 197F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -258,7 +259,7 @@
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.White;
-            button4.Location = new Point(757, 46);
+            button4.Location = new Point(756, 47);
             button4.Name = "button4";
             button4.Size = new Size(85, 24);
             button4.TabIndex = 28;
@@ -274,7 +275,7 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
-            button3.Location = new Point(757, 8);
+            button3.Location = new Point(756, 9);
             button3.Name = "button3";
             button3.Size = new Size(85, 24);
             button3.TabIndex = 25;
@@ -286,9 +287,9 @@
             label2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(216, 9);
+            label2.Location = new Point(218, 10);
             label2.Name = "label2";
-            label2.Size = new Size(535, 21);
+            label2.Size = new Size(531, 21);
             label2.TabIndex = 16;
             label2.Text = "Semester Name";
             // 
@@ -297,7 +298,7 @@
             label3.Anchor = AnchorStyles.Left;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(19, 9);
+            label3.Location = new Point(20, 10);
             label3.Name = "label3";
             label3.Size = new Size(124, 21);
             label3.TabIndex = 1;
@@ -308,7 +309,7 @@
             label5.Anchor = AnchorStyles.Left;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(19, 48);
+            label5.Location = new Point(20, 48);
             label5.Name = "label5";
             label5.Size = new Size(174, 21);
             label5.TabIndex = 29;
@@ -339,8 +340,8 @@
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Padding = new Padding(16, 0, 8, 0);
-            panel3.Size = new Size(906, 40);
+            panel3.Padding = new Padding(16, 8, 8, 0);
+            panel3.Size = new Size(906, 48);
             panel3.TabIndex = 7;
             // 
             // panel5
@@ -350,7 +351,7 @@
             panel5.Controls.Add(_extraSemestersLabel);
             panel5.Controls.Add(button1);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(16, 0);
+            panel5.Location = new Point(16, 8);
             panel5.Name = "panel5";
             panel5.Size = new Size(882, 40);
             panel5.TabIndex = 0;
@@ -364,7 +365,7 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(788, 8);
+            button2.Location = new Point(786, 8);
             button2.Name = "button2";
             button2.Size = new Size(85, 24);
             button2.TabIndex = 30;
