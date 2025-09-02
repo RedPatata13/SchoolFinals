@@ -38,6 +38,7 @@ namespace Finals.Forms.UserControls
                 string termName = (String.IsNullOrWhiteSpace(_term.TermName)) ? "Unnamed Term" : _term.TermName;
                 _termNameDetails.Text = termName;
                 _termName.Text = $"{termName} Configuration";
+
             }
         }
 
