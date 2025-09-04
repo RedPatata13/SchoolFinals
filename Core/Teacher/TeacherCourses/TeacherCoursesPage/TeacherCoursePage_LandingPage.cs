@@ -17,7 +17,24 @@ namespace Finals.Core.Teacher.TeacherCoursesPage
 {
     public partial class TeacherCoursePage_LandingPage : UserControl, ITeacherCoursePage_LandingPage
     {
-        private ICollection<CourseModel_Assigned> _courses = new List<CourseModel_Assigned>() { new CourseModel_Assigned() };
+        private ICollection<CourseModel_Assigned> _courses = new List<CourseModel_Assigned>() 
+            { 
+                new CourseModel_Assigned() 
+                {
+                    Registrations = new List<AssignedCourseRegistration>()
+                    {
+                        new AssignedCourseRegistration()
+                        {
+                            Student = new StudentModel()
+                            {
+                                FirstName = "John",
+                                LastName = "Doe",
+                                MiddleName = "A.",
+                            }
+                        }
+                    }
+                }
+            };
         private bool _hasCourses = true;
         private Label NoAssignedCoursesLabel = new Label()
         {

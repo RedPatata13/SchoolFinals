@@ -50,7 +50,7 @@
             label12 = new Label();
             label13 = new Label();
             panel1 = new Panel();
-            label1 = new Label();
+            _backButton = new Button();
             tableLayoutPanel3.SuspendLayout();
             panel5.SuspendLayout();
             tableLayoutPanel7.SuspendLayout();
@@ -333,22 +333,29 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(_backButton);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1059, 40);
             panel1.TabIndex = 22;
             // 
-            // label1
+            // _backButton
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            label1.Location = new Point(0, 8);
-            label1.Name = "label1";
-            label1.Size = new Size(42, 21);
-            label1.TabIndex = 0;
-            label1.Text = "Back";
+            _backButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            _backButton.AutoSize = true;
+            _backButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            _backButton.BackColor = SystemColors.Control;
+            _backButton.FlatAppearance.BorderColor = Color.Black;
+            _backButton.FlatStyle = FlatStyle.Flat;
+            _backButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _backButton.ForeColor = SystemColors.ControlText;
+            _backButton.Location = new Point(24, 8);
+            _backButton.Name = "_backButton";
+            _backButton.Size = new Size(44, 27);
+            _backButton.TabIndex = 25;
+            _backButton.Text = "Back";
+            _backButton.UseVisualStyleBackColor = false;
             // 
             // TeacherCourseTasks_Main
             // 
@@ -396,7 +403,6 @@
         private Label label12;
         private Label label13;
         private Panel panel1;
-        private Label label1;
         private Panel panel2;
         private Label label9;
         private TableLayoutPanel tableLayoutPanel8;
@@ -407,5 +413,6 @@
         private Label label15;
         private Label label16;
         private Panel panel4;
+        private Button _backButton;
     }
 }

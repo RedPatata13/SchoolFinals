@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace Finals.Core.Teacher.TeacherCourseTasks
 {
-    public partial class TeacherCourseTasks_Main : UserControl
+    public partial class TeacherCourseTasks_Main : UserControl, ITeacherCourseTasks_Main
     {
         public TeacherCourseTasks_Main()
         {
             InitializeComponent();
+        }
+
+        public event EventHandler BackClick
+        {
+            add => _backButton.Click += value;
+            remove => _backButton.Click -= value;
         }
 
         private void label23_Click(object sender, EventArgs e)
@@ -26,5 +32,10 @@ namespace Finals.Core.Teacher.TeacherCourseTasks
                 
             };
         }
+    }
+
+    public interface ITeacherCourseTasks_Main
+    {
+        event EventHandler BackClick;
     }
 }

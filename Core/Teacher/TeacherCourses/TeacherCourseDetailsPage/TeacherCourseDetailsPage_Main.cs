@@ -10,15 +10,28 @@ using System.Windows.Forms;
 using Finals.Forms.UserControls;
 using Finals.Models;
 using Finals.Core.Teacher.TeacherCourseTasks;
+using Finals.Core.Teacher.TeacherCourses.TeacherCourseDetailsPage;
+using Finals.Forms;
 
 namespace Finals.Core.Teacher.TeacherCourseDetailsPage
 {
     public partial class TeacherCourseDetailsPage_Main : UserControl, ITeacherCourseDetailsPage_Main
     {
+        private CourseModel_Assigned _assignedCourse = null!;
+        private Label NoStudents = new Label()
+        {
+            Text = "No students enrolled yet.",
+            Dock = DockStyle.Fill,
+            TextAlign = ContentAlignment.MiddleCenter,
+            Font = new Font("Segoe UI", 12, FontStyle.Italic),
+            ForeColor = Color.Gray,
+            AutoSize = false
+        };
         private Action<Control, bool> _projectToContainer = null!;
         public TeacherCourseDetailsPage_Main(CourseModel_Assigned course)
         {
             InitializeComponent();
+            AssignedCourse = course ?? throw new ArgumentNullException(nameof(course));
         }
 
         public event EventHandler BackClick
@@ -82,7 +95,13 @@ namespace Finals.Core.Teacher.TeacherCourseDetailsPage
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ProjectToContainer?.Invoke(new TeacherCourseTasks_Main(), true);
+            var taskUc = new TeacherCourseTasks_Main();
+            taskUc.BackClick += (s, ev) =>
+            {
+                ProjectToContainer?.Invoke(this, true);
+                //MessageBox.Show("This gets called");
+            };
+            ProjectToContainer?.Invoke(taskUc, true);
         }
 
         public Action<Control, bool> ProjectToContainer
@@ -93,10 +112,51 @@ namespace Finals.Core.Teacher.TeacherCourseDetailsPage
                 _projectToContainer = value;
             }
         }
+
+        public CourseModel_Assigned AssignedCourse
+        {
+            get => _assignedCourse;
+            set
+            {
+                _assignedCourse = value;
+                RenderStudentTiles();
+            }
+        }
+
+        private void RenderStudentTiles()
+        {
+            panel5.Controls.Clear();
+
+
+            var registrationList = (_assignedCourse.Registrations ?? new List<AssignedCourseRegistration>())
+                .Where(rs => rs.Student != null)
+                .Select(rs => rs.Student)
+                .ToList();
+
+            if (registrationList == null || registrationList.Count == 0)
+            {
+                _studentListContainer.Controls.Add(NoStudents);
+                return;
+            }
+
+            panel5.Controls.Remove(NoStudents);
+            foreach (var student in registrationList)
+            {
+                var tile = new StudentListTile()
+                {
+                    Dock = DockStyle.Top,
+                    StudentName = student.ToString() ?? String.Empty,
+                    StudentType = "R",
+                    Tag = student
+                };
+                panel5.Controls.Add(tile);
+            }
+        }
     }
     public interface ITeacherCourseDetailsPage_Main
     {
         event EventHandler BackClick;
         Action<Control, bool> ProjectToContainer { get; set; }
+        CourseModel_Assigned AssignedCourse { get; set; }
     }
 }

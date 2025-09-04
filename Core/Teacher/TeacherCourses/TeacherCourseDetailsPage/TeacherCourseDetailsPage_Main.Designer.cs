@@ -58,19 +58,10 @@
             label1 = new Label();
             label25 = new Label();
             tableLayoutPanel3 = new TableLayoutPanel();
+            _studentListContainer = new Panel();
             panel5 = new Panel();
-            panel8 = new Panel();
-            tableLayoutPanel6 = new TableLayoutPanel();
-            label2 = new Label();
-            label3 = new Label();
-            panel9 = new Panel();
-            panel7 = new Panel();
-            tableLayoutPanel5 = new TableLayoutPanel();
-            label6 = new Label();
-            label5 = new Label();
-            panel6 = new Panel();
             panel10 = new Panel();
-            tableLayoutPanel4 = new TableLayoutPanel();
+            StudentListHeader = new TableLayoutPanel();
             label4 = new Label();
             label7 = new Label();
             panel11 = new Panel();
@@ -92,13 +83,9 @@
             panel13.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
-            panel5.SuspendLayout();
-            panel8.SuspendLayout();
-            tableLayoutPanel6.SuspendLayout();
-            panel7.SuspendLayout();
-            tableLayoutPanel5.SuspendLayout();
+            _studentListContainer.SuspendLayout();
             panel10.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
+            StudentListHeader.SuspendLayout();
             panel11.SuspendLayout();
             SuspendLayout();
             // 
@@ -498,178 +485,69 @@
             tableLayoutPanel3.ColumnCount = 2;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 204F));
-            tableLayoutPanel3.Controls.Add(panel5, 0, 0);
+            tableLayoutPanel3.Controls.Add(_studentListContainer, 0, 0);
             tableLayoutPanel3.Controls.Add(panel11, 1, 0);
             tableLayoutPanel3.Dock = DockStyle.Top;
             tableLayoutPanel3.Location = new Point(0, 312);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.Padding = new Padding(20, 0, 0, 0);
+            tableLayoutPanel3.Padding = new Padding(20, 0, 12, 0);
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(1059, 464);
+            tableLayoutPanel3.Size = new Size(1059, 512);
             tableLayoutPanel3.TabIndex = 21;
+            // 
+            // _studentListContainer
+            // 
+            _studentListContainer.BorderStyle = BorderStyle.FixedSingle;
+            _studentListContainer.Controls.Add(panel5);
+            _studentListContainer.Controls.Add(panel10);
+            _studentListContainer.Dock = DockStyle.Fill;
+            _studentListContainer.Location = new Point(23, 3);
+            _studentListContainer.Name = "_studentListContainer";
+            _studentListContainer.Size = new Size(817, 506);
+            _studentListContainer.TabIndex = 0;
             // 
             // panel5
             // 
-            panel5.Controls.Add(panel8);
-            panel5.Controls.Add(panel9);
-            panel5.Controls.Add(panel7);
-            panel5.Controls.Add(panel6);
-            panel5.Controls.Add(panel10);
-            panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(23, 3);
+            panel5.AutoScroll = true;
+            panel5.Dock = DockStyle.Top;
+            panel5.Location = new Point(0, 32);
             panel5.Name = "panel5";
-            panel5.Size = new Size(829, 458);
-            panel5.TabIndex = 0;
-            // 
-            // panel8
-            // 
-            panel8.BorderStyle = BorderStyle.FixedSingle;
-            panel8.Controls.Add(tableLayoutPanel6);
-            panel8.Dock = DockStyle.Top;
-            panel8.Location = new Point(0, 80);
-            panel8.Margin = new Padding(12);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(829, 40);
-            panel8.TabIndex = 3;
-            // 
-            // tableLayoutPanel6
-            // 
-            tableLayoutPanel6.BackColor = SystemColors.ControlLightLight;
-            tableLayoutPanel6.ColumnCount = 3;
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 698F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 97F));
-            tableLayoutPanel6.Controls.Add(label2, 2, 0);
-            tableLayoutPanel6.Controls.Add(label3, 1, 0);
-            tableLayoutPanel6.Dock = DockStyle.Fill;
-            tableLayoutPanel6.Location = new Point(0, 0);
-            tableLayoutPanel6.Name = "tableLayoutPanel6";
-            tableLayoutPanel6.RowCount = 1;
-            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel6.Size = new Size(827, 38);
-            tableLayoutPanel6.TabIndex = 2;
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Location = new Point(733, 11);
-            label2.Name = "label2";
-            label2.Size = new Size(91, 15);
-            label2.TabIndex = 1;
-            label2.Text = "IR";
-            label2.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label3.AutoSize = true;
-            label3.Location = new Point(35, 11);
-            label3.Name = "label3";
-            label3.Size = new Size(692, 15);
-            label3.TabIndex = 0;
-            label3.Text = "White, Maria";
-            // 
-            // panel9
-            // 
-            panel9.Dock = DockStyle.Top;
-            panel9.Location = new Point(0, 76);
-            panel9.Margin = new Padding(12);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(829, 4);
-            panel9.TabIndex = 4;
-            // 
-            // panel7
-            // 
-            panel7.BorderStyle = BorderStyle.FixedSingle;
-            panel7.Controls.Add(tableLayoutPanel5);
-            panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(0, 36);
-            panel7.Margin = new Padding(12);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(829, 40);
-            panel7.TabIndex = 2;
-            // 
-            // tableLayoutPanel5
-            // 
-            tableLayoutPanel5.BackColor = SystemColors.ControlLightLight;
-            tableLayoutPanel5.ColumnCount = 3;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 698F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 97F));
-            tableLayoutPanel5.Controls.Add(label6, 2, 0);
-            tableLayoutPanel5.Controls.Add(label5, 1, 0);
-            tableLayoutPanel5.Dock = DockStyle.Fill;
-            tableLayoutPanel5.Location = new Point(0, 0);
-            tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 1;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(827, 38);
-            tableLayoutPanel5.TabIndex = 2;
-            // 
-            // label6
-            // 
-            label6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label6.AutoSize = true;
-            label6.Location = new Point(733, 11);
-            label6.Name = "label6";
-            label6.Size = new Size(91, 15);
-            label6.TabIndex = 1;
-            label6.Text = "R";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            label5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label5.AutoSize = true;
-            label5.Location = new Point(35, 11);
-            label5.Name = "label5";
-            label5.Size = new Size(692, 15);
-            label5.TabIndex = 0;
-            label5.Text = "Doe, Jane";
-            // 
-            // panel6
-            // 
-            panel6.Dock = DockStyle.Top;
-            panel6.Location = new Point(0, 32);
-            panel6.Margin = new Padding(12);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(829, 4);
-            panel6.TabIndex = 2;
+            panel5.Size = new Size(815, 472);
+            panel5.TabIndex = 1;
             // 
             // panel10
             // 
-            panel10.Controls.Add(tableLayoutPanel4);
+            panel10.Controls.Add(StudentListHeader);
             panel10.Dock = DockStyle.Top;
             panel10.Location = new Point(0, 0);
             panel10.Margin = new Padding(3, 12, 3, 40);
             panel10.Name = "panel10";
-            panel10.Size = new Size(829, 32);
+            panel10.Size = new Size(815, 32);
             panel10.TabIndex = 0;
             // 
-            // tableLayoutPanel4
+            // StudentListHeader
             // 
-            tableLayoutPanel4.ColumnCount = 3;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 699F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 98F));
-            tableLayoutPanel4.Controls.Add(label4, 2, 0);
-            tableLayoutPanel4.Controls.Add(label7, 1, 0);
-            tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(0, 0);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 1;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(829, 32);
-            tableLayoutPanel4.TabIndex = 0;
+            StudentListHeader.ColumnCount = 3;
+            StudentListHeader.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 33F));
+            StudentListHeader.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 686F));
+            StudentListHeader.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 98F));
+            StudentListHeader.Controls.Add(label4, 2, 0);
+            StudentListHeader.Controls.Add(label7, 1, 0);
+            StudentListHeader.Dock = DockStyle.Fill;
+            StudentListHeader.Location = new Point(0, 0);
+            StudentListHeader.Name = "StudentListHeader";
+            StudentListHeader.RowCount = 1;
+            StudentListHeader.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            StudentListHeader.Size = new Size(815, 32);
+            StudentListHeader.TabIndex = 1;
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Bottom;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
-            label4.Location = new Point(760, 19);
+            label4.Location = new Point(748, 19);
             label4.Name = "label4";
             label4.Size = new Size(39, 13);
             label4.TabIndex = 1;
@@ -680,7 +558,7 @@
             label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
-            label7.Location = new Point(35, 19);
+            label7.Location = new Point(36, 19);
             label7.Name = "label7";
             label7.Size = new Size(53, 13);
             label7.TabIndex = 0;
@@ -688,21 +566,22 @@
             // 
             // panel11
             // 
+            panel11.BorderStyle = BorderStyle.FixedSingle;
             panel11.Controls.Add(label20);
             panel11.Controls.Add(label21);
             panel11.Controls.Add(label14);
             panel11.Controls.Add(label17);
             panel11.Controls.Add(label18);
             panel11.Controls.Add(label19);
-            panel11.Location = new Point(858, 3);
+            panel11.Location = new Point(846, 3);
             panel11.Name = "panel11";
-            panel11.Size = new Size(198, 101);
+            panel11.Size = new Size(198, 69);
             panel11.TabIndex = 1;
             // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(104, 64);
+            label20.Location = new Point(104, 40);
             label20.Name = "label20";
             label20.Size = new Size(13, 15);
             label20.TabIndex = 2;
@@ -711,7 +590,7 @@
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(8, 64);
+            label21.Location = new Point(8, 40);
             label21.Name = "label21";
             label21.Size = new Size(54, 15);
             label21.TabIndex = 3;
@@ -720,7 +599,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(104, 48);
+            label14.Location = new Point(104, 24);
             label14.Name = "label14";
             label14.Size = new Size(13, 15);
             label14.TabIndex = 1;
@@ -729,7 +608,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(8, 48);
+            label17.Location = new Point(8, 24);
             label17.Name = "label17";
             label17.Size = new Size(50, 15);
             label17.TabIndex = 1;
@@ -738,7 +617,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(104, 32);
+            label18.Location = new Point(104, 8);
             label18.Name = "label18";
             label18.Size = new Size(13, 15);
             label18.TabIndex = 0;
@@ -747,7 +626,7 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(8, 32);
+            label19.Location = new Point(8, 8);
             label19.Name = "label19";
             label19.Size = new Size(56, 15);
             label19.TabIndex = 0;
@@ -791,16 +670,10 @@
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel8.ResumeLayout(false);
-            tableLayoutPanel6.ResumeLayout(false);
-            tableLayoutPanel6.PerformLayout();
-            panel7.ResumeLayout(false);
-            tableLayoutPanel5.ResumeLayout(false);
-            tableLayoutPanel5.PerformLayout();
+            _studentListContainer.ResumeLayout(false);
             panel10.ResumeLayout(false);
-            tableLayoutPanel4.ResumeLayout(false);
-            tableLayoutPanel4.PerformLayout();
+            StudentListHeader.ResumeLayout(false);
+            StudentListHeader.PerformLayout();
             panel11.ResumeLayout(false);
             panel11.PerformLayout();
             ResumeLayout(false);
@@ -825,21 +698,8 @@
         private Label label16;
         private Label label15;
         private TableLayoutPanel tableLayoutPanel3;
-        private Panel panel5;
-        private Panel panel8;
-        private TableLayoutPanel tableLayoutPanel6;
-        private Label label2;
-        private Label label3;
-        private Panel panel9;
-        private Panel panel7;
-        private TableLayoutPanel tableLayoutPanel5;
-        private Label label6;
-        private Label label5;
-        private Panel panel6;
+        private Panel _studentListContainer;
         private Panel panel10;
-        private TableLayoutPanel tableLayoutPanel4;
-        private Label label4;
-        private Label label7;
         private Panel panel11;
         private Label label20;
         private Label label21;
@@ -861,5 +721,9 @@
         private Label label1;
         private Label label25;
         private Button button6;
+        private Panel panel5;
+        private TableLayoutPanel StudentListHeader;
+        private Label label4;
+        private Label label7;
     }
 }
