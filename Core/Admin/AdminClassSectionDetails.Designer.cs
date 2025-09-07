@@ -72,7 +72,7 @@
             panel12 = new Panel();
             button3 = new Button();
             button4 = new Button();
-            button5 = new Button();
+            _addCourseButtonClick = new Button();
             tabPage5 = new TabPage();
             panel13 = new Panel();
             tableLayoutPanel4 = new TableLayoutPanel();
@@ -94,7 +94,7 @@
             panel6 = new Panel();
             button2 = new Button();
             button1 = new Button();
-            _addCourseButtonClick = new Button();
+            button5 = new Button();
             CourseTemplatesContainer = new TabPage();
             classTransitionUserControlContainer1 = new Forms.UserControls.ClassTransitionUserControlContainer();
             tabPage2 = new TabPage();
@@ -520,6 +520,7 @@
             _courses.RowHeadersVisible = false;
             _courses.Size = new Size(907, 410);
             _courses.TabIndex = 3;
+            _courses.CellContentClick += _courses_CellContentClick;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -607,7 +608,7 @@
             // 
             panel12.Controls.Add(button3);
             panel12.Controls.Add(button4);
-            panel12.Controls.Add(button5);
+            panel12.Controls.Add(_addCourseButtonClick);
             panel12.Dock = DockStyle.Fill;
             panel12.Location = new Point(916, 3);
             panel12.Name = "panel12";
@@ -645,20 +646,20 @@
             button4.Text = "Apply Course Template";
             button4.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // _addCourseButtonClick
             // 
-            button5.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button5.BackColor = SystemColors.Highlight;
-            button5.FlatAppearance.BorderColor = Color.Black;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.White;
-            button5.Location = new Point(8, 40);
-            button5.Name = "button5";
-            button5.Size = new Size(96, 26);
-            button5.TabIndex = 44;
-            button5.Text = "Add Course";
-            button5.UseVisualStyleBackColor = false;
+            _addCourseButtonClick.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            _addCourseButtonClick.BackColor = SystemColors.Highlight;
+            _addCourseButtonClick.FlatAppearance.BorderColor = Color.Black;
+            _addCourseButtonClick.FlatStyle = FlatStyle.Flat;
+            _addCourseButtonClick.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            _addCourseButtonClick.ForeColor = Color.White;
+            _addCourseButtonClick.Location = new Point(8, 40);
+            _addCourseButtonClick.Name = "_addCourseButtonClick";
+            _addCourseButtonClick.Size = new Size(96, 26);
+            _addCourseButtonClick.TabIndex = 44;
+            _addCourseButtonClick.Text = "Add Course";
+            _addCourseButtonClick.UseVisualStyleBackColor = false;
             // 
             // tabPage5
             // 
@@ -715,7 +716,7 @@
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(1043, 464);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "Courses";
+            tabPage1.Text = "Default Courses";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel5
@@ -846,7 +847,7 @@
             // 
             panel6.Controls.Add(button2);
             panel6.Controls.Add(button1);
-            panel6.Controls.Add(_addCourseButtonClick);
+            panel6.Controls.Add(button5);
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(918, 3);
             panel6.Name = "panel6";
@@ -885,20 +886,20 @@
             button1.Text = "Apply Course Template";
             button1.UseVisualStyleBackColor = false;
             // 
-            // _addCourseButtonClick
+            // button5
             // 
-            _addCourseButtonClick.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            _addCourseButtonClick.BackColor = SystemColors.Highlight;
-            _addCourseButtonClick.FlatAppearance.BorderColor = Color.Black;
-            _addCourseButtonClick.FlatStyle = FlatStyle.Flat;
-            _addCourseButtonClick.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            _addCourseButtonClick.ForeColor = Color.White;
-            _addCourseButtonClick.Location = new Point(8, 40);
-            _addCourseButtonClick.Name = "_addCourseButtonClick";
-            _addCourseButtonClick.Size = new Size(96, 26);
-            _addCourseButtonClick.TabIndex = 44;
-            _addCourseButtonClick.Text = "Add Course";
-            _addCourseButtonClick.UseVisualStyleBackColor = false;
+            button5.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button5.BackColor = SystemColors.Highlight;
+            button5.FlatAppearance.BorderColor = Color.Black;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.White;
+            button5.Location = new Point(8, 40);
+            button5.Name = "button5";
+            button5.Size = new Size(96, 26);
+            button5.TabIndex = 44;
+            button5.Text = "Add Course";
+            button5.UseVisualStyleBackColor = false;
             // 
             // CourseTemplatesContainer
             // 

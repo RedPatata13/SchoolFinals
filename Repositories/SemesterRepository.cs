@@ -15,5 +15,10 @@ namespace Finals.Repositories
         {
 
         }
+
+        public TermModel? GetCurrentTerm()
+        {
+            return _context.Semesters.FirstOrDefault(t => t.IsActive);
+        }
     }
 }

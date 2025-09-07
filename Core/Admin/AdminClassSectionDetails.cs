@@ -12,6 +12,7 @@ using Finals.Forms;
 using Finals.Forms.UserControls;
 using Finals.Models;
 using Finals.Services;
+using Finals.Services.Contracts;
 
 namespace Finals.Core.Admin
 {
@@ -170,7 +171,18 @@ namespace Finals.Core.Admin
                 if(result == DialogResult.OK)
                 {
                     var list = new List<CourseModel_Assigned>();
-                    foreach(var course in dialog.SelectedCourses)
+                    TermModel currentTerm = null!;
+                    try
+                    {
+                        ITermRepo termRepo = new TermRepo();
+                        currentTerm = termRepo.GetCurrentTerm()!;
+                        if(currentTerm == null) throw new Exception("No current term found.");
+                    } catch(Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while retrieving the current term: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    } 
+                    foreach (var course in dialog.SelectedCourses)
                     {
                         var ac = new CourseModel_Assigned()
                         {
@@ -182,6 +194,7 @@ namespace Finals.Core.Admin
                             SectionId = _view.Model.SectionID,
                             AssignedId = _view.UserId,
                             Schedules = new List<VenueModel>(),
+                            SemesterId = currentTerm.TermId
                         };
 
                         list.Add(ac);

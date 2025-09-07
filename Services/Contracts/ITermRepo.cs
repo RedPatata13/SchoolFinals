@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Finals.Models;
 
-namespace Finals.Repositories.Interfaces
+namespace Finals.Services.Contracts
 {
-    public interface ISemesterRepository : IBaseRepository<TermModel>
+    public interface ITermRepo
     {
         TermModel? GetCurrentTerm();
     }

@@ -14,7 +14,7 @@ namespace Finals.Models
         public DateTime DateCreated { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
-        public bool IsActive { get; set; } = true;
+        public bool IsActive { get; set; } = false;
         public TermStatus Status { get; set; } = TermStatus.Preparatory;
         public TermType TermType = TermType.Standard;
 

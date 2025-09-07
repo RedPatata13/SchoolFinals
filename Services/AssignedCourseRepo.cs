@@ -36,9 +36,8 @@ namespace Finals.Services
             }
             catch (Exception ex)
             {
-                // Handle exceptions as needed, e.g., log them or rethrow
-                //MessageBox.Show($"An error occurred while adding assigned courses: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw ex;
+                MessageBox.Show($"An error occurred while adding assigned courses: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //throw ex;
             }
             finally
             {
