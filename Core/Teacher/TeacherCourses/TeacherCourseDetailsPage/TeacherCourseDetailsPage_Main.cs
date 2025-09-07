@@ -94,17 +94,6 @@ namespace Finals.Core.Teacher.TeacherCourseDetailsPage
             }
         }
 
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    var taskUc = new TeacherCourseTasks_Main();
-        //    taskUc.BackClick += (s, ev) =>
-        //    {
-        //        ProjectToContainer?.Invoke(this, true);
-        //        //MessageBox.Show("This gets called");
-        //    };
-        //    ProjectToContainer?.Invoke(taskUc, true);
-        //}
-
         public Action<Control, bool> ProjectToContainer
         {
             get => _projectToContainer;
@@ -156,11 +145,10 @@ namespace Finals.Core.Teacher.TeacherCourseDetailsPage
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var gradesUc = new TeacherCoursePage_Grades();
+            var gradesUc = new TeacherCoursePage_Grades(AssignedCourse.Registrations.Select(s => s.Student).ToList());
             gradesUc.BackClick += (s, ev) =>
             {
                 ProjectToContainer?.Invoke(this, true);
-                MessageBox.Show("This gets called");
             };
             ProjectToContainer?.Invoke(gradesUc, false);
         }

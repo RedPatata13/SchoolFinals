@@ -14,11 +14,8 @@ namespace Finals.Models
         public string UserId { get; set; } = null!;
         public UserModel User { get; set; } = null!;
 
-        [NotMapped]
         public string LastName { get; set; } = null!;
-        [NotMapped]
         public string FirstName { get; set; } = null!;
-        [NotMapped]
         public string MiddleName { get; set; } = null!;
 
         public override string ToString()
