@@ -26,5 +26,19 @@ namespace Finals.Repositories
                 .AsNoTracking()
                 .ToList();
         }
+
+        public ICollection<CourseModel_Assigned> GetByTeacherIdForTerm(string teacherId, string TermId)
+        {
+            return _context.AssignedCourses
+                .Where(ac => ac.TeacherId == teacherId && ac.SemesterId == TermId)
+                .Include(ac => ac.Course)
+                .Include(ac => ac.Teacher)
+                .Include(ac => ac.Section)
+                .Include(ac => ac.Semester)
+                .Include(ac => ac.Registrations)
+                    .ThenInclude(r => r.Student)
+                .AsNoTracking()
+                .ToList();
+        }
     }
 }

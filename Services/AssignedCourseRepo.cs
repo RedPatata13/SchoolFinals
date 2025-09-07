@@ -90,7 +90,29 @@ namespace Finals.Services
             catch (Exception ex)
             {
                 MessageBox.Show("An error has occured while trying to update the Assigned Course " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } finally { repo.Dispose(); }
+            }
+            finally { repo.Dispose(); }
+        }
+
+        public static ICollection<CourseModel_Assigned> GetTeacherAssignedCoursesForCurrentTerm(string teacherId)
+        {
+            var repo = RepositoryFactory.Create();
+            try
+            {
+                var currentTerm = repo.Semesters.GetCurrentTerm();
+                if (currentTerm == null) throw new Exception("No current term found.");
+
+                return repo.AssignedCourses.GetByTeacherIdForTerm(teacherId, currentTerm.TermId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while retrieving assigned courses: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new List<CourseModel_Assigned>();
+            }
+            finally
+            {
+                repo.Dispose();
+            }
         }
     }
 }

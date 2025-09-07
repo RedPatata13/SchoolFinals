@@ -135,7 +135,7 @@ namespace Finals.Core.Teacher.TeacherCourseDetailsPage
 
             if (registrationList == null || registrationList.Count == 0)
             {
-                _studentListContainer.Controls.Add(NoStudents);
+                panel5.Controls.Add(NoStudents);
                 return;
             }
 

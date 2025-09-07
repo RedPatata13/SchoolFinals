@@ -528,6 +528,7 @@
             // 
             // StudentListHeader
             // 
+            StudentListHeader.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
             StudentListHeader.ColumnCount = 3;
             StudentListHeader.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 33F));
             StudentListHeader.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 686F));
@@ -547,7 +548,7 @@
             label4.Anchor = AnchorStyles.Bottom;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
-            label4.Location = new Point(748, 19);
+            label4.Location = new Point(754, 17);
             label4.Name = "label4";
             label4.Size = new Size(39, 13);
             label4.TabIndex = 1;
@@ -558,7 +559,7 @@
             label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
-            label7.Location = new Point(36, 19);
+            label7.Location = new Point(40, 17);
             label7.Name = "label7";
             label7.Size = new Size(53, 13);
             label7.TabIndex = 0;

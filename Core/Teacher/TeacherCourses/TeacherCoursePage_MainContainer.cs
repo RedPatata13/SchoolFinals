@@ -16,10 +16,15 @@ namespace Finals.Core.Teacher.TeacherCourses
 {
     public partial class TeacherCoursePage_MainContainer : UserControl, ITeacherCoursePage_MainContainer
     {
-        public TeacherCoursePage_MainContainer()
+        private string _userId = null!;
+        public string UserId => _userId ?? String.Empty;
+
+        public TeacherCoursePage_MainContainer(string userId)
         {
+            _userId = userId;
             InitializeComponent();
             DisplayLandingPage();
+            
         }
 
         public void DisplayCoursePage(CourseModel_Assigned course, Action action)
@@ -37,7 +42,7 @@ namespace Finals.Core.Teacher.TeacherCourses
         {
             var landingPageFactory = () =>
             {
-                return new TeacherCoursePage_LandingPage();
+                return new TeacherCoursePage_LandingPage(UserId);
             };
             var landingPage = landingPageFactory();
             landingPage.LoadCoursePage = DisplayCoursePage;
@@ -70,5 +75,9 @@ namespace Finals.Core.Teacher.TeacherCourses
         void ProjectLandingPage(Func<TeacherCoursePage_LandingPage> landingPageFactory, TeacherCoursePage_LandingPage current);
         void DisplayCoursePage(CourseModel_Assigned course, Action action);
         void ProjectToContainer(Control control, bool fillDock = false);
+        string UserId
+        {
+            get;
+        }
     }
 }

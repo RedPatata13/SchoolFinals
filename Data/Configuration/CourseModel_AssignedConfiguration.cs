@@ -68,6 +68,13 @@ namespace Finals.Data.Configuration
                 .HasForeignKey(c => c.TermId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired(false);
+
+            builder.HasMany(c => c.Registrations)
+                .WithOne(r => r.AssignedCourse)
+                .HasForeignKey(r => r.AssignedCourseId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(true);
+
         }
     }
 }

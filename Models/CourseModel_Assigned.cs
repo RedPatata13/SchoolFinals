@@ -29,7 +29,6 @@ namespace Finals.Models
 
         public string TermId { get; set; } = null!;
         public ClassSectionTermDataModel Term { get; set; } = null!;
-        [NotMapped]
         public ICollection<AssignedCourseRegistration> Registrations { get; set; } = new List<AssignedCourseRegistration>();
 
         public AssignedCourseStatus Status { get; set; } = AssignedCourseStatus.Default;

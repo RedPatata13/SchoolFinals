@@ -46,6 +46,9 @@ namespace Finals.Data
             modelBuilder.ApplyConfiguration(new ClassSectionTransitionModelConfiguration());
             modelBuilder.ApplyConfiguration(new ClassSectionEditConfiguration());
 
+            // Courses
+            modelBuilder.ApplyConfiguration(new AssignedCourseRegistrationModelConfiguration());
+
 
             base.OnModelCreating(modelBuilder);
         }
@@ -69,6 +72,9 @@ namespace Finals.Data
         public DbSet<ClassSectionTransitionModel> ClassSectionsTransition { get; set; } = null!;
         public DbSet<ClassSectionEditLog> ClassSectionsEdits { get; set; } = null!;
         public DbSet<ClassEntryModel> ClassEntries { get; set; } = null!;
+
+        // Courses
+        public DbSet<AssignedCourseRegistration> AssignedCourseRegistrations { get; set; } = null!;
 
         public DbSet<TestModel> TestModels { get; set; } = null!;
         public DbSet<UserModel> UserModels { get; set; } = null!;

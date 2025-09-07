@@ -12,14 +12,16 @@ using Finals.Core.Teacher.UserControls;
 using Finals.Forms;
 using Finals.Forms.UserControls;
 using Finals.Models;
+using Finals.Services;
 
 namespace Finals.Core.Teacher.TeacherCoursesPage
 {
     public partial class TeacherCoursePage_LandingPage : UserControl, ITeacherCoursePage_LandingPage
     {
-        private ICollection<CourseModel_Assigned> _courses = new List<CourseModel_Assigned>() 
-            { 
-                new CourseModel_Assigned() 
+        private string _userId = null!;
+        private ICollection<CourseModel_Assigned> _courses = new List<CourseModel_Assigned>()
+            {
+                new CourseModel_Assigned()
                 {
                     Registrations = new List<AssignedCourseRegistration>()
                     {
@@ -57,7 +59,7 @@ namespace Finals.Core.Teacher.TeacherCoursesPage
             }
         }
 
-        public Action<CourseModel_Assigned, Action> LoadCoursePage 
+        public Action<CourseModel_Assigned, Action> LoadCoursePage
         {
             get => _loadCoursePage;
             set
@@ -87,34 +89,39 @@ namespace Finals.Core.Teacher.TeacherCoursesPage
             }
         }
 
+        public string UserId => _userId;
+
         private void RenderCourses()
         {
             if (_courses == null || _courses.Count == 0)
             {
-                if(!_hasCourses) Controls.Remove(_TilesContainer);
+                if (!_hasCourses) Controls.Remove(_TilesContainer);
                 Controls.Add(NoAssignedCoursesLabel);
                 _hasCourses = false;
                 return;
             }
-            if(!_hasCourses) Controls.Add(_TilesContainer);
+            if (!_hasCourses) Controls.Add(_TilesContainer);
             _hasCourses = true;
             _TilesContainer.Controls.Clear();
-            
+
             foreach (var course in _courses)
             {
                 var tile = new AssignedCourseTile(course);
                 tile.TileClicked += (s, e) =>
                 {
                     LoadCoursePage?.Invoke(course, BackToLandingPage);
-                    if(LoadCoursePage == null) MessageBox.Show("LoadCoursePage is null");
+                    if (LoadCoursePage == null) MessageBox.Show("LoadCoursePage is null");
                     //MessageBox.Show("tile clicked");
                 };
                 _TilesContainer.Controls.Add(tile);
             }
         }
-        public TeacherCoursePage_LandingPage()
+        public TeacherCoursePage_LandingPage(string userId)
         {
             InitializeComponent();
+            _userId = userId;
+
+            var presenter = new TeacherCoursePage_LandingPage_Presenter(this);
             RenderCourses();
         }
     }
@@ -125,5 +132,22 @@ namespace Finals.Core.Teacher.TeacherCoursesPage
         Action<CourseModel_Assigned, Action> LoadCoursePage { get; set; }
         Action BackToLandingPage { get; set; }
         Action ProjectToContainer { get; set; }
+
+        string UserId { get; }
+    }
+
+    public class TeacherCoursePage_LandingPage_Presenter
+    {
+        private readonly ITeacherCoursePage_LandingPage _view;
+        public TeacherCoursePage_LandingPage_Presenter(ITeacherCoursePage_LandingPage view)
+        {
+            _view = view;
+            WireEvents();
+        }
+
+        private void WireEvents()
+        {
+            _view.courses = AssignedCourseRepo.GetTeacherAssignedCoursesForCurrentTerm(_view.UserId);
+        }
     }
 }

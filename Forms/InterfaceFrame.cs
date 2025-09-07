@@ -102,7 +102,7 @@ namespace Finals.Forms
                     register = new FeatureRegister_Admin(_view.CurrentUser);
                     break;
                 case UserRole.Teacher:
-                    register = new FeatureRegister_Teacher();
+                    register = new FeatureRegister_Teacher(_view.CurrentUser);
                     break;
                 case UserRole.Student:
                     register = new FeatureRegister_Student();
