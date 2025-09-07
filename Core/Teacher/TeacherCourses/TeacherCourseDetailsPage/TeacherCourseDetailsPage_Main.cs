@@ -12,6 +12,7 @@ using Finals.Models;
 using Finals.Core.Teacher.TeacherCourseTasks;
 using Finals.Core.Teacher.TeacherCourses.TeacherCourseDetailsPage;
 using Finals.Forms;
+using Finals.Core.Teacher.TeacherCourses.TeacherCoursePage_Grades;
 
 namespace Finals.Core.Teacher.TeacherCourseDetailsPage
 {
@@ -93,16 +94,16 @@ namespace Finals.Core.Teacher.TeacherCourseDetailsPage
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var taskUc = new TeacherCourseTasks_Main();
-            taskUc.BackClick += (s, ev) =>
-            {
-                ProjectToContainer?.Invoke(this, true);
-                //MessageBox.Show("This gets called");
-            };
-            ProjectToContainer?.Invoke(taskUc, true);
-        }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    var taskUc = new TeacherCourseTasks_Main();
+        //    taskUc.BackClick += (s, ev) =>
+        //    {
+        //        ProjectToContainer?.Invoke(this, true);
+        //        //MessageBox.Show("This gets called");
+        //    };
+        //    ProjectToContainer?.Invoke(taskUc, true);
+        //}
 
         public Action<Control, bool> ProjectToContainer
         {
@@ -151,6 +152,17 @@ namespace Finals.Core.Teacher.TeacherCourseDetailsPage
                 };
                 panel5.Controls.Add(tile);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var gradesUc = new TeacherCoursePage_Grades();
+            gradesUc.BackClick += (s, ev) =>
+            {
+                ProjectToContainer?.Invoke(this, true);
+                MessageBox.Show("This gets called");
+            };
+            ProjectToContainer?.Invoke(gradesUc, false);
         }
     }
     public interface ITeacherCourseDetailsPage_Main

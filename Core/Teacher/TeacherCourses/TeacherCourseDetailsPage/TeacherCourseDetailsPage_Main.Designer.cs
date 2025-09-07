@@ -33,16 +33,6 @@
             panel2 = new Panel();
             panel4 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
-            panel14 = new Panel();
-            button4 = new Button();
-            label22 = new Label();
-            panel15 = new Panel();
-            button1 = new Button();
-            label24 = new Label();
-            panel16 = new Panel();
-            button3 = new Button();
-            button2 = new Button();
-            label23 = new Label();
             panel12 = new Panel();
             panel13 = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
@@ -72,13 +62,13 @@
             label18 = new Label();
             label19 = new Label();
             panel3 = new Panel();
+            panel16 = new Panel();
+            label23 = new Label();
+            button1 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
-            panel14.SuspendLayout();
-            panel15.SuspendLayout();
-            panel16.SuspendLayout();
             panel12.SuspendLayout();
             panel13.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -87,6 +77,7 @@
             panel10.SuspendLayout();
             StudentListHeader.SuspendLayout();
             panel11.SuspendLayout();
+            panel16.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -108,7 +99,7 @@
             _backButton.FlatStyle = FlatStyle.Flat;
             _backButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             _backButton.ForeColor = SystemColors.ControlText;
-            _backButton.Location = new Point(24, 8);
+            _backButton.Location = new Point(0, 8);
             _backButton.Name = "_backButton";
             _backButton.Size = new Size(44, 27);
             _backButton.TabIndex = 24;
@@ -123,7 +114,7 @@
             panel2.Location = new Point(0, 200);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(24, 12, 12, 8);
-            panel2.Size = new Size(1059, 104);
+            panel2.Size = new Size(1059, 72);
             panel2.TabIndex = 17;
             // 
             // panel4
@@ -133,165 +124,22 @@
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(24, 12);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1023, 84);
+            panel4.Size = new Size(1023, 52);
             panel4.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.BackColor = SystemColors.Control;
-            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Controls.Add(panel14, 0, 0);
-            tableLayoutPanel1.Controls.Add(panel15, 1, 0);
-            tableLayoutPanel1.Controls.Add(panel16, 2, 0);
+            tableLayoutPanel1.Controls.Add(panel16, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1023, 84);
+            tableLayoutPanel1.Size = new Size(1023, 52);
             tableLayoutPanel1.TabIndex = 0;
-            // 
-            // panel14
-            // 
-            panel14.BackColor = SystemColors.ControlLight;
-            panel14.BorderStyle = BorderStyle.FixedSingle;
-            panel14.Controls.Add(button4);
-            panel14.Controls.Add(label22);
-            panel14.Dock = DockStyle.Fill;
-            panel14.Location = new Point(3, 3);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(335, 78);
-            panel14.TabIndex = 2;
-            // 
-            // button4
-            // 
-            button4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button4.AutoSize = true;
-            button4.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button4.BackColor = SystemColors.Highlight;
-            button4.FlatAppearance.BorderColor = Color.Black;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.ForeColor = Color.White;
-            button4.Location = new Point(8, 40);
-            button4.Name = "button4";
-            button4.Size = new Size(52, 27);
-            button4.TabIndex = 23;
-            button4.Text = "Export";
-            button4.UseVisualStyleBackColor = false;
-            // 
-            // label22
-            // 
-            label22.Anchor = AnchorStyles.Left;
-            label22.AutoSize = true;
-            label22.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label22.Location = new Point(8, 8);
-            label22.Name = "label22";
-            label22.Size = new Size(82, 21);
-            label22.TabIndex = 0;
-            label22.Text = "Masterlist";
-            // 
-            // panel15
-            // 
-            panel15.BackColor = SystemColors.ControlLight;
-            panel15.BorderStyle = BorderStyle.FixedSingle;
-            panel15.Controls.Add(button1);
-            panel15.Controls.Add(label24);
-            panel15.Dock = DockStyle.Fill;
-            panel15.Location = new Point(344, 3);
-            panel15.Name = "panel15";
-            panel15.Size = new Size(335, 78);
-            panel15.TabIndex = 3;
-            // 
-            // button1
-            // 
-            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button1.AutoSize = true;
-            button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button1.BackColor = SystemColors.WindowFrame;
-            button1.FlatAppearance.BorderColor = Color.Black;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(8, 40);
-            button1.Name = "button1";
-            button1.Size = new Size(52, 27);
-            button1.TabIndex = 23;
-            button1.Text = "See all";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
-            // label24
-            // 
-            label24.Anchor = AnchorStyles.Left;
-            label24.AutoSize = true;
-            label24.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label24.Location = new Point(8, 8);
-            label24.Name = "label24";
-            label24.Size = new Size(47, 21);
-            label24.TabIndex = 0;
-            label24.Text = "Tasks";
-            // 
-            // panel16
-            // 
-            panel16.BackColor = SystemColors.ControlLight;
-            panel16.BorderStyle = BorderStyle.FixedSingle;
-            panel16.Controls.Add(button3);
-            panel16.Controls.Add(button2);
-            panel16.Controls.Add(label23);
-            panel16.Dock = DockStyle.Fill;
-            panel16.Location = new Point(685, 3);
-            panel16.Name = "panel16";
-            panel16.Size = new Size(335, 78);
-            panel16.TabIndex = 4;
-            // 
-            // button3
-            // 
-            button3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button3.AutoSize = true;
-            button3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button3.BackColor = SystemColors.WindowFrame;
-            button3.FlatAppearance.BorderColor = Color.Black;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(8, 40);
-            button3.Name = "button3";
-            button3.Size = new Size(52, 27);
-            button3.TabIndex = 23;
-            button3.Text = "Export";
-            button3.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button2.AutoSize = true;
-            button2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button2.BackColor = SystemColors.Control;
-            button2.FlatAppearance.BorderColor = Color.Black;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = SystemColors.ControlText;
-            button2.Location = new Point(64, 40);
-            button2.Name = "button2";
-            button2.Size = new Size(55, 27);
-            button2.TabIndex = 23;
-            button2.Text = "Import";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // label23
-            // 
-            label23.Anchor = AnchorStyles.Left;
-            label23.AutoSize = true;
-            label23.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label23.Location = new Point(8, 8);
-            label23.Name = "label23";
-            label23.Size = new Size(61, 21);
-            label23.TabIndex = 0;
-            label23.Text = "Grades";
             // 
             // panel12
             // 
@@ -488,7 +336,7 @@
             tableLayoutPanel3.Controls.Add(_studentListContainer, 0, 0);
             tableLayoutPanel3.Controls.Add(panel11, 1, 0);
             tableLayoutPanel3.Dock = DockStyle.Top;
-            tableLayoutPanel3.Location = new Point(0, 312);
+            tableLayoutPanel3.Location = new Point(0, 280);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.Padding = new Padding(20, 0, 12, 0);
             tableLayoutPanel3.RowCount = 1;
@@ -637,10 +485,49 @@
             // 
             panel3.BackColor = SystemColors.Control;
             panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(0, 304);
+            panel3.Location = new Point(0, 272);
             panel3.Name = "panel3";
             panel3.Size = new Size(1059, 8);
             panel3.TabIndex = 20;
+            // 
+            // panel16
+            // 
+            panel16.BackColor = SystemColors.ControlLight;
+            panel16.BorderStyle = BorderStyle.FixedSingle;
+            panel16.Controls.Add(button1);
+            panel16.Controls.Add(label23);
+            panel16.Dock = DockStyle.Fill;
+            panel16.Location = new Point(3, 3);
+            panel16.Name = "panel16";
+            panel16.Size = new Size(1017, 46);
+            panel16.TabIndex = 5;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label23.Location = new Point(8, 10);
+            label23.Name = "label23";
+            label23.Size = new Size(61, 21);
+            label23.TabIndex = 0;
+            label23.Text = "Grades";
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button1.BackColor = SystemColors.WindowFrame;
+            button1.FlatAppearance.BorderColor = Color.Black;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(934, 10);
+            button1.Name = "button1";
+            button1.Size = new Size(71, 24);
+            button1.TabIndex = 25;
+            button1.Text = "See all";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // TeacherCourseDetailsPage_Main
             // 
@@ -659,12 +546,6 @@
             panel2.ResumeLayout(false);
             panel4.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
-            panel14.ResumeLayout(false);
-            panel14.PerformLayout();
-            panel15.ResumeLayout(false);
-            panel15.PerformLayout();
-            panel16.ResumeLayout(false);
-            panel16.PerformLayout();
             panel12.ResumeLayout(false);
             panel12.PerformLayout();
             panel13.ResumeLayout(false);
@@ -677,6 +558,8 @@
             StudentListHeader.PerformLayout();
             panel11.ResumeLayout(false);
             panel11.PerformLayout();
+            panel16.ResumeLayout(false);
+            panel16.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -686,7 +569,6 @@
         private Panel panel2;
         private Panel panel4;
         private TableLayoutPanel tableLayoutPanel1;
-        private Label label22;
         private Panel panel12;
         private Panel panel13;
         private TableLayoutPanel tableLayoutPanel2;
@@ -709,15 +591,6 @@
         private Label label18;
         private Label label19;
         private Panel panel3;
-        private Button button4;
-        private Panel panel14;
-        private Panel panel15;
-        private Panel panel16;
-        private Button button1;
-        private Button button2;
-        private Label label23;
-        private Label label24;
-        private Button button3;
         private Button _backButton;
         private Label label1;
         private Label label25;
@@ -726,5 +599,8 @@
         private TableLayoutPanel StudentListHeader;
         private Label label4;
         private Label label7;
+        private Panel panel16;
+        private Button button1;
+        private Label label23;
     }
 }
