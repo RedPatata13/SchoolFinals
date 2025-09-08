@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace Finals.Core.Teacher.TeacherCourses.TeacherCoursePage_Grades
         {
             InitializeComponent();
             //students = Students ?? new List<StudentModel>();
-            if(Students == null || Students.Count == 0)
+            if (Students == null || Students.Count == 0)
             {
                 students = new List<StudentModel>();
                 MessageBox.Show("No students enrolled yet.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -56,16 +57,24 @@ namespace Finals.Core.Teacher.TeacherCourses.TeacherCoursePage_Grades
             }
 
 
-            foreach(var student in students)
+            foreach (var student in students)
             {
                 var studentGradeControl = new EditGradesUC()
                 {
-                    StudentName = (String.IsNullOrEmpty(student.ToString()))? "Unknown Student" : student.ToString(),
+                    StudentName = (String.IsNullOrEmpty(student.ToString())) ? "Unknown Student" : student.ToString(),
                     StudentGrade = "N/A"
                 };
 
                 studentGradeControl.Dock = DockStyle.Top;
                 panel5.Controls.Add(studentGradeControl);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using(var dialog = new StudentCollectionGradesEditDialog(new List<AssignedCourseGrade>()))
+            {
+                var result = dialog.ShowDialog();
             }
         }
     }

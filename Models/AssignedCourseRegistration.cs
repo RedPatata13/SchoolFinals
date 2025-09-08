@@ -14,5 +14,8 @@ namespace Finals.Models
         public string UserId { get; set; } = null!;
         public StudentModel Student { get; set; } = null!;
         public DateTime RegistrationDate { get; set; } = DateTime.MinValue;
+
+        public string AssignedCourseGradeId { get; set; } = null!;
+        public AssignedCourseGrade AssignedCourseGrade { get; set; } = null!;
     }
 }

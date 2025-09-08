@@ -59,6 +59,7 @@
             panel12 = new Panel();
             _backButton = new Button();
             panel1 = new Panel();
+            button1 = new Button();
             StudentListHeader.SuspendLayout();
             panel11.SuspendLayout();
             _studentListContainer.SuspendLayout();
@@ -112,6 +113,7 @@
             // panel11
             // 
             panel11.BorderStyle = BorderStyle.FixedSingle;
+            panel11.Controls.Add(button1);
             panel11.Controls.Add(label20);
             panel11.Controls.Add(label21);
             panel11.Controls.Add(label14);
@@ -360,6 +362,7 @@
             tableLayoutPanel3.Padding = new Padding(20, 0, 12, 0);
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.Size = new Size(1059, 512);
             tableLayoutPanel3.TabIndex = 26;
             // 
@@ -444,6 +447,23 @@
             panel1.Size = new Size(1059, 40);
             panel1.TabIndex = 22;
             // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.None;
+            button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button1.BackColor = SystemColors.WindowFrame;
+            button1.FlatAppearance.BorderColor = Color.Black;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(120, 24);
+            button1.Name = "button1";
+            button1.Size = new Size(71, 25);
+            button1.TabIndex = 25;
+            button1.Text = "See all";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // TeacherCoursePage_Grades
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -505,5 +525,6 @@
         private Panel panel12;
         private Button _backButton;
         private Panel panel1;
+        private Button button1;
     }
 }

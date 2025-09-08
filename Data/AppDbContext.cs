@@ -48,6 +48,7 @@ namespace Finals.Data
 
             // Courses
             modelBuilder.ApplyConfiguration(new AssignedCourseRegistrationModelConfiguration());
+            modelBuilder.ApplyConfiguration(new AssignedCourseGradeConfiguration());
 
 
             base.OnModelCreating(modelBuilder);

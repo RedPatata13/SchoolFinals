@@ -33,6 +33,12 @@ namespace Finals.Data.Configuration
             builder.Property(acr => acr.RegistrationDate)
                 .HasDefaultValue(DateTime.MinValue)
                 .IsRequired();
+
+            builder.HasOne(acr => acr.AssignedCourseGrade)
+                .WithOne()
+                .HasForeignKey<AssignedCourseRegistration>(acr => acr.AssignedCourseGradeId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);
         }
     }
 }
