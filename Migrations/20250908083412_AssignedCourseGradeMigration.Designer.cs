@@ -4,6 +4,7 @@ using Finals.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Finals.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250908083412_AssignedCourseGrade")]
+    partial class AssignedCourseGradeMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,7 +94,7 @@ namespace Finals.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("AssignedCourseGrades");
+                    b.ToTable("AssignedCourseGrade");
                 });
 
             modelBuilder.Entity("Finals.Models.AssignedCourseRegistration", b =>
@@ -112,9 +115,6 @@ namespace Finals.Migrations
                         .HasColumnType("datetime(6)")
                         .HasDefaultValue(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
-                    b.Property<string>("TermId")
-                        .HasColumnType("varchar(30)");
-
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
@@ -125,8 +125,6 @@ namespace Finals.Migrations
                         .IsUnique();
 
                     b.HasIndex("AssignedCourseId");
-
-                    b.HasIndex("TermId");
 
                     b.HasIndex("UserId");
 
@@ -1033,11 +1031,6 @@ namespace Finals.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Finals.Models.TermModel", "Term")
-                        .WithMany()
-                        .HasForeignKey("TermId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("Finals.Models.StudentModel", "Student")
                         .WithMany()
                         .HasForeignKey("UserId")
@@ -1049,8 +1042,6 @@ namespace Finals.Migrations
                     b.Navigation("AssignedCourseGrade");
 
                     b.Navigation("Student");
-
-                    b.Navigation("Term");
                 });
 
             modelBuilder.Entity("Finals.Models.ClassBatchModel", b =>

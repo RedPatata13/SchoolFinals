@@ -15,14 +15,14 @@ namespace Finals.Core.Teacher.TeacherCourses.TeacherCoursePage_Grades
 {
     public partial class TeacherCoursePage_Grades : UserControl, ITeacherCoursePage_Grades
     {
-        private ICollection<StudentModel> students;
-        public TeacherCoursePage_Grades(ICollection<StudentModel> Students)
+        private ICollection<AssignedCourseGrade> students;
+        public TeacherCoursePage_Grades(ICollection<AssignedCourseGrade> Students)
         {
             InitializeComponent();
-            //students = Students ?? new List<StudentModel>();
+            //students = Students ?? new List<AssignedCourseGrade>();
             if (Students == null || Students.Count == 0)
             {
-                students = new List<StudentModel>();
+                students = new List<AssignedCourseGrade>();
                 MessageBox.Show("No students enrolled yet.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -57,22 +57,22 @@ namespace Finals.Core.Teacher.TeacherCourses.TeacherCoursePage_Grades
             }
 
 
-            foreach (var student in students)
-            {
-                var studentGradeControl = new EditGradesUC()
-                {
-                    StudentName = (String.IsNullOrEmpty(student.ToString())) ? "Unknown Student" : student.ToString(),
-                    StudentGrade = "N/A"
-                };
+            //foreach (var student in students.Where(s => s.Student != null && s != null).Select(s => s.Student))
+            //{
+            //    var studentGradeControl = new EditGradesUC()
+            //    {
+            //        StudentName = (String.IsNullOrEmpty(student.ToString())) ? "Unknown Student" : student.ToString(),
+            //        StudentGrade = "N/A"
+            //    };
 
-                studentGradeControl.Dock = DockStyle.Top;
-                panel5.Controls.Add(studentGradeControl);
-            }
+            //    studentGradeControl.Dock = DockStyle.Top;
+            //    panel5.Controls.Add(studentGradeControl);
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using(var dialog = new StudentCollectionGradesEditDialog(new List<AssignedCourseGrade>()))
+            using(var dialog = new StudentCollectionGradesEditDialog(students.ToList()))
             {
                 var result = dialog.ShowDialog();
             }

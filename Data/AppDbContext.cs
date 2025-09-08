@@ -76,6 +76,7 @@ namespace Finals.Data
 
         // Courses
         public DbSet<AssignedCourseRegistration> AssignedCourseRegistrations { get; set; } = null!;
+        public DbSet<AssignedCourseGrade> AssignedCourseGrades { get; set; } = null!;
 
         public DbSet<TestModel> TestModels { get; set; } = null!;
         public DbSet<UserModel> UserModels { get; set; } = null!;

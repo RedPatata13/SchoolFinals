@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Finals.Migrations
 {
     /// <inheritdoc />
-    public partial class AssignedCourseGrade : Migration
+    public partial class AssignedCourseGradeMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

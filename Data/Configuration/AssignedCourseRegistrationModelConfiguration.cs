@@ -39,6 +39,12 @@ namespace Finals.Data.Configuration
                 .HasForeignKey<AssignedCourseRegistration>(acr => acr.AssignedCourseGradeId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired(false);
+
+            builder.HasOne(acr => acr.Term)
+                .WithMany()
+                .HasForeignKey(acr => acr.TermId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);
         }
     }
 }

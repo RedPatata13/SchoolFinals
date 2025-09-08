@@ -17,5 +17,8 @@ namespace Finals.Models
 
         public string AssignedCourseGradeId { get; set; } = null!;
         public AssignedCourseGrade AssignedCourseGrade { get; set; } = null!;
+
+        public string TermId { get; set; } = null!;
+        public TermModel Term { get; set; } = null!;
     }
 }

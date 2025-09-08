@@ -15,10 +15,12 @@ namespace Finals.Core.Teacher.UserControls
     {
         private List<AssignedCourseGrade> _selectedStudents = new List<AssignedCourseGrade>();
         private List<AssignedCourseGrade> _unselectedStudents = new List<AssignedCourseGrade>();
+        private Dictionary<StudentModel, AssignedCourseGrade> _map = new();
         public StudentCollectionGradesEditDialog(List<AssignedCourseGrade> unselectedStudents)
         {
             InitializeComponent();
             UnselectedStudents = unselectedStudents ?? new List<AssignedCourseGrade>();
+            _map = UnselectedStudents.ToDictionary(acg => acg.Student, acg => acg);
         }
 
         public ICollection<AssignedCourseGrade> UnselectedStudents
@@ -94,10 +96,10 @@ namespace Finals.Core.Teacher.UserControls
             int buttonColumnIndex = _selectedStudentsDGV.Columns.Count - 1;
             if (e.ColumnIndex == buttonColumnIndex)
             {
-                var student = _selectedStudentsDGV.Rows[e.RowIndex].Tag as AssignedCourseGrade;
+                var student = _selectedStudentsDGV.Rows[e.RowIndex].Tag as StudentModel;
                 if (student != null)
                 {
-                    UnselectStudent(student);
+                    UnselectStudent(_map[student]);
                 }
             }
         }
@@ -108,10 +110,10 @@ namespace Finals.Core.Teacher.UserControls
             int buttonColumnIndex = _unselectedStudentsDGV.Columns.Count - 1;
             if (e.ColumnIndex == buttonColumnIndex)
             {
-                var student = _unselectedStudentsDGV.Rows[e.RowIndex].Tag as AssignedCourseGrade;
+                var student = _unselectedStudentsDGV.Rows[e.RowIndex].Tag as StudentModel;
                 if (student != null)
                 {
-                    SelectStudent(student);
+                    SelectStudent(_map[student]);
                 }
             }
         }

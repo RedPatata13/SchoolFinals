@@ -9,5 +9,7 @@ namespace Finals.Repositories.Interfaces
 {
     public interface IAssignedCourseGradesRepository : IBaseRepository<AssignedCourseGrade>
     {
+        ICollection<AssignedCourseGrade> GetByStudentIdForTerm(string studentId, string termId);
+        ICollection<AssignedCourseGrade> GetByAssignedCourseId(string assignedCourseId);
     }
 }

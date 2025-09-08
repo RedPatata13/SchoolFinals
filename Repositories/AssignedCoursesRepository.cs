@@ -37,6 +37,9 @@ namespace Finals.Repositories
                 .Include(ac => ac.Semester)
                 .Include(ac => ac.Registrations)
                     .ThenInclude(r => r.Student)
+                .Include(ac => ac.Registrations)
+                    .ThenInclude(r => r.AssignedCourseGrade)
+                        .ThenInclude(acg => acg.Student)
                 .AsNoTracking()
                 .ToList();
         }

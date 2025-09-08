@@ -13,12 +13,14 @@ using Finals.Core.Teacher.TeacherCourseTasks;
 using Finals.Core.Teacher.TeacherCourses.TeacherCourseDetailsPage;
 using Finals.Forms;
 using Finals.Core.Teacher.TeacherCourses.TeacherCoursePage_Grades;
+using Finals.Migrations;
 
 namespace Finals.Core.Teacher.TeacherCourseDetailsPage
 {
     public partial class TeacherCourseDetailsPage_Main : UserControl, ITeacherCourseDetailsPage_Main
     {
         private CourseModel_Assigned _assignedCourse = null!;
+        private ICollection<AssignedCourseGrade> _assignedGrades = null!;
         private Label NoStudents = new Label()
         {
             Text = "No students enrolled yet.",
@@ -33,6 +35,7 @@ namespace Finals.Core.Teacher.TeacherCourseDetailsPage
         {
             InitializeComponent();
             AssignedCourse = course ?? throw new ArgumentNullException(nameof(course));
+            var presenter = new TeacherCourseDetailsPage_Main_Presenter(this);
         }
 
         public event EventHandler BackClick
@@ -113,15 +116,18 @@ namespace Finals.Core.Teacher.TeacherCourseDetailsPage
             }
         }
 
+        public ICollection<AssignedCourseGrade> Grades
+        {
+            get => _assignedGrades;
+            set => _assignedGrades = value;
+        }
+
         private void RenderStudentTiles()
         {
             panel5.Controls.Clear();
 
 
-            var registrationList = (_assignedCourse.Registrations ?? new List<AssignedCourseRegistration>())
-                .Where(rs => rs.Student != null)
-                .Select(rs => rs.Student)
-                .ToList();
+            var registrationList = _assignedCourse.Registrations ?? new List<Models.AssignedCourseRegistration>();
 
             if (registrationList == null || registrationList.Count == 0)
             {
@@ -145,7 +151,8 @@ namespace Finals.Core.Teacher.TeacherCourseDetailsPage
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var gradesUc = new TeacherCoursePage_Grades(AssignedCourse.Registrations.Select(s => s.Student).ToList());
+            
+            var gradesUc = new TeacherCoursePage_Grades(Grades ?? new List<AssignedCourseGrade>());
             gradesUc.BackClick += (s, ev) =>
             {
                 ProjectToContainer?.Invoke(this, true);
@@ -158,5 +165,35 @@ namespace Finals.Core.Teacher.TeacherCourseDetailsPage
         event EventHandler BackClick;
         Action<Control, bool> ProjectToContainer { get; set; }
         CourseModel_Assigned AssignedCourse { get; set; }
+        ICollection<AssignedCourseGrade> Grades { get; set; }
+    }
+
+    public class TeacherCourseDetailsPage_Main_Presenter
+    {
+        private readonly ITeacherCourseDetailsPage_Main _view;
+        public TeacherCourseDetailsPage_Main_Presenter(ITeacherCourseDetailsPage_Main view)
+        {
+            _view = view ?? throw new ArgumentNullException(nameof(view));
+            SetupGrades();
+        }
+
+        private void SetupGrades()
+        {
+            var repo = RepositoryFactory.Create();
+            try
+            {
+                _view.Grades = repo.AssignedCourseGrades.GetByAssignedCourseId(_view.AssignedCourse.AssignedCourseModelId);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while fetching grades: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _view.Grades = new List<AssignedCourseGrade>();
+            }
+            finally
+            {
+                repo.Dispose();
+            }
+        }
     }
 }

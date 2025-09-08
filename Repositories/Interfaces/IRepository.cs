@@ -26,7 +26,8 @@ namespace Finals.Repositories.Interfaces
         IGradesClassificationRepository GradesClassifications { get; }
         IGradesTreeRepository GradesTrees { get; }
         ICourseRepository Courses { get; }
-        IAssignedCoursesRepository AssignedCourses { get; } 
+        IAssignedCoursesRepository AssignedCourses { get; }
+        IAssignedCourseGradesRepository AssignedCourseGrades { get; }
         void SaveChanges();
     }
 }

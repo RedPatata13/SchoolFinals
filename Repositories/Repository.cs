@@ -32,6 +32,7 @@ namespace Finals.Repositories
         private IAssignedCoursesRepository _assignedCourses = null!;
         private ISemesterRepository _semesters = null!;
         private ISYTemplateRepository _syTemplates = null!;    
+        private IAssignedCourseGradesRepository _assignedCourseGrades = null!;
 
         IUserModelRepository IRepository.Users => _users;
         ISchoolYearModelRepository IRepository.SchoolYears => _schools;
@@ -67,6 +68,8 @@ namespace Finals.Repositories
 
         public ISYTemplateRepository SYTemplates => _syTemplates;
 
+        public IAssignedCourseGradesRepository AssignedCourseGrades => _assignedCourseGrades;
+
         public Repository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -87,6 +90,7 @@ namespace Finals.Repositories
             _assignedCourses = new AssignedCoursesRepository(_dbContext);
             _semesters = new SemesterRepository(_dbContext);
             _syTemplates = new SYTemplateRepository(_dbContext);
+            _assignedCourseGrades = new AssignedCourseGradeRepository(_dbContext);
         }
 
         void IDisposable.Dispose()
