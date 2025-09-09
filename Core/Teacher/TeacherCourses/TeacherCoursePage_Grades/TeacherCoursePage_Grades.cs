@@ -19,7 +19,6 @@ namespace Finals.Core.Teacher.TeacherCourses.TeacherCoursePage_Grades
         public TeacherCoursePage_Grades(ICollection<AssignedCourseGrade> Students)
         {
             InitializeComponent();
-            //students = Students ?? new List<AssignedCourseGrade>();
             if (Students == null || Students.Count == 0)
             {
                 students = new List<AssignedCourseGrade>();
@@ -55,28 +54,42 @@ namespace Finals.Core.Teacher.TeacherCourses.TeacherCoursePage_Grades
                 panel5.Controls.Add(noStudentsLabel);
                 return;
             }
-
-
-            //foreach (var student in students.Where(s => s.Student != null && s != null).Select(s => s.Student))
-            //{
-            //    var studentGradeControl = new EditGradesUC()
-            //    {
-            //        StudentName = (String.IsNullOrEmpty(student.ToString())) ? "Unknown Student" : student.ToString(),
-            //        StudentGrade = "N/A"
-            //    };
-
-            //    studentGradeControl.Dock = DockStyle.Top;
-            //    panel5.Controls.Add(studentGradeControl);
-            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using(var dialog = new StudentCollectionGradesEditDialog(students.ToList()))
+            using (var dialog = new StudentCollectionGradesEditDialog(students.ToList()))
             {
                 var result = dialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    //students = dialog.SelectedStudents;
+                    int error_cnt = 0;
+                    foreach (var grade in dialog.SelectedStudents)
+                    {
+                        TryGradeUpdate(grade.GradeId, dialog.SelectedGrade, (str) => error_cnt++, () => grade.Grade = dialog.SelectedGrade);
+                    }
+                    RenderStudentGrades();
+                }
             }
         }
+
+        private void TryGradeUpdate(string gradeId, CourseGrade grade, Action<string> err_Act, Action acgv)
+        {
+            var repo = RepositoryFactory.Create();
+            try
+            {
+                repo.AssignedCourseGrades.UpdateGrade(gradeId, grade);
+                acgv.Invoke();
+            }
+            catch (Exception ex)
+            {
+                err_Act.Invoke(ex.Message);
+            } finally
+            {
+                repo.Dispose();
+            } 
+        } 
     }
 
     public interface ITeacherCoursePage_Grades

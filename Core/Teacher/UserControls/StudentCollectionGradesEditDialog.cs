@@ -71,7 +71,7 @@ namespace Finals.Core.Teacher.UserControls
                     grades.Student.StudentID,
                     grades.Student.ToString(),
                     CourseGradeTranslator.TranslateFromCourseGrade(grades.Grade),
-                    "Remove");
+                    "Add");
 
                 row.Tag = grades.Student;
                 _selectedStudentsDGV.Rows.Add(row);
@@ -142,6 +142,7 @@ namespace Finals.Core.Teacher.UserControls
                 if (student != null)
                 {
                     SelectStudent(_map[student]);
+                    //MessageBox.Show("called");
                 }
             }
             ValidateInput();

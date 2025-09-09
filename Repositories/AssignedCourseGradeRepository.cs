@@ -46,5 +46,13 @@ namespace Finals.Repositories
 
             return assignedCourse.Registrations.Select(acr => acr.AssignedCourseGrade).ToList();
         }
+
+        public void UpdateGrade(string gradeId, CourseGrade newGrade)
+        {
+            var grade = _context.AssignedCourseGrades.FirstOrDefault(acg => acg.GradeId == gradeId) ?? throw new ArgumentException("Invalid Grade Id");
+
+            grade.Grade = newGrade;
+            _context.SaveChanges();
+        }
     }
 }

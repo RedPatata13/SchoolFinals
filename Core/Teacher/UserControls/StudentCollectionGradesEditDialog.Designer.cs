@@ -148,6 +148,7 @@
             _unselectedStudentsDGV.RowHeadersVisible = false;
             _unselectedStudentsDGV.Size = new Size(705, 538);
             _unselectedStudentsDGV.TabIndex = 2;
+            _unselectedStudentsDGV.CellContentClick += _unselectedStudentsDGV_CellContentClick;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -262,6 +263,7 @@
             _selectedStudentsDGV.RowHeadersVisible = false;
             _selectedStudentsDGV.Size = new Size(463, 538);
             _selectedStudentsDGV.TabIndex = 1;
+            _selectedStudentsDGV.CellContentClick += _selectedStudentsDGV_CellContentClick;
             // 
             // StudentId
             // 

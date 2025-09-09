@@ -11,5 +11,7 @@ namespace Finals.Repositories.Interfaces
     {
         ICollection<AssignedCourseGrade> GetByStudentIdForTerm(string studentId, string termId);
         ICollection<AssignedCourseGrade> GetByAssignedCourseId(string assignedCourseId);
+
+        void UpdateGrade(string gradeId, CourseGrade newGrade);
     }
 }
