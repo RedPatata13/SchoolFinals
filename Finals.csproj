@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <Folder Include="Core\Student\StudentDashboard\" />
+    <Folder Include="Forms\Utils\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -16,11 +16,28 @@ namespace Finals.Core.Teacher.UserControls
         private List<AssignedCourseGrade> _selectedStudents = new List<AssignedCourseGrade>();
         private List<AssignedCourseGrade> _unselectedStudents = new List<AssignedCourseGrade>();
         private Dictionary<StudentModel, AssignedCourseGrade> _map = new();
+        private Dictionary<int, CourseGrade> _gradeMap = new()
+        {
+            {0, CourseGrade.NotSet },
+            {1, CourseGrade.OnePointZero },
+            {2, CourseGrade.OnePointTwentyFive },
+            {3, CourseGrade.OnePointFifty },
+            {4, CourseGrade.OnePointSeventyFive },
+            {5, CourseGrade.TwoPointZero },
+            {6, CourseGrade.TwoPointTwentyFive },
+            {7, CourseGrade.TwoPointFifty },
+            {8, CourseGrade.TwoPointSeventyFive },
+            {9, CourseGrade.ThreePointZero },
+            {10, CourseGrade.FourPointZero },
+            {11, CourseGrade.FivePointZero },
+            {12, CourseGrade.INC }
+        };
         public StudentCollectionGradesEditDialog(List<AssignedCourseGrade> unselectedStudents)
         {
             InitializeComponent();
             UnselectedStudents = unselectedStudents ?? new List<AssignedCourseGrade>();
             _map = UnselectedStudents.ToDictionary(acg => acg.Student, acg => acg);
+            SetGradeComboBox();
         }
 
         public ICollection<AssignedCourseGrade> UnselectedStudents
@@ -42,16 +59,21 @@ namespace Finals.Core.Teacher.UserControls
             }
         }
 
+        public CourseGrade SelectedGrade => _gradeMap.TryGetValue(_gradeComboBox.SelectedIndex, out var grade) ? grade : CourseGrade.NotSet;
         public void RenderSelectedStudents()
         {
             _selectedStudentsDGV.Rows.Clear();
-            var selectedStudentList = _selectedStudents.Select(s => s.Student);
-            foreach (var student in selectedStudentList)
+            foreach (var grades in _selectedStudents)
             {
                 var row = new DataGridViewRow();
-                row.CreateCells(_selectedStudentsDGV, student.StudentID, student.ToString(), "N/A", "Remove");
+                row.CreateCells(
+                    _selectedStudentsDGV,
+                    grades.Student.StudentID,
+                    grades.Student.ToString(),
+                    CourseGradeTranslator.TranslateFromCourseGrade(grades.Grade),
+                    "Remove");
 
-                row.Tag = student;
+                row.Tag = grades.Student;
                 _selectedStudentsDGV.Rows.Add(row);
             }
         }
@@ -59,13 +81,18 @@ namespace Finals.Core.Teacher.UserControls
         public void RenderUnselectedStudents()
         {
             _unselectedStudentsDGV.Rows.Clear();
-            var unselectedStudentList = _unselectedStudents.Select(s => s.Student);
-            foreach (var student in unselectedStudentList)
+
+            foreach (var grades in _unselectedStudents)
             {
                 var row = new DataGridViewRow();
-                row.CreateCells(_unselectedStudentsDGV, student.StudentID, student.ToString(), "N/A", "Add");
+                row.CreateCells(
+                    _unselectedStudentsDGV,
+                    grades.Student.StudentID,
+                    grades.Student.ToString(),
+                    CourseGradeTranslator.TranslateFromCourseGrade(grades.Grade),
+                    "Remove");
 
-                row.Tag = student;
+                row.Tag = grades.Student;
                 _unselectedStudentsDGV.Rows.Add(row);
             }
         }
@@ -102,6 +129,7 @@ namespace Finals.Core.Teacher.UserControls
                     UnselectStudent(_map[student]);
                 }
             }
+            ValidateInput();
         }
 
         private void _unselectedStudentsDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -116,6 +144,50 @@ namespace Finals.Core.Teacher.UserControls
                     SelectStudent(_map[student]);
                 }
             }
+            ValidateInput();
+        }
+        private void SetGradeComboBox()
+        {
+            _gradeComboBox.Items.Clear();
+            foreach (var kv in _gradeMap)
+            {
+                _gradeComboBox.Items.Insert(kv.Key, CourseGradeTranslator.TranslateFromCourseGrade(kv.Value));
+            }
+            _gradeComboBox.SelectedIndex = 0;
+        }
+
+        private void _gradeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ValidateInput();
+        }
+
+        private void ValidateInput()
+        {
+            if (_gradeComboBox.SelectedIndex <= 0 ||
+                _selectedStudents.Count == 0)
+            {
+                MainActionButton.BackColor = SystemColors.ScrollBar;
+                MainActionButton.ForeColor = SystemColors.Menu;
+                MainActionButton.Enabled = false;
+            }
+            else
+            {
+                MainActionButton.BackColor = SystemColors.Highlight;
+                MainActionButton.ForeColor = SystemColors.HighlightText;
+                MainActionButton.Enabled = true;
+            }
+        }
+
+        private void MainActionButton_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        private void SecondaryActiomButton_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
     public interface IStudentCollectionGradesEditDialog
@@ -128,5 +200,7 @@ namespace Finals.Core.Teacher.UserControls
 
         void RenderSelectedStudents();
         void RenderUnselectedStudents();
+
+        CourseGrade SelectedGrade { get; }
     }
 }

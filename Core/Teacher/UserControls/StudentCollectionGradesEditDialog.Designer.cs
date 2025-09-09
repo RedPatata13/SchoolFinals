@@ -28,13 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            button1 = new Button();
-            panel7 = new Panel();
-            comboBox1 = new ComboBox();
-            label5 = new Label();
-            label7 = new Label();
-            textBox1 = new TextBox();
             _coursesContainer = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel9 = new Panel();
@@ -63,11 +56,15 @@
             panel4 = new Panel();
             button2 = new Button();
             label2 = new Label();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            panel7 = new Panel();
+            _gradeComboBox = new ComboBox();
+            label5 = new Label();
+            label7 = new Label();
             panel1 = new Panel();
             SecondaryActiomButton = new Button();
             MainActionButton = new Button();
             panel6 = new Panel();
-            panel7.SuspendLayout();
             _coursesContainer.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel9.SuspendLayout();
@@ -80,91 +77,18 @@
             ((System.ComponentModel.ISupportInitialize)_selectedStudentsDGV).BeginInit();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            panel7.SuspendLayout();
             panel1.SuspendLayout();
             panel6.SuspendLayout();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(8, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(114, 21);
-            label1.TabIndex = 1;
-            label1.Text = "Search Student";
-            // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.Highlight;
-            button1.FlatAppearance.BorderColor = Color.Black;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = SystemColors.HighlightText;
-            button1.Location = new Point(712, 10);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 2;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // panel7
-            // 
-            panel7.BorderStyle = BorderStyle.FixedSingle;
-            panel7.Controls.Add(comboBox1);
-            panel7.Controls.Add(label5);
-            panel7.Controls.Add(label7);
-            panel7.Controls.Add(label1);
-            panel7.Controls.Add(textBox1);
-            panel7.Controls.Add(button1);
-            panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(4, 4);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(1232, 84);
-            panel7.TabIndex = 3;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(128, 48);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(89, 23);
-            comboBox1.TabIndex = 7;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.Red;
-            label5.Location = new Point(216, 48);
-            label5.Name = "label5";
-            label5.Size = new Size(17, 21);
-            label5.TabIndex = 8;
-            label5.Text = "*";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(8, 48);
-            label7.Name = "label7";
-            label7.Size = new Size(114, 21);
-            label7.TabIndex = 6;
-            label7.Text = "Grade Selected";
-            // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(128, 10);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(576, 29);
-            textBox1.TabIndex = 0;
             // 
             // _coursesContainer
             // 
             _coursesContainer.BackColor = SystemColors.Control;
             _coursesContainer.BorderStyle = BorderStyle.FixedSingle;
             _coursesContainer.Controls.Add(tableLayoutPanel1);
-            _coursesContainer.Controls.Add(panel7);
+            _coursesContainer.Controls.Add(tableLayoutPanel2);
             _coursesContainer.Dock = DockStyle.Fill;
             _coursesContainer.Location = new Point(0, 0);
             _coursesContainer.Name = "_coursesContainer";
@@ -180,12 +104,12 @@
             tableLayoutPanel1.Controls.Add(panel9, 0, 0);
             tableLayoutPanel1.Controls.Add(_courseSelectedContainer, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(4, 88);
+            tableLayoutPanel1.Location = new Point(4, 56);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(1232, 598);
-            tableLayoutPanel1.TabIndex = 4;
+            tableLayoutPanel1.Size = new Size(1232, 630);
+            tableLayoutPanel1.TabIndex = 6;
             // 
             // panel9
             // 
@@ -196,7 +120,7 @@
             panel9.Location = new Point(3, 3);
             panel9.Name = "panel9";
             panel9.Padding = new Padding(4);
-            panel9.Size = new Size(731, 592);
+            panel9.Size = new Size(731, 624);
             panel9.TabIndex = 10;
             // 
             // panel5
@@ -208,7 +132,7 @@
             panel5.Location = new Point(4, 40);
             panel5.Name = "panel5";
             panel5.Padding = new Padding(8);
-            panel5.Size = new Size(721, 546);
+            panel5.Size = new Size(721, 578);
             panel5.TabIndex = 9;
             // 
             // _unselectedStudentsDGV
@@ -222,9 +146,8 @@
             _unselectedStudentsDGV.Name = "_unselectedStudentsDGV";
             _unselectedStudentsDGV.ReadOnly = true;
             _unselectedStudentsDGV.RowHeadersVisible = false;
-            _unselectedStudentsDGV.Size = new Size(705, 506);
+            _unselectedStudentsDGV.Size = new Size(705, 538);
             _unselectedStudentsDGV.TabIndex = 2;
-            _unselectedStudentsDGV.CellContentClick += _unselectedStudentsDGV_CellContentClick;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -307,10 +230,11 @@
             _courseSelectedContainer.BorderStyle = BorderStyle.FixedSingle;
             _courseSelectedContainer.Controls.Add(panel8);
             _courseSelectedContainer.Controls.Add(panel4);
+            _courseSelectedContainer.Dock = DockStyle.Fill;
             _courseSelectedContainer.Location = new Point(740, 3);
             _courseSelectedContainer.Name = "_courseSelectedContainer";
             _courseSelectedContainer.Padding = new Padding(4);
-            _courseSelectedContainer.Size = new Size(489, 592);
+            _courseSelectedContainer.Size = new Size(489, 624);
             _courseSelectedContainer.TabIndex = 6;
             // 
             // panel8
@@ -322,7 +246,7 @@
             panel8.Location = new Point(4, 40);
             panel8.Name = "panel8";
             panel8.Padding = new Padding(8);
-            panel8.Size = new Size(479, 546);
+            panel8.Size = new Size(479, 578);
             panel8.TabIndex = 8;
             // 
             // _selectedStudentsDGV
@@ -336,9 +260,8 @@
             _selectedStudentsDGV.Name = "_selectedStudentsDGV";
             _selectedStudentsDGV.ReadOnly = true;
             _selectedStudentsDGV.RowHeadersVisible = false;
-            _selectedStudentsDGV.Size = new Size(463, 506);
+            _selectedStudentsDGV.Size = new Size(463, 538);
             _selectedStudentsDGV.TabIndex = 1;
-            _selectedStudentsDGV.CellContentClick += _selectedStudentsDGV_CellContentClick;
             // 
             // StudentId
             // 
@@ -441,6 +364,61 @@
             label2.TabIndex = 4;
             label2.Text = "Courses Selected";
             // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(panel7, 0, 0);
+            tableLayoutPanel2.Dock = DockStyle.Top;
+            tableLayoutPanel2.Location = new Point(4, 4);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(1232, 52);
+            tableLayoutPanel2.TabIndex = 5;
+            // 
+            // panel7
+            // 
+            panel7.BorderStyle = BorderStyle.FixedSingle;
+            panel7.Controls.Add(_gradeComboBox);
+            panel7.Controls.Add(label5);
+            panel7.Controls.Add(label7);
+            panel7.Dock = DockStyle.Top;
+            panel7.Location = new Point(3, 3);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(1226, 45);
+            panel7.TabIndex = 4;
+            // 
+            // _gradeComboBox
+            // 
+            _gradeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            _gradeComboBox.FormattingEnabled = true;
+            _gradeComboBox.Location = new Point(128, 8);
+            _gradeComboBox.Name = "_gradeComboBox";
+            _gradeComboBox.Size = new Size(89, 23);
+            _gradeComboBox.TabIndex = 7;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.Red;
+            label5.Location = new Point(216, 8);
+            label5.Name = "label5";
+            label5.Size = new Size(17, 21);
+            label5.TabIndex = 8;
+            label5.Text = "*";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Location = new Point(8, 8);
+            label7.Name = "label7";
+            label7.Size = new Size(114, 21);
+            label7.TabIndex = 6;
+            label7.Text = "Grade Selected";
+            // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLight;
@@ -463,6 +441,7 @@
             SecondaryActiomButton.TabIndex = 20;
             SecondaryActiomButton.Text = "Cancel";
             SecondaryActiomButton.UseVisualStyleBackColor = false;
+            SecondaryActiomButton.Click += SecondaryActiomButton_Click;
             // 
             // MainActionButton
             // 
@@ -477,6 +456,7 @@
             MainActionButton.TabIndex = 19;
             MainActionButton.Text = "Confirm";
             MainActionButton.UseVisualStyleBackColor = false;
+            MainActionButton.Click += MainActionButton_Click;
             // 
             // panel6
             // 
@@ -499,8 +479,6 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "StudentCollectionGradesEditDialog";
             Text = "StudentCollectionGradesEditDialog";
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
             _coursesContainer.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             panel9.ResumeLayout(false);
@@ -517,51 +495,51 @@
             panel2.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
             panel1.ResumeLayout(false);
             panel6.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Label label1;
-        private Button button1;
-        private Panel panel7;
-        private TextBox textBox1;
         private Panel _coursesContainer;
-        private Button button2;
-        private Label label2;
-        private Panel panel4;
-        private Panel _courseSelectedContainer;
         private Panel panel1;
         private Button SecondaryActiomButton;
         private Button MainActionButton;
         private Panel panel6;
-        private ComboBox comboBox1;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Panel panel7;
+        private ComboBox _gradeComboBox;
+        private Label label5;
         private Label label7;
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel9;
         private Panel panel5;
-        private Panel panel3;
-        private Panel panel10;
-        private Label label8;
-        private Panel panel8;
-        private DataGridView _selectedStudentsDGV;
-        private Panel panel2;
-        private Label label4;
-        private Label _courseCount;
-        private Label label3;
-        private CheckBox checkBox1;
-        private Label label5;
         private DataGridView _unselectedStudentsDGV;
-        private Label label6;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewButtonColumn IncludeStudent;
+        private Panel panel3;
+        private Label label6;
+        private CheckBox checkBox1;
+        private Panel panel10;
+        private Label label8;
+        private Panel _courseSelectedContainer;
+        private Panel panel8;
+        private DataGridView _selectedStudentsDGV;
         private DataGridViewTextBoxColumn StudentId;
         private DataGridViewTextBoxColumn StudentName;
         private DataGridViewTextBoxColumn Grade;
         private DataGridViewButtonColumn Remove;
+        private Panel panel2;
+        private Label label4;
+        private Label _courseCount;
+        private Label label3;
+        private Panel panel4;
+        private Button button2;
+        private Label label2;
     }
 }
